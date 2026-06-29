@@ -1,8 +1,8 @@
       import * as THREE from "three";
 
       // ---- Config -------------------------------------------------------
-      const WOOD = 0x8a6647; // base board tone
-      const WOOD_RAIL = 0x96714f;
+      const WOOD = 0x765947; // muted walnut board tone
+      const WOOD_RAIL = 0x846554;
       const DECK_W = 10; // x
       const DECK_D = 6; // z
       const DECK_TOP = 1.0; // y of finished deck surface
@@ -20,15 +20,17 @@
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      const isSmallScreen = window.matchMedia("(max-width: 860px)").matches;
+      const maxPixelRatio = isSmallScreen ? 1 : 1.35;
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: true,
+        antialias: !isSmallScreen,
         powerPreference: "high-performance",
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.35;
 
@@ -75,7 +77,7 @@
       const moon = new THREE.DirectionalLight(0xaec4e2, 1.5);
       moon.position.set(-14, 22, -10);
       moon.castShadow = true;
-      moon.shadow.mapSize.set(2048, 2048);
+      moon.shadow.mapSize.set(isSmallScreen ? 768 : 1024, isSmallScreen ? 768 : 1024);
       moon.shadow.camera.left = -16;
       moon.shadow.camera.right = 16;
       moon.shadow.camera.top = 16;
@@ -84,7 +86,7 @@
       moon.shadow.bias = -0.0015;
       scene.add(moon);
 
-      const warmFill = new THREE.DirectionalLight(0xd6a35c, 0.45);
+      const warmFill = new THREE.DirectionalLight(0xb86f58, 0.42);
       warmFill.position.set(10, 4, 14);
       scene.add(warmFill);
 
@@ -149,7 +151,7 @@
           trunkMat,
         );
         trunk.position.y = 1.2 * s;
-        trunk.castShadow = true;
+        trunk.castShadow = false;
         g.add(trunk);
         const blobs = 2 + Math.floor(Math.random() * 2);
         for (let i = 0; i < blobs; i++) {
@@ -163,7 +165,7 @@
             (2.6 + i * 0.9 + Math.random() * 0.5) * s,
             (Math.random() - 0.5) * 1.4 * s,
           );
-          b.castShadow = true;
+          b.castShadow = false;
           g.add(b);
         }
         g.position.set(x, 0, z);
@@ -202,7 +204,7 @@
         const s = 0.5 + Math.random() * 0.5;
         const b = new THREE.Mesh(new THREE.IcosahedronGeometry(s, 1), bushMat);
         b.position.set(Math.cos(a) * r, s * 0.55, Math.sin(a) * r);
-        b.castShadow = true;
+        b.castShadow = false;
         scene.add(b);
       }
 
@@ -300,7 +302,7 @@
       let pi = 0;
       for (const px of postXs) {
         for (const pz of postZs) {
-          const p = grownBeam(0.2, 0.74, 0.2, woodMat(0x6e5138, 0.03));
+          const p = grownBeam(0.2, 0.74, 0.2, woodMat(0x5f493c, 0.03));
           p.position.set(px, 0, pz);
           deck.add(p);
           stage(p, 0.04 + pi * 0.015, 0.13 + pi * 0.015, "grow");
@@ -310,7 +312,7 @@
 
       // Frame: rim joists + inner joists drop in as one structure.
       const frame = new THREE.Group();
-      const rimMat = woodMat(0x73553a, 0.02);
+      const rimMat = woodMat(0x634d40, 0.02);
       const rims = [
         beam(DECK_W, 0.2, 0.18, rimMat), // front
         beam(DECK_W, 0.2, 0.18, rimMat), // back
@@ -323,7 +325,7 @@
       rims[3].position.set(DECK_W / 2 - 0.09, 0.84, 0);
       rims.forEach((r) => frame.add(r));
       for (let x = -4; x <= 4; x += 1) {
-        const j = beam(0.12, 0.2, DECK_D - 0.4, woodMat(0x73553a, 0.02));
+        const j = beam(0.12, 0.2, DECK_D - 0.4, woodMat(0x634d40, 0.02));
         j.position.set(x, 0.84, 0);
         frame.add(j);
       }
@@ -355,7 +357,7 @@
           DECK_D / 2 + STEP_RUN * (3 - s) - STEP_RUN / 2,
         );
         stairs.add(tread);
-        const riser = beam(2.4, STEP_RISE, 0.05, woodMat(0x6e5138, 0.03));
+        const riser = beam(2.4, STEP_RISE, 0.05, woodMat(0x5f493c, 0.03));
         riser.position.set(
           0,
           STEP_RISE * (s + 0.5),
@@ -374,7 +376,7 @@
         const g = new THREE.Group();
         const p = grownBeam(0.12, RAIL_H, 0.12, woodMat(WOOD_RAIL, 0.03));
         g.add(p);
-        const cap = beam(0.2, 0.05, 0.2, woodMat(0x6e5138, 0.02));
+        const cap = beam(0.2, 0.05, 0.2, woodMat(0x5f493c, 0.02));
         cap.position.y = RAIL_H + 0.025;
         g.add(cap);
         const glowMat = new THREE.MeshStandardMaterial({
@@ -538,6 +540,10 @@
       function resize() {
         const w = canvas.clientWidth;
         const h = canvas.clientHeight;
+        if (!w || !h) return;
+        const targetW = Math.floor(w * renderer.getPixelRatio());
+        const targetH = Math.floor(h * renderer.getPixelRatio());
+        if (canvas.width === targetW && canvas.height === targetH) return;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();

@@ -7,7 +7,7 @@
       const PLANK_W = 0.22; // board width (along z) — narrow-strip flooring
       const PLANK_GAP = 0.012;
       const PLANK_TH = 0.09;
-      const WOOD_BASE = 0x9b7149;
+      const WOOD_BASE = 0x84624c;
       // -------------------------------------------------------------------
 
       const canvas = document.getElementById("floorCanvas");
@@ -17,15 +17,17 @@
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      const isSmallScreen = window.matchMedia("(max-width: 860px)").matches;
+      const maxPixelRatio = isSmallScreen ? 1 : 1.35;
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: true,
+        antialias: !isSmallScreen,
         powerPreference: "high-performance",
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.05;
 
@@ -38,6 +40,7 @@
       // ---- Soft indoor reflections for the polished hardwood --------------
       const pmrem = new THREE.PMREMGenerator(renderer);
       scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      pmrem.dispose();
 
       // ---- Warm interior lighting -----------------------------------------
       scene.add(new THREE.HemisphereLight(0xfff0db, 0x40342a, 1.1));
@@ -45,7 +48,7 @@
       const windowLight = new THREE.DirectionalLight(0xffe7c4, 2.1);
       windowLight.position.set(-9, 11, 7);
       windowLight.castShadow = true;
-      windowLight.shadow.mapSize.set(2048, 2048);
+      windowLight.shadow.mapSize.set(isSmallScreen ? 768 : 1024, isSmallScreen ? 768 : 1024);
       windowLight.shadow.camera.left = -11;
       windowLight.shadow.camera.right = 11;
       windowLight.shadow.camera.top = 11;
@@ -122,7 +125,7 @@
       // ---- Subfloor the planks settle onto --------------------------------
       const slab = new THREE.Mesh(
         new THREE.BoxGeometry(FLOOR_W + 0.2, 0.3, FLOOR_D + 0.2),
-        new THREE.MeshStandardMaterial({ color: 0x6b5236, roughness: 0.95 }),
+        new THREE.MeshStandardMaterial({ color: 0x5f5044, roughness: 0.95 }),
       );
       slab.position.y = -0.18;
       slab.receiveShadow = true;
@@ -134,7 +137,7 @@
         c.width = 512;
         c.height = 128;
         const g = c.getContext("2d");
-        g.fillStyle = "#bb8d59";
+        g.fillStyle = "#a77b5c";
         g.fillRect(0, 0, 512, 128);
         // Wavy grain streaks running along the plank length (u axis).
         for (let i = 0; i < 150; i++) {
@@ -170,12 +173,12 @@
         const t = new THREE.CanvasTexture(c);
         t.colorSpace = THREE.SRGBColorSpace; // course lesson 2: tag color maps
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
-        t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        t.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
         return t;
       }
       const woodTex = woodGrainTexture();
       function plankMaterial() {
-        // Satin-finished honey oak: clearcoat sheen + per-plank tone variation.
+        // Satin-finished walnut-oak: clearcoat sheen + per-plank tone variation.
         const m = new THREE.MeshPhysicalMaterial({
           map: woodTex,
           roughness: 0.42,
@@ -184,7 +187,7 @@
           clearcoatRoughness: 0.32,
           envMapIntensity: 0.85,
         });
-        m.color.setHSL(0.08, 0.22, 0.82 + (Math.random() - 0.5) * 0.16);
+        m.color.setHSL(0.075, 0.18, 0.76 + (Math.random() - 0.5) * 0.14);
         return m;
       }
 
@@ -314,6 +317,10 @@
       function resize() {
         const w = canvas.clientWidth;
         const h = canvas.clientHeight;
+        if (!w || !h) return;
+        const targetW = Math.floor(w * renderer.getPixelRatio());
+        const targetH = Math.floor(h * renderer.getPixelRatio());
+        if (canvas.width === targetW && canvas.height === targetH) return;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();

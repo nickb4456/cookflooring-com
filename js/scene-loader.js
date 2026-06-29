@@ -12,11 +12,7 @@
 
   function afterFirstPaint(fn) {
     const run = () => {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(fn, { timeout: 1600 });
-      } else {
-        window.setTimeout(fn, 350);
-      }
+      requestAnimationFrame(() => window.setTimeout(fn, 80));
     };
     if (document.readyState === "complete") {
       run();
