@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" role="img" aria-label="Cook Flooring & Tile">
+  <defs>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3b06a"/>
+      <stop offset="1" stop-color="#d6a35c"/>
+    </linearGradient>
+    <linearGradient id="oak" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c2814a"/>
+      <stop offset="1" stop-color="#b5703a"/>
+    </linearGradient>
+  </defs>
+  <!-- Emblem: stacked planks -->
+  <rect x="6" y="8" width="64" height="64" rx="14" fill="#0c0f12"/>
+  <rect x="6.75" y="8.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#f4efe6" stroke-opacity="0.12"/>
+  <g>
+    <rect x="18" y="22" width="40" height="9" rx="2.5" fill="url(#amber)"/>
+    <rect x="18" y="35.5" width="40" height="9" rx="2.5" fill="url(#oak)"/>
+    <rect x="18" y="49" width="40" height="9" rx="2.5" fill="#7fa6a8"/>
+    <!-- plank seams -->
+    <line x1="38" y1="22" x2="38" y2="31" stroke="#0c0f12" stroke-opacity="0.35" stroke-width="1.2"/>
+    <line x1="31" y1="35.5" x2="31" y2="44.5" stroke="#0c0f12" stroke-opacity="0.35" stroke-width="1.2"/>
+    <line x1="45" y1="49" x2="45" y2="58" stroke="#0c0f12" stroke-opacity="0.35" stroke-width="1.2"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="86" y="40" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="27" font-weight="600" fill="#f4efe6" letter-spacing="-0.3">Cook</text>
+  <text x="87" y="58" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="10.5" letter-spacing="3.4" fill="#d6a35c">FLOORING &amp; TILE</text>
+</svg>

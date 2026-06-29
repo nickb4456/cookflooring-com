@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Let AI search/answer engines read the site for GEO visibility
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://cookflooring.com/sitemap.xml

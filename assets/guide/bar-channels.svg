@@ -1,0 +1,17 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='50'><text x='10' y='30' font-size='11'>No data</text>
+<metadata id="svg-forge-source"><![CDATA[title: Local channels ranked by return
+data:
+  - label: Google Business Profile
+    value: 100
+  - label: Local Services Ads
+    value: 82
+  - label: Search Ads
+    value: 64
+  - label: Meta reels
+    value: 48
+  - label: Nextdoor
+    value: 36
+  - label: Referrals
+    value: 90]]></metadata>
+<metadata id="svg-forge-sha256">ae94acec99241f1da215afd6701a45153e36554db7e4ba54303b4d4c4b1b5cd7</metadata>
+</svg>
