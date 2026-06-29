@@ -21,16 +21,17 @@
         "(prefers-reduced-motion: reduce)",
       ).matches;
       const isSmallScreen = window.matchMedia("(max-width: 860px)").matches;
-      const maxPixelRatio = isSmallScreen ? 1 : 1.35;
+      const maxPixelRatio = isSmallScreen ? 1.5 : 1.75;
+      const shadowSize = isSmallScreen ? 1024 : 1536;
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: !isSmallScreen,
+        antialias: true,
         powerPreference: "high-performance",
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFShadowMap;
+      renderer.shadowMap.type = isSmallScreen ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.35;
 
@@ -77,7 +78,7 @@
       const moon = new THREE.DirectionalLight(0xaec4e2, 1.5);
       moon.position.set(-14, 22, -10);
       moon.castShadow = true;
-      moon.shadow.mapSize.set(isSmallScreen ? 768 : 1024, isSmallScreen ? 768 : 1024);
+      moon.shadow.mapSize.set(shadowSize, shadowSize);
       moon.shadow.camera.left = -16;
       moon.shadow.camera.right = 16;
       moon.shadow.camera.top = 16;
@@ -113,6 +114,7 @@
         t.colorSpace = THREE.SRGBColorSpace;
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
         t.repeat.set(7, 7);
+        t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
         return t;
       }
       const ground = new THREE.Mesh(

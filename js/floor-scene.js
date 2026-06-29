@@ -18,16 +18,17 @@
         "(prefers-reduced-motion: reduce)",
       ).matches;
       const isSmallScreen = window.matchMedia("(max-width: 860px)").matches;
-      const maxPixelRatio = isSmallScreen ? 1 : 1.35;
+      const maxPixelRatio = isSmallScreen ? 1.5 : 1.75;
+      const shadowSize = isSmallScreen ? 1024 : 1536;
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: !isSmallScreen,
+        antialias: true,
         powerPreference: "high-performance",
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
       renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFShadowMap;
+      renderer.shadowMap.type = isSmallScreen ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.05;
 
@@ -48,7 +49,7 @@
       const windowLight = new THREE.DirectionalLight(0xffe7c4, 2.1);
       windowLight.position.set(-9, 11, 7);
       windowLight.castShadow = true;
-      windowLight.shadow.mapSize.set(isSmallScreen ? 768 : 1024, isSmallScreen ? 768 : 1024);
+      windowLight.shadow.mapSize.set(shadowSize, shadowSize);
       windowLight.shadow.camera.left = -11;
       windowLight.shadow.camera.right = 11;
       windowLight.shadow.camera.top = 11;
@@ -173,7 +174,7 @@
         const t = new THREE.CanvasTexture(c);
         t.colorSpace = THREE.SRGBColorSpace; // course lesson 2: tag color maps
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
-        t.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+        t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
         return t;
       }
       const woodTex = woodGrainTexture();
