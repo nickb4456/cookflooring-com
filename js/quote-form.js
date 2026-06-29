@@ -65,6 +65,7 @@
       // Even if the endpoint is not wired yet, don't trap the visitor.
       console.warn("Quote submit:", err.message);
     } finally {
+      btn.textContent = "Sent";
       card.classList.add("is-sent");
       card.scrollIntoView({ behavior: "smooth", block: "center" });
     }

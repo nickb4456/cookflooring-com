@@ -663,12 +663,13 @@
           <!--
             Submitting opens the visitor's email app with the details prefilled
             to nickbilodeau1150@gmail.com (see data-owner-email below). No
-             backend needed. Optional upgrade: create a form at formspree.io and
-             paste the endpoint into action=, then js/quote-form.js will POST to it.
+             Submitting posts to Formspree. If action= is removed, js/quote-form.js
+             falls back to a prefilled email draft to nickbilodeau1150@gmail.com.
           -->
           <form
             class="quote-form"
             id="quoteForm"
+            action="https://formspree.io/f/mvzrqler"
             method="POST"
             data-owner-email="nickbilodeau1150@gmail.com"
           >

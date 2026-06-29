@@ -6,8 +6,8 @@
 - Removed generic structured-data social links that were not connected to real
   Cook Flooring profiles.
 - Changed the trust cards from star-styled blocks to proof-point labels.
-- Disabled the fake Formspree action so the quote form reliably falls back to
-  the owner email draft until a real endpoint is added.
+- Wired the quote form to Formspree endpoint `mvzrqler`, with email-draft
+  fallback still available if the endpoint is removed later.
 - Added `CNAME` for `cookflooring.com`.
 
 ## 2026-06-28 — Real contact details
