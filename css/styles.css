@@ -1276,7 +1276,14 @@
       .review__who b { color: var(--muted); font-weight: 600; }
 
       /* ---- FAQ ---- */
-      .faq-list { max-width: 820px; }
+      #faq .block__head {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .faq-list {
+        max-width: 820px;
+        margin-inline: auto;
+      }
       .faq-item {
         border-bottom: 1px solid var(--line);
       }
