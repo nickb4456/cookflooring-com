@@ -1042,6 +1042,10 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
+      .tilegrid--before-after {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
       .tilecell {
         aspect-ratio: 1;
         border-radius: 10px;
@@ -1051,29 +1055,36 @@
         position: relative;
         overflow: hidden;
       }
-      .tilecell--shower {
+      .tilegrid--before-after .tilecell {
+        aspect-ratio: 3 / 4;
+      }
+      .tilecell--bath-before {
         background-image: image-set(
-          url("../assets/responsive/bath-shower-480.webp") type("image/webp"),
-          url("../assets/bath-shower.jpg") type("image/jpeg")
+          url("../assets/responsive/bathroom-before-real-800.webp") type("image/webp"),
+          url("../assets/bathroom-before-real.jpg") type("image/jpeg")
         );
       }
-      .tilecell--floor-detail {
+      .tilecell--bath-after {
         background-image: image-set(
-          url("../assets/responsive/bath-tile-detail-480.webp") type("image/webp"),
-          url("../assets/bath-tile-detail.jpg") type("image/jpeg")
+          url("../assets/responsive/bathroom-after-real-800.webp") type("image/webp"),
+          url("../assets/bathroom-after-real.jpg") type("image/jpeg")
         );
       }
-      .tilecell--floor-finished {
-        background-image: image-set(
-          url("../assets/responsive/bath-floor-480.webp") type("image/webp"),
-          url("../assets/bath-floor.jpg") type("image/jpeg")
-        );
-      }
-      .tilecell--tub {
-        background-image: image-set(
-          url("../assets/responsive/bath-tub-480.webp") type("image/webp"),
-          url("../assets/bath-tub.jpg") type("image/jpeg")
-        );
+      .tilecell__label {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        background: rgba(12, 15, 18, 0.78);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        padding: 7px 10px;
+        text-transform: uppercase;
       }
       .tilecell.is-wide { grid-column: span 2; aspect-ratio: 2.1; }
       .tile__list { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
