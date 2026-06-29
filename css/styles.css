@@ -479,6 +479,52 @@
         margin: 0;
       }
 
+      /* Hammer clip — real movement proof before the still-photo stages. */
+      .craft-clip {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.78fr) 1.22fr;
+        gap: clamp(24px, 4vw, 56px);
+        align-items: center;
+        margin-top: clamp(58px, 9vh, 120px);
+        padding: clamp(16px, 2.4vw, 28px);
+        border: 1px solid rgba(239, 228, 212, 0.11);
+        border-radius: 18px;
+        background:
+          linear-gradient(135deg, rgba(237, 229, 219, 0.045), rgba(138, 166, 173, 0.06)),
+          rgba(16, 18, 20, 0.78);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      }
+      .craft-clip__media {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 14px;
+        border: 1px solid rgba(239, 228, 212, 0.12);
+        aspect-ratio: 9 / 16;
+        background: var(--bg-3);
+      }
+      .craft-clip__media video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .craft-clip__copy h3 {
+        font-family: var(--display);
+        font-size: clamp(28px, 4vw, 56px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+        max-width: 14ch;
+        margin: 0 0 18px;
+      }
+      .craft-clip__copy p:not(.work__kicker) {
+        color: var(--muted);
+        font-size: clamp(16px, 1.5vw, 19px);
+        line-height: 1.65;
+        max-width: 42ch;
+        margin: 0;
+      }
+
       /* Before / During / After — honest 3-stage journey. */
       .journey {
         margin-top: clamp(70px, 11vh, 150px);
@@ -612,9 +658,16 @@
 
       @media (max-width: 760px) {
         .feature,
+        .craft-clip,
         .stages,
         .gallery__grid {
           grid-template-columns: 1fr;
+        }
+        .craft-clip {
+          padding: 14px;
+        }
+        .craft-clip__media {
+          aspect-ratio: 4 / 5;
         }
         .gallery__grid {
           grid-auto-rows: auto;
