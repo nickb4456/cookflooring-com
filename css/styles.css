@@ -184,11 +184,14 @@
         justify-content: center;
         gap: 18px;
         background: var(--bg);
-        transition: opacity 0.5s ease;
+        transition:
+          opacity 0.5s ease,
+          visibility 0s linear 0.5s;
       }
       .loader.is-done {
         opacity: 0;
         pointer-events: none;
+        visibility: hidden;
       }
       .loader__bar {
         width: min(280px, 60vw);
@@ -281,8 +284,8 @@
               rgba(8, 10, 12, 0.76)
             ),
             image-set(
-              url("../assets/responsive/finished-amber-oak-480.webp") type("image/webp"),
-              url("../assets/finished-amber-oak.jpg") type("image/jpeg")
+              url("../assets/responsive/kitchen-lvp-finished-480.webp") type("image/webp"),
+              url("../assets/kitchen-lvp-finished.jpg") type("image/jpeg")
             )
             center / cover;
         }
@@ -1054,7 +1057,13 @@
           url("../assets/bath-shower.jpg") type("image/jpeg")
         );
       }
-      .tilecell--floor {
+      .tilecell--floor-detail {
+        background-image: image-set(
+          url("../assets/responsive/bath-tile-detail-480.webp") type("image/webp"),
+          url("../assets/bath-tile-detail.jpg") type("image/jpeg")
+        );
+      }
+      .tilecell--floor-finished {
         background-image: image-set(
           url("../assets/responsive/bath-floor-480.webp") type("image/webp"),
           url("../assets/bath-floor.jpg") type("image/jpeg")

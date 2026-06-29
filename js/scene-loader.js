@@ -8,6 +8,8 @@
   const base = new URL(".", document.currentScript.src);
   const loaded = new Set();
 
+  loader?.classList.add("is-done");
+
   function afterFirstPaint(fn) {
     const run = () => {
       if ("requestIdleCallback" in window) {
@@ -29,11 +31,15 @@
     try {
       await import(new URL(file, base).href);
       document.documentElement.classList.add(readyClass);
+      if (name === "hero") {
+        loader?.classList.add("is-done");
+      }
     } catch (err) {
       console.warn(name + " scene load failed:", err.message);
       if (loaderLabel) {
         loaderLabel.textContent = "Couldn't load 3D engine. Check your connection.";
       }
+      loader?.classList.add("is-done");
     }
   }
 
