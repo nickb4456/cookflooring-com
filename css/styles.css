@@ -265,18 +265,15 @@
         .loader {
           display: none;
         }
-        .hero,
-        .floor {
-          height: auto;
-          min-height: 100svh;
+        .hero {
+          height: 260svh;
         }
         .floor {
-          display: none;
+          height: 220svh;
         }
         .hero__sticky {
-          position: relative;
-          height: auto;
-          min-height: 100svh;
+          position: sticky;
+          height: 100svh;
           background:
             linear-gradient(
               to bottom,
@@ -303,13 +300,16 @@
             center / cover;
         }
         .hero__canvas {
-          display: none;
+          opacity: 0;
+          transition: opacity 0.35s ease;
+        }
+        .scene-hero-ready #heroCanvas,
+        .scene-floor-ready #floorCanvas {
+          opacity: 1;
         }
         .hero__overlay {
-          position: relative;
           min-height: 100svh;
         }
-        .hero__outro,
         .hero__scrollhint {
           display: none;
         }
