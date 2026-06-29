@@ -1,8 +1,9 @@
       :root {
-        --ink: #f4efe6;
-        --muted: #c9bfae;
-        --accent: #d6a35c; /* warm dusk amber */
-        --bg: #0c0f12;
+        --ink: #f7f3ea;
+        --muted: #c5bdb0;
+        --accent: #c18a52;
+        --bg: #0f1312;
+        --button-ink: #17110b;
         --font:
           "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -20,6 +21,10 @@
         font-family: var(--font);
         -webkit-font-smoothing: antialiased;
       }
+      em {
+        color: inherit;
+        font-style: normal;
+      }
 
       /* ---- Scroll-scrubbed hero ---- */
       .hero {
@@ -36,7 +41,7 @@
         top: 0;
         height: 100vh;
         overflow: hidden;
-        background: #0c0f12;
+        background: var(--bg);
       }
       .hero__canvas {
         position: absolute;
@@ -87,14 +92,14 @@
         letter-spacing: 0;
         margin: 0;
         max-width: 16ch;
-        color: #f4efe6;
+        color: var(--ink);
         text-shadow:
           0 2px 8px rgba(0, 0, 0, 0.6),
           0 2px 40px rgba(0, 0, 0, 0.5);
       }
       .hero__sub {
         font-size: clamp(15px, 1.6vw, 21px);
-        color: #cdc3b2;
+        color: var(--muted);
         margin: 22px 0 0;
         max-width: 42ch;
         line-height: 1.5;
@@ -124,18 +129,18 @@
         padding: 15px 28px;
         border-radius: 999px;
         background: var(--accent);
-        color: #211503;
+        color: var(--button-ink);
         font-weight: 800;
         font-size: 16px;
         text-decoration: none;
-        box-shadow: 0 14px 40px rgba(168, 112, 47, 0.35);
+        box-shadow: 0 14px 40px rgba(118, 78, 46, 0.35);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
       }
       .hero__cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 18px 50px rgba(168, 112, 47, 0.5);
+        box-shadow: 0 18px 50px rgba(118, 78, 46, 0.5);
       }
 
       .hero__scrollhint {
@@ -144,7 +149,7 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 4;
-        color: #c9bfae;
+        color: var(--muted);
         font-size: 12px;
         letter-spacing: 0.28em;
         text-transform: uppercase;
@@ -157,7 +162,7 @@
       .hero__scrollhint span {
         width: 1px;
         height: 34px;
-        background: linear-gradient(#c9bfae, transparent);
+        background: linear-gradient(var(--muted), transparent);
         animation: drop 1.6s ease-in-out infinite;
       }
       @keyframes drop {
@@ -331,16 +336,16 @@
          ============================================================ */
       :root {
         --display: "Fraunces", Georgia, "Times New Roman", serif;
-        --amber-2: #e6b878;
+        --accent-soft: #d4a36c;
       }
       .work {
         position: relative;
-        background: #0a0c0e;
+        background: #101413;
         padding: clamp(80px, 14vh, 180px) clamp(22px, 6vw, 80px)
           clamp(60px, 10vh, 140px);
         overflow: hidden;
       }
-      /* Atmosphere: amber dawn glow + fine grain, not a flat fill. */
+      /* Atmosphere: shop-warm copper and muted green, not a flat fill. */
       .work::before {
         content: "";
         position: absolute;
@@ -348,12 +353,12 @@
         background:
           radial-gradient(
             120% 80% at 78% -10%,
-            rgba(214, 163, 92, 0.18),
+            rgba(193, 138, 82, 0.16),
             transparent 55%
           ),
           radial-gradient(
             90% 70% at -10% 110%,
-            rgba(150, 113, 79, 0.14),
+            rgba(141, 166, 157, 0.12),
             transparent 60%
           );
         pointer-events: none;
@@ -388,11 +393,6 @@
         letter-spacing: 0;
         margin: 0;
         max-width: 16ch;
-      }
-      .work__head em {
-        font-style: italic;
-        font-weight: 500;
-        color: var(--amber-2);
       }
       .work__lead {
         color: var(--muted);
@@ -447,9 +447,9 @@
         position: absolute;
         left: 18px;
         bottom: 16px;
-        background: rgba(10, 12, 14, 0.66);
+        background: rgba(15, 19, 18, 0.72);
         backdrop-filter: blur(6px);
-        border: 1px solid rgba(230, 184, 120, 0.25);
+        border: 1px solid rgba(193, 138, 82, 0.28);
         color: var(--ink);
         font-size: 13px;
         letter-spacing: 0.04em;
@@ -520,11 +520,10 @@
         top: 14px;
         left: 14px;
         font-family: var(--display);
-        font-style: italic;
         font-weight: 500;
         font-size: 15px;
-        color: #0d0f11;
-        background: var(--amber-2);
+        color: var(--button-ink);
+        background: var(--accent-soft);
         padding: 4px 13px;
         border-radius: 999px;
       }
@@ -631,10 +630,10 @@
         background:
           radial-gradient(
             120% 90% at 85% -10%,
-            rgba(214, 163, 92, 0.16),
+            rgba(193, 138, 82, 0.14),
             transparent 55%
           ),
-          #0b0d0f;
+          linear-gradient(180deg, #111715, #0f1312);
         padding: clamp(72px, 12vh, 150px) clamp(22px, 6vw, 80px);
         overflow: hidden;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -659,11 +658,6 @@
         line-height: 0.98;
         letter-spacing: 0;
         margin: 0;
-      }
-      .funnel__h em {
-        font-style: italic;
-        font-weight: 500;
-        color: var(--amber-2);
       }
       .funnel__p {
         color: var(--muted);
@@ -696,8 +690,8 @@
       /* The form card */
       .quote-card {
         position: relative;
-        background: rgba(255, 255, 255, 0.035);
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(247, 243, 234, 0.045);
+        border: 1px solid rgba(247, 243, 234, 0.11);
         border-radius: 20px;
         padding: clamp(24px, 3vw, 38px);
         box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
@@ -753,7 +747,7 @@
       .field textarea:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(214, 163, 92, 0.16);
+        box-shadow: 0 0 0 3px rgba(193, 138, 82, 0.17);
       }
       .field select {
         appearance: none;
@@ -770,18 +764,18 @@
         padding: 16px 24px;
         border-radius: 999px;
         background: var(--accent);
-        color: #211503;
+        color: var(--button-ink);
         font-family: var(--font);
         font-weight: 800;
         font-size: 16px;
-        box-shadow: 0 14px 40px rgba(168, 112, 47, 0.35);
+        box-shadow: 0 14px 40px rgba(118, 78, 46, 0.35);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
       }
       .quote-submit:hover {
         transform: translateY(-2px);
-        box-shadow: 0 18px 50px rgba(168, 112, 47, 0.5);
+        box-shadow: 0 18px 50px rgba(118, 78, 46, 0.5);
       }
       .quote-fineprint {
         margin: 14px 0 0;
@@ -806,8 +800,8 @@
         height: 64px;
         margin: 4px auto 18px;
         border-radius: 50%;
-        background: rgba(214, 163, 92, 0.15);
-        border: 1px solid rgba(214, 163, 92, 0.4);
+        background: rgba(193, 138, 82, 0.15);
+        border: 1px solid rgba(193, 138, 82, 0.4);
         display: grid;
         place-items: center;
         color: var(--accent);
@@ -837,12 +831,12 @@
          Dusk-craftsman identity; sea-glass slate reserved for tile.
          ============================================================ */
       :root {
-        --bg-2: #14191e;
-        --bg-3: #1b2127;
-        --line: rgba(244, 239, 230, 0.1);
-        --line-strong: rgba(244, 239, 230, 0.18);
-        --slate: #7fa6a8; /* RI sea-glass — tile section only */
-        --amber-deep: #b5703a;
+        --bg-2: #151a18;
+        --bg-3: #1d2421;
+        --line: rgba(247, 243, 234, 0.11);
+        --line-strong: rgba(247, 243, 234, 0.2);
+        --slate: #8da69d;
+        --copper-deep: #8f6846;
         --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
       }
@@ -917,7 +911,7 @@
         display: block;
       }
       .brand__mark i:nth-child(1) { background: var(--accent); }
-      .brand__mark i:nth-child(2) { background: var(--amber-deep); }
+      .brand__mark i:nth-child(2) { background: var(--copper-deep); }
       .brand__mark i:nth-child(3) { background: var(--slate); }
       .brand__name {
         font-family: "Fraunces", serif;
@@ -943,7 +937,7 @@
         align-items: center;
         gap: 8px;
         background: var(--accent);
-        color: #1a1206;
+        color: var(--button-ink);
         font-weight: 700;
         font-size: 14px;
         text-decoration: none;
@@ -955,8 +949,13 @@
       }
       .btn-amber:hover {
         transform: translateY(-1px);
-        background: #e3b06a;
-        box-shadow: 0 10px 28px rgba(214, 163, 92, 0.28);
+        background: #d6a062;
+        box-shadow: 0 10px 28px rgba(118, 78, 46, 0.28);
+      }
+      .btn-amber--dark {
+        justify-self: center;
+        background: var(--bg);
+        color: var(--ink);
       }
       .sitehdr .sitenav .nav-hide-sm { display: inline; }
 
@@ -979,7 +978,6 @@
         letter-spacing: 0;
         margin: 0 0 18px;
       }
-      .block__h em { color: var(--accent); font-style: italic; }
       .block__lead {
         color: var(--muted);
         font-size: clamp(16px, 1.5vw, 19px);
@@ -1007,8 +1005,25 @@
         position: absolute;
         inset: 0 0 auto 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--accent), var(--amber-deep));
+        background: linear-gradient(90deg, var(--slate), var(--accent));
         opacity: 0.85;
+      }
+      .svc--estimate {
+        display: grid;
+        place-content: center;
+        text-align: center;
+        background:
+          radial-gradient(circle at 20% 15%, rgba(141, 166, 157, 0.22), transparent 38%),
+          linear-gradient(135deg, #1f2a27, #2b241d);
+        border-color: rgba(193, 138, 82, 0.42);
+      }
+      .svc--estimate .svc__h {
+        margin: 0 0 6px;
+        color: var(--ink);
+      }
+      .svc--estimate .svc__p {
+        color: var(--muted);
+        margin: 0 0 16px;
       }
       .svc:hover { transform: translateY(-4px); border-color: var(--line-strong); }
       .svc__h {
@@ -1026,9 +1041,8 @@
       .svc__ico { color: var(--accent); width: 30px; height: 30px; }
 
       /* ---- Bathroom tile (sea-glass accent) ---- */
-      .tile { background: linear-gradient(180deg, #10171a, #0d1316); }
+      .tile { background: linear-gradient(180deg, #111918, #0f1413); }
       .tile .eyebrow2,
-      .tile .block__h em,
       .tile .spec { color: var(--slate); }
       .tile .spec::before { background: var(--slate); }
       .tilewrap {
@@ -1113,7 +1127,7 @@
         padding: 8px 15px;
         font-weight: 500;
       }
-      .town--more { color: var(--accent); border-color: rgba(214,163,92,0.4); }
+      .town--more { color: var(--accent); border-color: rgba(193, 138, 82, 0.4); }
 
       /* ---- About (father & son) ---- */
       .about-grid {
@@ -1148,7 +1162,7 @@
       .review__stars {
         display: inline-flex;
         align-items: center;
-        border: 1px solid rgba(214, 163, 92, 0.4);
+        border: 1px solid rgba(193, 138, 82, 0.4);
         border-radius: 999px;
         color: var(--accent);
         font-family: var(--font-mono);
@@ -1227,7 +1241,7 @@
         font-size: 15px;
       }
       .callbar__call { color: var(--ink); border: 1px solid var(--line-strong); }
-      .callbar__quote { background: var(--accent); color: #1a1206; }
+      .callbar__quote { background: var(--accent); color: var(--button-ink); }
 
       @media (max-width: 860px) {
         .tilewrap, .about-grid { grid-template-columns: 1fr; }
