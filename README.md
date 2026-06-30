@@ -2,8 +2,9 @@
 
 Marketing site for **Cook Flooring & Tile** — a father-and-son crew installing
 and refinishing hardwood floors, bathroom/shower tile, LVP, and decks across
-Rhode Island. Single static page with two scroll-driven Three.js scenes (a deck
-being built, and hardwood planks landing). No backend.
+Rhode Island. Static homepage plus crawlable service landing pages, with two
+scroll-driven Three.js scenes on the homepage (a deck being built, and hardwood
+planks landing). No backend.
 
 Slogan: _Built by hand, across Rhode Island._ Cranston, RI.
 
@@ -23,6 +24,8 @@ every block was extracted verbatim (no reformatting), so behavior is identical.
 │                           the JSON-LD @graph (business + WebSite + FAQ — read
 │                           by crawlers at parse time) and the Three.js
 │                           <script type="importmap"> (must precede the modules).
+├── services/               Crawlable SEO landing pages for hardwood install,
+│                           refinishing, bathroom tile, LVP, and decks.
 ├── css/
 │   └── styles.css          All styling (1,147 lines, was the single <style>).
 ├── js/
@@ -82,7 +85,3 @@ importmap are blocked under the `file://` origin. Any static host works
 | Hardwood floor look     | `js/floor-scene.js` (`FLOOR_W/D`, `PLANK_W` config)        |
 | Three.js version        | the `importmap` in `index.html`                            |
 | Quote-form destination  | form `data-owner-email` (mailto) or Formspree `action=`    |
-
-```
-
-```

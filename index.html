@@ -50,11 +50,7 @@
     <meta name="twitter:image" content="https://cookflooring.com/assets/social-hardwood-floor.jpg" />
     <meta name="twitter:image:alt" content="Finished hardwood floor installed by Cook Flooring & Tile in Rhode Island" />
 
-    <!-- Favicon: clay, walnut, and slate plank mark. -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101214'/%3E%3Crect x='6' y='8' width='20' height='4' rx='1' fill='%23b86f58'/%3E%3Crect x='6' y='14' width='20' height='4' rx='1' fill='%237f5446'/%3E%3Crect x='6' y='20' width='20' height='4' rx='1' fill='%238aa6ad'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,11 +73,28 @@
             "alternateName": "Cook Flooring and Tile",
             "url": "https://cookflooring.com/",
             "image": "https://cookflooring.com/assets/social-hardwood-floor.jpg",
+            "logo": "https://cookflooring.com/assets/logo.svg",
             "telephone": "+1-401-602-0958",
             "email": "nickbilodeau1150@gmail.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+1-401-602-0958",
+              "contactType": "customer service",
+              "areaServed": "RI",
+              "availableLanguage": "en"
+            },
             "priceRange": "$$",
             "description": "Father-and-son Rhode Island flooring, tile, and deck contractor installing and refinishing hardwood floors, LVP, bathroom and shower tile, deck boards, railings, stairs, and framing.",
             "slogan": "Built by hand, across Rhode Island.",
+            "knowsAbout": [
+              "hardwood floor installation",
+              "hardwood floor refinishing",
+              "luxury vinyl plank installation",
+              "bathroom tile installation",
+              "shower tile waterproofing",
+              "deck building",
+              "deck repair"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Cranston",
@@ -102,6 +115,13 @@
               { "@type": "City", "name": "North Kingstown, RI" },
               { "@type": "City", "name": "Johnston, RI" },
               { "@type": "City", "name": "Coventry, RI" },
+              { "@type": "City", "name": "West Warwick, RI" },
+              { "@type": "City", "name": "Smithfield, RI" },
+              { "@type": "City", "name": "Cumberland, RI" },
+              { "@type": "City", "name": "Barrington, RI" },
+              { "@type": "City", "name": "Bristol, RI" },
+              { "@type": "City", "name": "Narragansett, RI" },
+              { "@type": "City", "name": "Westerly, RI" },
               { "@type": "State", "name": "Rhode Island" }
             ],
             "openingHoursSpecification": {
@@ -110,15 +130,67 @@
               "opens": "07:00",
               "closes": "18:00"
             },
-            "makesOffer": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardwood floor installation", "serviceType": "Flooring contractor" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardwood floor refinishing", "serviceType": "Floor refinishing service" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luxury vinyl plank (LVP) installation", "serviceType": "Flooring contractor" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bathroom floor tile installation", "serviceType": "Tile contractor" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Shower and tub surround tile installation", "serviceType": "Tile contractor" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deck building", "serviceType": "Deck builder" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deck repair, stairs, railings, and framing", "serviceType": "Deck contractor" } }
-            ]
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Rhode Island flooring, tile, and deck services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "url": "https://cookflooring.com/services/hardwood-floor-installation-ri/",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hardwood floor installation",
+                    "serviceType": "Flooring contractor",
+                    "provider": { "@id": "https://cookflooring.com/#business" },
+                    "areaServed": "Rhode Island"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://cookflooring.com/services/floor-refinishing-ri/",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hardwood floor refinishing",
+                    "serviceType": "Floor refinishing service",
+                    "provider": { "@id": "https://cookflooring.com/#business" },
+                    "areaServed": "Rhode Island"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://cookflooring.com/services/lvp-installation-ri/",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Luxury vinyl plank (LVP) installation",
+                    "serviceType": "Flooring contractor",
+                    "provider": { "@id": "https://cookflooring.com/#business" },
+                    "areaServed": "Rhode Island"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://cookflooring.com/services/bathroom-tile-installation-ri/",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Bathroom and shower tile installation",
+                    "serviceType": "Tile contractor",
+                    "provider": { "@id": "https://cookflooring.com/#business" },
+                    "areaServed": "Rhode Island"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "url": "https://cookflooring.com/services/deck-builder-ri/",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Deck building and deck repair",
+                    "serviceType": "Deck contractor",
+                    "provider": { "@id": "https://cookflooring.com/#business" },
+                    "areaServed": "Rhode Island"
+                  }
+                }
+              ]
+            }
           },
           {
             "@type": "WebSite",
@@ -126,6 +198,22 @@
             "url": "https://cookflooring.com/",
             "name": "Cook Flooring & Tile",
             "publisher": { "@id": "https://cookflooring.com/#business" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://cookflooring.com/#webpage",
+            "url": "https://cookflooring.com/",
+            "name": "Cook Flooring & Tile | RI Flooring, Tile & Deck Contractor",
+            "description": "Rhode Island flooring, bathroom tile, and deck contractor installing hardwood, LVP, shower tile, and decks.",
+            "isPartOf": { "@id": "https://cookflooring.com/#website" },
+            "about": { "@id": "https://cookflooring.com/#business" },
+            "mainEntity": { "@id": "https://cookflooring.com/#business" },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://cookflooring.com/assets/social-hardwood-floor.jpg",
+              "width": 1200,
+              "height": 630
+            }
           },
           {
             "@type": "FAQPage",
@@ -455,6 +543,7 @@
               even floor. Red oak, white oak, maple, and prefinished planks.
             </p>
             <span class="spec">3/4&Prime; solid · nail-down</span>
+            <a class="svc__more" href="/services/hardwood-floor-installation-ri/">Hardwood installation details</a>
           </article>
 
           <article class="svc reveal">
@@ -465,6 +554,7 @@
               sealed with a durable finish. Far cheaper than replacing.
             </p>
             <span class="spec">sand · stain · seal</span>
+            <a class="svc__more" href="/services/floor-refinishing-ri/">Floor refinishing details</a>
           </article>
 
           <article class="svc reveal">
@@ -475,6 +565,7 @@
               waterproofed before a single tile is set. Porcelain, ceramic, stone.
             </p>
             <span class="spec">waterproof · porcelain · stone</span>
+            <a class="svc__more" href="/services/bathroom-tile-installation-ri/">Bathroom tile details</a>
           </article>
 
           <article class="svc reveal">
@@ -486,6 +577,7 @@
               daily traffic.
             </p>
             <span class="spec">waterproof · click-lock</span>
+            <a class="svc__more" href="/services/lvp-installation-ri/">LVP installation details</a>
           </article>
 
           <article class="svc reveal">
@@ -497,6 +589,7 @@
               needed.
             </p>
             <span class="spec">framed · railed · lit</span>
+            <a class="svc__more" href="/services/deck-builder-ri/">Deck building details</a>
           </article>
 
           <article class="svc svc--estimate reveal">

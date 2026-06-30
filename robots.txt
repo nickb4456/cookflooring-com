@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Let AI search/answer engines read the site for GEO visibility
+# Allow major crawlers to read the public site.
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
