@@ -32,12 +32,12 @@
         font-style: normal;
       }
 
-      /* ---- Scroll-scrubbed hero ---- */
+      /* ---- Scroll-scrubbed scenes ---- */
       .hero {
         position: relative;
         height: 380vh; /* scroll distance that drives the build */
       }
-      /* Second scroll stage: the hardwood floor that flies in. */
+      /* First scroll stage: the hardwood floor that flies in. */
       .floor {
         position: relative;
         height: 320vh;
@@ -295,8 +295,8 @@
               rgba(8, 9, 10, 0.76)
             ),
             image-set(
-              url("../assets/responsive/kitchen-lvp-finished-480.webp") type("image/webp"),
-              url("../assets/kitchen-lvp-finished.jpg") type("image/jpeg")
+              url("../assets/responsive/deck-composite-boards-800.webp") type("image/webp"),
+              url("../assets/deck-composite-boards.jpg") type("image/jpeg")
             )
             center / cover;
         }

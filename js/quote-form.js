@@ -13,6 +13,7 @@
   const configured = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(action);
   const ownerEmail =
     form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
+  const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
 
   function val(name) {
     const el = form.elements[name];
@@ -45,6 +46,41 @@
     window.location.href = href;
   }
 
+  function sendTrackingEvent(name, params) {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", name, params || {});
+  }
+
+  function trackQuoteConversion() {
+    sendTrackingEvent("conversion", {
+      send_to: requestQuoteConversion,
+      value: 1.0,
+      currency: "USD",
+    });
+    sendTrackingEvent("generate_lead", {
+      event_category: "lead",
+      event_label: "Quote form",
+    });
+  }
+
+  document.querySelectorAll('a[href="#quote"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      sendTrackingEvent("quote_cta_click", {
+        event_category: "lead",
+        event_label: link.textContent.trim() || "Quote CTA",
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      sendTrackingEvent("phone_click", {
+        event_category: "lead",
+        event_label: link.getAttribute("href"),
+      });
+    });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = form.querySelector(".quote-submit");
@@ -58,7 +94,9 @@
           headers: { Accept: "application/json" },
         });
         if (!res.ok) throw new Error("send failed");
+        trackQuoteConversion();
       } else {
+        trackQuoteConversion();
         emailLead();
       }
     } catch (err) {

@@ -16,6 +16,15 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://cookflooring.com/" />
 
+    <!-- Google tag (Google Ads conversion measurement) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18284708507"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "AW-18284708507");
+    </script>
+
     <!-- Local / geo signals -->
     <meta name="geo.region" content="US-RI" />
     <meta name="geo.placename" content="Cranston, Rhode Island" />
@@ -284,14 +293,14 @@
   </head>
   <body>
     <header class="sitehdr" id="siteHeader">
-      <a class="brand" href="#hero" aria-label="Cook Flooring & Tile home">
+      <a class="brand" href="#floor" aria-label="Cook Flooring & Tile home">
         <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="brand__name">Cook Flooring &amp; Tile</span>
       </a>
       <nav class="sitenav" aria-label="Primary">
-        <a class="nav-hide-sm" href="#work">Work</a>
-        <a class="nav-hide-sm" href="#services">Services</a>
+        <a class="nav-hide-sm" href="#work">Flooring</a>
         <a class="nav-hide-sm" href="#decks">Decks</a>
+        <a class="nav-hide-sm" href="#services">Services</a>
         <a class="nav-hide-sm" href="#bathrooms">Bathrooms</a>
         <a class="nav-hide-sm" href="#area">Service area</a>
         <a class="nav-hide-sm" href="#faq">FAQ</a>
@@ -306,57 +315,33 @@
       </div>
     </div>
 
-    <section class="hero" id="hero">
-      <div class="hero__sticky">
-        <canvas class="hero__canvas" id="heroCanvas"></canvas>
-
-        <div class="hero__overlay">
-          <div class="hero__block" id="introBlock">
-            <p class="hero__eyebrow">Cook Flooring &amp; Tile · Rhode Island</p>
-            <h1 class="hero__title">Hardwood, tile &amp; decks, built by hand.</h1>
-            <p class="hero__sub">
-              A father-and-son crew laying floors, setting tile, and framing
-              decks across Rhode Island. Free in-home estimate, written quote
-              within 24 hours.
-            </p>
-          </div>
-
-          <div class="hero__outro hero__block" id="outroBlock">
-            <p class="hero__eyebrow">Free estimates statewide</p>
-            <p class="hero__title">Floors, tile, and decks done right.</p>
-            <a class="hero__cta" href="#quote">Get your free estimate →</a>
-          </div>
-        </div>
-
-        <div class="hero__scrollhint" id="scrollHint">Scroll <span></span></div>
-      </div>
-    </section>
-
     <section class="floor" id="floor">
       <div class="hero__sticky">
         <canvas class="hero__canvas" id="floorCanvas"></canvas>
         <div class="hero__overlay">
           <div class="hero__block" id="floorIntro">
-            <p class="hero__eyebrow">Hardwood, laid live</p>
-            <p class="hero__title">Floors that land,<br />plank by plank.</p>
+            <p class="hero__eyebrow">Cook Flooring &amp; Tile · Rhode Island</p>
+            <h1 class="hero__title">Hardwood floors,<br />built plank by plank.</h1>
             <p class="hero__sub">
-              Scroll to see the layout come together, board by board.
+              Scroll to see the floor come together first, then see the real
+              Rhode Island rooms behind the render.
             </p>
           </div>
         </div>
+        <div class="hero__scrollhint">Scroll <span></span></div>
       </div>
     </section>
 
     <!-- Real Rhode Island installs. -->
     <section class="work" id="work">
       <div class="work__inner">
-        <p class="work__kicker reveal">Real work</p>
+        <p class="work__kicker reveal">Flooring proof</p>
         <h2 class="work__head reveal">
-          Recent floors, tile, and deck jobs.
+          Recent flooring jobs.
         </h2>
         <p class="work__lead reveal">
-          These are actual Rhode Island jobs, finished and in progress: floors
-          going down, tile getting set, and decks getting rebuilt.
+          Actual Rhode Island flooring work, finished and in progress: planks
+          going down, transitions getting cleaned up, and rooms ready to live in.
         </p>
 
         <!-- Centerpiece: subfloor on the left, finished oak on the right. -->
@@ -493,111 +478,57 @@
             </figure>
             <figure class="shot shot--c reveal">
               <img
-                src="assets/deck-work-joists.jpg"
-                srcset="assets/responsive/deck-work-joists-480.webp 480w, assets/responsive/deck-work-joists-800.webp 800w, assets/responsive/deck-work-joists-1200.webp 1200w"
+                src="assets/finished-amber-oak.jpg"
+                srcset="assets/responsive/finished-amber-oak-480.webp 480w, assets/responsive/finished-amber-oak-800.webp 800w, assets/responsive/finished-amber-oak-1200.webp 1200w"
                 sizes="(max-width: 760px) calc(100vw - 44px), 48vw"
-                width="680"
-                height="908"
-                alt="Deck framing opened up with exposed joists during rebuild work"
+                width="1800"
+                height="1350"
+                alt="Finished amber hardwood floor with clean grain and a polished surface"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>Deck opened up to the joists</figcaption>
+              <figcaption>Finished amber hardwood, clean and even</figcaption>
             </figure>
             <figure class="shot shot--d reveal">
               <img
-                src="assets/finished-deck-view.jpg"
-                srcset="assets/responsive/finished-deck-view-480.webp 480w, assets/responsive/finished-deck-view-800.webp 800w, assets/responsive/finished-deck-view-1200.webp 1200w"
+                src="assets/finished-bay-window.jpg"
+                srcset="assets/responsive/finished-bay-window-480.webp 480w, assets/responsive/finished-bay-window-800.webp 800w, assets/responsive/finished-bay-window-1200.webp 1200w"
                 sizes="(max-width: 760px) calc(100vw - 44px), 48vw"
                 width="1350"
                 height="1800"
-                alt="Finished composite deck boards installed cleanly around a pool deck"
+                alt="Finished hardwood floor near a bright bay window"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>Finished deck boards around the pool</figcaption>
+              <figcaption>Hardwood finished tight into the room edges</figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ SERVICES ============ -->
-    <section class="block block--raised" id="services">
-      <div class="wrap">
-        <div class="block__head reveal">
-          <p class="eyebrow2">What we do</p>
-          <h2 class="block__h">Flooring, tile, and decks from one crew.</h2>
-          <p class="block__lead">
-            Hardwood, LVP, tile, and decks are the work. Whatever the project,
-            the same crew that quotes it is the crew that shows up to build it.
-          </p>
+    <section class="hero" id="hero">
+      <div class="hero__sticky">
+        <canvas class="hero__canvas" id="heroCanvas"></canvas>
+
+        <div class="hero__overlay">
+          <div class="hero__block" id="introBlock">
+            <p class="hero__eyebrow">Decks, framed live</p>
+            <h2 class="hero__title">Decks built<br />board by board.</h2>
+            <p class="hero__sub">
+              After the floor work, watch the deck frame come together before
+              the real deck photos.
+            </p>
+          </div>
+
+          <div class="hero__outro hero__block" id="outroBlock">
+            <p class="hero__eyebrow">Framing, boards, stairs, railings</p>
+            <p class="hero__title">Then we build it outside.</p>
+            <a class="hero__cta" href="#decks">See the deck work →</a>
+          </div>
         </div>
 
-        <div class="svc-grid">
-          <article class="svc reveal">
-            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M8 7v10M14 7v10"/></svg>
-            <h3 class="svc__h">Hardwood installation</h3>
-            <p class="svc__p">
-              Solid and engineered hardwood, nailed and racked for a tight,
-              even floor. Red oak, white oak, maple, and prefinished planks.
-            </p>
-            <span class="spec">3/4&Prime; solid · nail-down</span>
-            <a class="svc__more" href="/services/hardwood-floor-installation-ri/">Hardwood installation details</a>
-          </article>
-
-          <article class="svc reveal">
-            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="m14 4 6 6L9 21l-6 1 1-6Z"/></svg>
-            <h3 class="svc__h">Floor refinishing</h3>
-            <p class="svc__p">
-              Bring tired floors back: sanded flat, stained to your tone, and
-              sealed with a durable finish. Far cheaper than replacing.
-            </p>
-            <span class="spec">sand · stain · seal</span>
-            <a class="svc__more" href="/services/floor-refinishing-ri/">Floor refinishing details</a>
-          </article>
-
-          <article class="svc reveal">
-            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
-            <h3 class="svc__h">Bathroom &amp; tile</h3>
-            <p class="svc__p">
-              Shower surrounds, tub walls, floors, and backsplashes, fully
-              waterproofed before a single tile is set. Porcelain, ceramic, stone.
-            </p>
-            <span class="spec">waterproof · porcelain · stone</span>
-            <a class="svc__more" href="/services/bathroom-tile-installation-ri/">Bathroom tile details</a>
-          </article>
-
-          <article class="svc reveal">
-            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h20M2 14h20"/><path d="M6 8v6M12 8v6M18 8v6"/></svg>
-            <h3 class="svc__h">LVP &amp; engineered</h3>
-            <p class="svc__p">
-              Waterproof luxury vinyl plank and engineered wood for basements,
-              kitchens, and busy households. Built to handle kids, pets, and
-              daily traffic.
-            </p>
-            <span class="spec">waterproof · click-lock</span>
-            <a class="svc__more" href="/services/lvp-installation-ri/">LVP installation details</a>
-          </article>
-
-          <article class="svc reveal">
-            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l9-6 9 6v11"/><path d="M3 14h18M9 21v-6h6v6"/></svg>
-            <h3 class="svc__h">Decks</h3>
-            <p class="svc__p">
-              Framed, decked, and railed to last New England winters. Pressure-
-              treated, cedar, or composite, with stairs, rails, and trim where
-              needed.
-            </p>
-            <span class="spec">framed · railed · lit</span>
-            <a class="svc__more" href="/services/deck-builder-ri/">Deck building details</a>
-          </article>
-
-          <article class="svc svc--estimate reveal">
-            <h3 class="svc__h">Not sure which?</h3>
-            <p class="svc__p">Tell us the room. We'll tell you the options.</p>
-            <a class="btn-action btn-action--dark" href="#quote">Get a free estimate</a>
-          </article>
-        </div>
+        <div class="hero__scrollhint" id="scrollHint">Scroll <span></span></div>
       </div>
     </section>
 
@@ -690,6 +621,85 @@
             />
             <figcaption>Composite boards going down</figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="block block--raised" id="services">
+      <div class="wrap">
+        <div class="block__head reveal">
+          <p class="eyebrow2">What we do</p>
+          <h2 class="block__h">Flooring, tile, and decks from one crew.</h2>
+          <p class="block__lead">
+            Hardwood, LVP, tile, and decks are the work. Whatever the project,
+            the same crew that quotes it is the crew that shows up to build it.
+          </p>
+        </div>
+
+        <div class="svc-grid">
+          <article class="svc reveal">
+            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M8 7v10M14 7v10"/></svg>
+            <h3 class="svc__h">Hardwood installation</h3>
+            <p class="svc__p">
+              Solid and engineered hardwood, nailed and racked for a tight,
+              even floor. Red oak, white oak, maple, and prefinished planks.
+            </p>
+            <span class="spec">3/4&Prime; solid · nail-down</span>
+            <a class="svc__more" href="/services/hardwood-floor-installation-ri/">Hardwood installation details</a>
+          </article>
+
+          <article class="svc reveal">
+            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="m14 4 6 6L9 21l-6 1 1-6Z"/></svg>
+            <h3 class="svc__h">Floor refinishing</h3>
+            <p class="svc__p">
+              Bring tired floors back: sanded flat, stained to your tone, and
+              sealed with a durable finish. Far cheaper than replacing.
+            </p>
+            <span class="spec">sand · stain · seal</span>
+            <a class="svc__more" href="/services/floor-refinishing-ri/">Floor refinishing details</a>
+          </article>
+
+          <article class="svc reveal">
+            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+            <h3 class="svc__h">Bathroom &amp; tile</h3>
+            <p class="svc__p">
+              Shower surrounds, tub walls, floors, and backsplashes, fully
+              waterproofed before a single tile is set. Porcelain, ceramic, stone.
+            </p>
+            <span class="spec">waterproof · porcelain · stone</span>
+            <a class="svc__more" href="/services/bathroom-tile-installation-ri/">Bathroom tile details</a>
+          </article>
+
+          <article class="svc reveal">
+            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h20M2 14h20"/><path d="M6 8v6M12 8v6M18 8v6"/></svg>
+            <h3 class="svc__h">LVP &amp; engineered</h3>
+            <p class="svc__p">
+              Waterproof luxury vinyl plank and engineered wood for basements,
+              kitchens, and busy households. Built to handle kids, pets, and
+              daily traffic.
+            </p>
+            <span class="spec">waterproof · click-lock</span>
+            <a class="svc__more" href="/services/lvp-installation-ri/">LVP installation details</a>
+          </article>
+
+          <article class="svc reveal">
+            <svg class="svc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l9-6 9 6v11"/><path d="M3 14h18M9 21v-6h6v6"/></svg>
+            <h3 class="svc__h">Decks</h3>
+            <p class="svc__p">
+              Framed, decked, and railed to last New England winters. Pressure-
+              treated, cedar, or composite, with stairs, rails, and trim where
+              needed.
+            </p>
+            <span class="spec">framed · railed · lit</span>
+            <a class="svc__more" href="/services/deck-builder-ri/">Deck building details</a>
+          </article>
+
+          <article class="svc svc--estimate reveal">
+            <h3 class="svc__h">Not sure which?</h3>
+            <p class="svc__p">Tell us the room. We'll tell you the options.</p>
+            <a class="btn-action btn-action--dark" href="#quote">Get a free estimate</a>
+          </article>
         </div>
       </div>
     </section>

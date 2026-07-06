@@ -1,4 +1,4 @@
-// Load WebGL after the first paint, and load the floor scene near its section.
+// Load the first-floor scene after paint, then load the deck scene near its section.
 (function () {
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -27,7 +27,7 @@
     try {
       await import(new URL(file, base).href);
       document.documentElement.classList.add(readyClass);
-      if (name === "hero") {
+      if (name === "floor") {
         loader?.classList.add("is-done");
       }
     } catch (err) {
@@ -61,9 +61,9 @@
   }
 
   afterFirstPaint(() => {
-    loadScene("hero", "hero-deck-scene.js", "scene-hero-ready");
-  });
-  loadNear(document.getElementById("floor"), () => {
     loadScene("floor", "floor-scene.js", "scene-floor-ready");
+  });
+  loadNear(document.getElementById("hero"), () => {
+    loadScene("hero", "hero-deck-scene.js", "scene-hero-ready");
   });
 })();
