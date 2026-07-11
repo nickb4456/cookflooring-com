@@ -51,16 +51,33 @@
     window.gtag("event", name, params || {});
   }
 
-  function trackQuoteConversion() {
+  function trackQuoteConversion(label, callback) {
+    let completed = false;
+    const done = () => {
+      if (completed) return;
+      completed = true;
+      if (typeof callback === "function") callback();
+    };
+
+    if (typeof window.gtag !== "function") {
+      done();
+      return;
+    }
+
     sendTrackingEvent("conversion", {
       send_to: requestQuoteConversion,
       value: 1.0,
       currency: "USD",
+      event_label: label || "Quote form",
+      event_callback: done,
+      event_timeout: 800,
     });
     sendTrackingEvent("generate_lead", {
       event_category: "lead",
-      event_label: "Quote form",
+      event_label: label || "Quote form",
     });
+
+    window.setTimeout(done, 900);
   }
 
   document.querySelectorAll('a[href="#quote"]').forEach((link) => {
@@ -73,10 +90,16 @@
   });
 
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
       sendTrackingEvent("phone_click", {
         event_category: "lead",
-        event_label: link.getAttribute("href"),
+        event_label: href,
+      });
+      if (!href) return;
+      e.preventDefault();
+      trackQuoteConversion("Phone call click", () => {
+        window.location.href = href;
       });
     });
   });
@@ -94,9 +117,9 @@
           headers: { Accept: "application/json" },
         });
         if (!res.ok) throw new Error("send failed");
-        trackQuoteConversion();
+        trackQuoteConversion("Quote form");
       } else {
-        trackQuoteConversion();
+        trackQuoteConversion("Quote form");
         emailLead();
       }
     } catch (err) {
