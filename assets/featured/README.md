@@ -9,5 +9,11 @@ Generated 2026-07-10 from preserved Cook Flooring job-photo originals. Edits are
 - `white-oak-finished-*`: `assets/incoming/2026-07-10-batch-02/6-Photo-6.jpg`
 - `deck-composite-install-*`: `assets/incoming/2026-07-10-batch-01/2-Photo-2.jpg`
 - `deck-composite-finished-*`: `assets/incoming/2026-07-10-batch-01/5-Photo-5.jpg`
+- `deck-pool-frame-*`: `assets/incoming/2026-07-10-batch-01/1-Photo-1.jpg`
+- `deck-edge-progress-*`: `assets/incoming/2026-07-10-batch-01/4-Photo-4.jpg`
+- `lvp-install-progress-*`: `assets/incoming/2026-07-10-batch-01/7-Photo-7.jpg`
+- `white-oak-vaulted-progress-*`: `assets/incoming/2026-07-10-batch-02/1-Photo-1.jpg`
+- `white-oak-hallway-progress-*`: `assets/incoming/2026-07-10-batch-02/4-Photo-4.jpg`
+- `white-oak-closet-detail-*`: `assets/incoming/2026-07-10-batch-02/5-Photo-5.jpg`
 
 Each family contains 480, 800, and 960-pixel-wide variants.

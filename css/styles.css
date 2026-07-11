@@ -916,6 +916,14 @@
         grid-column: span 3;
         grid-row: span 2;
       }
+      .shot--e {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .shot--f {
+        grid-column: span 4;
+        grid-row: span 2;
+      }
       .shot--video {
         grid-row: span 3;
       }
@@ -943,6 +951,11 @@
         .shot--b,
         .shot--c,
         .shot--d {
+          grid-column: 1 / -1;
+          grid-row: auto;
+        }
+        .shot--e,
+        .shot--f {
           grid-column: 1 / -1;
           grid-row: auto;
         }
@@ -1674,7 +1687,7 @@
       .deck-progress {
         grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         gap: 14px;
         margin-top: clamp(18px, 3vw, 30px);
       }
