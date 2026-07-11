@@ -1707,11 +1707,99 @@
         line-height: 1.6;
         margin: 0 0 18px;
       }
+      .service-proof,
+      .service-faq,
+      .service-related {
+        padding: clamp(48px, 8vw, 88px) 0;
+        border-top: 1px solid var(--line);
+      }
+      .service-proof { background: var(--bg-2); }
+      .service-proof__head {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+      .service-proof__head p,
+      .service-faq__intro {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .service-proof__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .service-proof__item {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--bg-3);
+      }
+      .service-proof__item img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+      .service-proof__item figcaption {
+        min-height: 72px;
+        padding: 15px 16px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .service-faq__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+      .service-faq__item {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--bg-3);
+      }
+      .service-faq__item h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+      .service-faq__item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .service-related__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .service-related__links a {
+        padding: 12px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--ink);
+        text-decoration: none;
+        background: var(--bg-3);
+      }
+      .service-related__links a:hover,
+      .service-related__links a:focus-visible {
+        color: var(--accent);
+        border-color: rgba(var(--accent-rgb), 0.7);
+      }
       .service-links {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 28px;
+      }
+      .service-page .btn-action,
+      .service-related__links a {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
       }
       .service-footer {
         padding: 32px 0;
@@ -1721,6 +1809,12 @@
       .service-footer a {
         color: var(--accent);
         text-decoration: none;
+      }
+
+      @media (max-width: 760px) {
+        .service-proof__grid,
+        .service-faq__list { grid-template-columns: 1fr; }
+        .service-proof__item figcaption { min-height: auto; }
       }
 
       /* ---- Decks ---- */
