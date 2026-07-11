@@ -543,17 +543,17 @@
         inset: 0 15% 8% 0;
       }
       .masthead__floor img {
-        object-position: center 62%;
+        object-position: center 72%;
       }
-      .masthead__deck {
+      .masthead__detail {
         width: 43%;
         height: 48%;
         right: 0;
         bottom: 0;
         transform: translateY(2%);
       }
-      .masthead__deck img {
-        object-position: center 62%;
+      .masthead__detail img {
+        object-position: center 74%;
       }
 
       @media (max-width: 920px) {
@@ -589,7 +589,7 @@
         .masthead__floor {
           inset: 0 8% 10% 0;
         }
-        .masthead__deck {
+        .masthead__detail {
           width: 46%;
           height: 42%;
         }
@@ -1554,6 +1554,26 @@
         height: 3px;
         background: linear-gradient(90deg, var(--slate), var(--accent));
         opacity: 0.85;
+      }
+      .svc--featured {
+        background:
+          radial-gradient(circle at 85% 8%, rgba(var(--accent-rgb), 0.2), transparent 42%),
+          linear-gradient(145deg, #202326, #171a1c);
+        border-color: rgba(var(--accent-rgb), 0.48);
+        box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+      }
+      .svc--featured::before {
+        content: "Hardwood specialty";
+        display: inline-flex;
+        padding: 5px 9px;
+        border: 1px solid rgba(var(--accent-rgb), 0.44);
+        border-radius: 999px;
+        color: var(--accent-soft);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
       }
       .svc--estimate {
         display: grid;
