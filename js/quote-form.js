@@ -11,9 +11,38 @@
 
   const action = form.getAttribute("action") || "";
   const configured = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(action);
+  const projectSelect = form.elements.project_type;
+  const status = form.querySelector(".quote-status");
   const ownerEmail =
     form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
+
+  const params = new URLSearchParams(window.location.search);
+  const sourceField = form.elements.source_url;
+  const utmSourceField = form.elements.utm_source;
+  const utmCampaignField = form.elements.utm_campaign;
+  if (sourceField) sourceField.value = window.location.href;
+  if (utmSourceField) utmSourceField.value = params.get("utm_source") || "";
+  if (utmCampaignField) {
+    utmCampaignField.value = params.get("utm_campaign") || "";
+  }
+
+  function alignDirectQuoteLink() {
+    if (window.location.hash !== "#quote") return;
+    document.getElementById("quote")?.scrollIntoView({ block: "start" });
+  }
+
+  if (window.location.hash === "#quote") {
+    window.addEventListener(
+      "load",
+      () => {
+        alignDirectQuoteLink();
+        window.setTimeout(alignDirectQuoteLink, 450);
+        window.setTimeout(alignDirectQuoteLink, 1400);
+      },
+      { once: true },
+    );
+  }
 
   function val(name) {
     const el = form.elements[name];
@@ -31,7 +60,6 @@
       "Email:   " + val("email"),
       "Project: " + val("project_type"),
       "Town:    " + val("town"),
-      "Size:    " + val("size"),
       "",
       "Details:",
       val("details"),
@@ -89,6 +117,30 @@
     });
   });
 
+  document.querySelectorAll("[data-project-choice]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const choice = link.getAttribute("data-project-choice") || "";
+      if (projectSelect && choice) projectSelect.value = choice;
+      sendTrackingEvent("project_choice", {
+        event_category: "lead",
+        event_label: choice,
+      });
+    });
+  });
+
+  document.querySelectorAll(".proof-reel video").forEach((video) => {
+    video.addEventListener(
+      "play",
+      () => {
+        sendTrackingEvent("proof_reel_play", {
+          event_category: "engagement",
+          event_label: "Cook Flooring ad reel",
+        });
+      },
+      { once: true },
+    );
+  });
+
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
@@ -107,6 +159,7 @@
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = form.querySelector(".quote-submit");
+    if (status) status.textContent = "";
     btn.disabled = true;
     btn.textContent = "Sending…";
     try {
@@ -121,14 +174,31 @@
       } else {
         trackQuoteConversion("Quote form");
         emailLead();
+        btn.disabled = false;
+        btn.textContent = "Request my free estimate";
+        if (status) {
+          status.textContent =
+            "Your email draft is open. Send it to complete your request.";
+        }
+        return;
       }
     } catch (err) {
-      // Even if the endpoint is not wired yet, don't trap the visitor.
       console.warn("Quote submit:", err.message);
-    } finally {
-      btn.textContent = "Sent";
-      card.classList.add("is-sent");
-      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      sendTrackingEvent("quote_submit_error", {
+        event_category: "lead",
+        event_label: err.message,
+      });
+      btn.disabled = false;
+      btn.textContent = "Try sending again";
+      if (status) {
+        status.textContent =
+          "That did not send. Try again or call (401) 602-0958.";
+      }
+      return;
     }
+
+    btn.textContent = "Sent";
+    card.classList.add("is-sent");
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 })();

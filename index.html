@@ -289,11 +289,11 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=20260711" />
   </head>
   <body>
     <header class="sitehdr" id="siteHeader">
-      <a class="brand" href="#floor" aria-label="Cook Flooring & Tile home">
+      <a class="brand" href="#top" aria-label="Cook Flooring & Tile home">
         <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="brand__name">Cook Flooring &amp; Tile</span>
       </a>
@@ -309,6 +309,65 @@
       </nav>
     </header>
 
+    <section class="masthead" id="top" aria-labelledby="mastheadTitle">
+      <div class="masthead__inner">
+        <div class="masthead__copy">
+          <p class="masthead__eyebrow">Father-and-son crew · Cranston, Rhode Island</p>
+          <h1 id="mastheadTitle">Floors and decks that make the whole home feel finished.</h1>
+          <p class="masthead__lead">
+            Hardwood, LVP, tile, and decks installed by the same local crew that
+            walks your job and writes your quote.
+          </p>
+          <div class="masthead__actions">
+            <a class="btn-action btn-action--large" href="#quote">Get a free estimate</a>
+            <a class="masthead__call" href="tel:+14016020958">Call (401) 602-0958</a>
+          </div>
+          <div class="project-choice" aria-label="Choose a project to start your estimate">
+            <span>I'm planning</span>
+            <a href="#quote" data-project-choice="Hardwood install">Hardwood</a>
+            <a href="#quote" data-project-choice="Deck">A deck</a>
+            <a href="#quote" data-project-choice="Bathroom / tile">Tile</a>
+          </div>
+          <ul class="masthead__trust" aria-label="Cook Flooring trust points">
+            <li>Real Rhode Island work</li>
+            <li>Licensed and insured</li>
+            <li>Written quote within 24 hours</li>
+          </ul>
+        </div>
+        <div class="masthead__media" aria-label="Recent Cook Flooring projects">
+          <figure class="masthead__floor">
+            <img
+              src="assets/featured/white-oak-finished-800.webp"
+              srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
+              sizes="(max-width: 860px) 100vw, 42vw"
+              width="960"
+              height="1280"
+              alt="Clean newly installed white oak flooring flowing through a Rhode Island home"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>New white oak · Rhode Island</figcaption>
+          </figure>
+          <figure class="masthead__deck">
+            <img
+              src="assets/featured/deck-composite-finished-800.webp"
+              srcset="assets/featured/deck-composite-finished-480.webp 480w, assets/featured/deck-composite-finished-800.webp 800w, assets/featured/deck-composite-finished-960.webp 960w"
+              sizes="(max-width: 860px) 46vw, 22vw"
+              width="960"
+              height="1280"
+              alt="New composite deck surface with clean parallel board lines"
+              decoding="async"
+            />
+            <figcaption>Composite deck · Surface installed</figcaption>
+          </figure>
+        </div>
+      </div>
+      <a class="masthead__scene-link" href="#floor">
+        <span>Watch a hardwood floor come together</span>
+        <i aria-hidden="true"></i>
+      </a>
+    </section>
+
     <div class="loader" id="loader">
       <div class="loader__label" id="loaderLabel">Loading scene</div>
       <div class="loader__bar">
@@ -316,13 +375,13 @@
       </div>
     </div>
 
-    <section class="floor" id="floor">
+    <section class="floor" id="floor" aria-labelledby="floorSceneTitle">
       <div class="hero__sticky">
         <canvas class="hero__canvas" id="floorCanvas"></canvas>
         <div class="hero__overlay">
           <div class="hero__block" id="floorIntro">
             <p class="hero__eyebrow">Cook Flooring &amp; Tile · Rhode Island</p>
-            <h1 class="hero__title">Hardwood floors,<br />built plank by plank.</h1>
+            <h2 class="hero__title" id="floorSceneTitle">Hardwood floors,<br />built plank by plank.</h2>
             <p class="hero__sub">
               Scroll to see the floor come together first, then see the real
               Rhode Island rooms behind the render.
@@ -457,54 +516,82 @@
           </div>
         </div>
 
-        <!-- Finished-work gallery, asymmetric. -->
+        <!-- Newly supplied white-oak project, selected for clean proof. -->
         <div class="gallery">
-          <h2 class="journey__h reveal">Around the job</h2>
+          <h2 class="journey__h reveal">A new white oak install</h2>
           <p class="journey__sub reveal">
-            A few rooms, finished and in progress.
+            Wide-room progress, tight edge work, and the clean finished floor.
           </p>
           <div class="gallery__grid">
             <figure class="shot shot--a reveal">
               <img
-                src="assets/kitchen-lvp-finished.jpg"
-                srcset="assets/responsive/kitchen-lvp-finished-480.webp 480w, assets/responsive/kitchen-lvp-finished-800.webp 800w, assets/responsive/kitchen-lvp-finished-1200.webp 1200w"
+                src="assets/featured/white-oak-room-progress-800.webp"
+                srcset="assets/featured/white-oak-room-progress-480.webp 480w, assets/featured/white-oak-room-progress-800.webp 800w, assets/featured/white-oak-room-progress-960.webp 960w"
                 sizes="(max-width: 760px) calc(100vw - 44px), 60vw"
-                width="3024"
-                height="4032"
-                alt="Finished kitchen and living room floor with wide plank wood-look flooring"
+                width="960"
+                height="1280"
+                alt="White oak hardwood installation progressing across a bright vaulted bedroom"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>Kitchen and living room, finished clean</figcaption>
+              <figcaption>Boards set straight across the full room</figcaption>
             </figure>
             <figure class="shot shot--c reveal">
               <img
-                src="assets/finished-amber-oak.jpg"
-                srcset="assets/responsive/finished-amber-oak-480.webp 480w, assets/responsive/finished-amber-oak-800.webp 800w, assets/responsive/finished-amber-oak-1200.webp 1200w"
+                src="assets/featured/white-oak-detail-800.webp"
+                srcset="assets/featured/white-oak-detail-480.webp 480w, assets/featured/white-oak-detail-800.webp 800w, assets/featured/white-oak-detail-960.webp 960w"
                 sizes="(max-width: 760px) calc(100vw - 44px), 48vw"
-                width="1800"
-                height="1350"
-                alt="Finished amber hardwood floor with clean grain and a polished surface"
+                width="960"
+                height="1280"
+                alt="Close view of clean white oak flooring fitted around a mirrored closet transition"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>Finished amber hardwood, clean and even</figcaption>
+              <figcaption>Tight fit at the closet transition</figcaption>
             </figure>
             <figure class="shot shot--d reveal">
               <img
-                src="assets/finished-bay-window.jpg"
-                srcset="assets/responsive/finished-bay-window-480.webp 480w, assets/responsive/finished-bay-window-800.webp 800w, assets/responsive/finished-bay-window-1200.webp 1200w"
+                src="assets/featured/white-oak-finished-800.webp"
+                srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
                 sizes="(max-width: 760px) calc(100vw - 44px), 48vw"
-                width="1350"
-                height="1800"
-                alt="Finished hardwood floor near a bright bay window"
+                width="960"
+                height="1280"
+                alt="Clean finished white oak floor extending between rooms"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption>Hardwood finished tight into the room edges</figcaption>
+              <figcaption>Clean finished oak, room to room</figcaption>
             </figure>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="proof-reel" aria-labelledby="proofReelTitle">
+      <div class="proof-reel__inner">
+        <div class="proof-reel__copy reveal">
+          <p class="work__kicker">24 seconds of real work</p>
+          <h2 id="proofReelTitle">Flooring and decks, from open framing to the final board.</h2>
+          <p>
+            Every frame comes from a Cook Flooring job. No stock rooms, no
+            borrowed portfolio, just the work and the crew behind it.
+          </p>
+          <a class="btn-action" href="#quote">Price my project</a>
+        </div>
+        <figure class="proof-reel__media reveal">
+          <video
+            data-autoplay-video
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/featured/white-oak-room-progress-800.webp"
+            aria-label="Cook Flooring and deck project advertising reel"
+          >
+            <source src="media/advertising/cook-flooring-ad-landscape.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Real flooring and deck projects across Rhode Island</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -570,16 +657,16 @@
           </figure>
           <figure>
             <img
-              src="assets/deck-framing-level.jpg"
-              srcset="assets/responsive/deck-framing-level-480.webp 480w, assets/responsive/deck-framing-level-800.webp 800w, assets/responsive/deck-framing-level-1200.webp 1200w"
+              src="assets/featured/deck-composite-finished-800.webp"
+              srcset="assets/featured/deck-composite-finished-480.webp 480w, assets/featured/deck-composite-finished-800.webp 800w, assets/featured/deck-composite-finished-960.webp 960w"
               sizes="(max-width: 860px) calc(100vw - 48px), min(40vw, 520px)"
-              width="1200"
-              height="1600"
-              alt="Pressure-treated deck framing leveled and tied into an existing pool deck"
+              width="960"
+              height="1280"
+              alt="Composite deck surface installed with clean parallel board lines"
               loading="lazy"
               decoding="async"
             />
-            <figcaption>Framing leveled and ready</figcaption>
+            <figcaption>Composite surface installed</figcaption>
           </figure>
         </div>
         <div class="deck-progress reveal" aria-label="Cook Flooring deck build progress photos">
@@ -598,16 +685,16 @@
           </figure>
           <figure>
             <img
-              src="assets/deck-framing-level.jpg"
-              srcset="assets/responsive/deck-framing-level-480.webp 480w, assets/responsive/deck-framing-level-800.webp 800w, assets/responsive/deck-framing-level-1200.webp 1200w"
+              src="assets/featured/deck-composite-install-800.webp"
+              srcset="assets/featured/deck-composite-install-480.webp 480w, assets/featured/deck-composite-install-800.webp 800w, assets/featured/deck-composite-install-960.webp 960w"
               sizes="(max-width: 860px) calc(100vw - 48px), min(31vw, 360px)"
-              width="1200"
-              height="1600"
-              alt="Pressure-treated deck frame being leveled beside an existing pool deck"
+              width="960"
+              height="1280"
+              alt="Cook Flooring crew member setting composite deck boards over new framing"
               loading="lazy"
               decoding="async"
             />
-            <figcaption>Frame tied in and leveled</figcaption>
+            <figcaption>Composite boards set in place</figcaption>
           </figure>
           <figure>
             <img
@@ -974,8 +1061,8 @@
             </div>
 
             <div class="field">
-              <label for="qEmail">Email</label>
-              <input id="qEmail" name="email" type="email" required autocomplete="email" />
+              <label for="qEmail">Email <span>(optional)</span></label>
+              <input id="qEmail" name="email" type="email" autocomplete="email" />
             </div>
 
             <div class="field row">
@@ -997,27 +1084,23 @@
             </div>
 
             <div class="field">
-              <label for="qSize">Rough size (optional)</label>
-              <input
-                id="qSize"
-                name="size"
-                type="text"
-                placeholder="e.g. 2 bedrooms, or ~600 sq ft"
-              />
-            </div>
-
-            <div class="field">
-              <label for="qDetails">Details (optional)</label>
+              <label for="qDetails">Project details <span>(optional)</span></label>
               <textarea
                 id="qDetails"
                 name="details"
-                placeholder="Tell us what you're picturing, timeline, anything else."
+                placeholder="Room count, rough size, timeline, or anything else."
               ></textarea>
             </div>
+
+            <input id="qSource" name="source_url" type="hidden" />
+            <input id="qUtmSource" name="utm_source" type="hidden" />
+            <input id="qUtmCampaign" name="utm_campaign" type="hidden" />
 
             <button class="quote-submit" type="submit">
               Request my free estimate
             </button>
+            <a class="quote-call" href="tel:+14016020958">Prefer to talk? Call (401) 602-0958</a>
+            <p class="quote-status" aria-live="polite"></p>
             <p class="quote-fineprint">
               We'll only use your info to get you a quote. No spam, ever.
             </p>
@@ -1070,6 +1153,6 @@
 
     <script src="js/video-autoplay.js" defer></script>
 
-    <script src="js/quote-form.js" defer></script>
+    <script src="js/quote-form.js?v=20260710b" defer></script>
   </body>
 </html>
