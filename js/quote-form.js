@@ -13,6 +13,10 @@
   const configured = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(action);
   const projectSelect = form.elements.project_type;
   const status = form.querySelector(".quote-status");
+  const success = card.querySelector(".quote-success");
+  const submitButton = form.querySelector(".quote-submit");
+  const defaultButtonText = submitButton?.textContent.trim() || "Get my competitive quote";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const ownerEmail =
     form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
@@ -29,19 +33,41 @@
 
   function alignDirectQuoteLink() {
     if (window.location.hash !== "#quote") return;
-    document.getElementById("quote")?.scrollIntoView({ block: "start" });
+    document
+      .getElementById("quote")
+      ?.scrollIntoView({ block: "start", behavior: "instant" });
   }
 
   if (window.location.hash === "#quote") {
-    window.addEventListener(
-      "load",
-      () => {
-        alignDirectQuoteLink();
-        window.setTimeout(alignDirectQuoteLink, 450);
-        window.setTimeout(alignDirectQuoteLink, 1400);
-      },
-      { once: true },
+    let quoteAlignmentCancelled = false;
+    const cancelEvents = ["pointerdown", "keydown", "wheel", "touchstart"];
+    const cancelQuoteAlignment = () => {
+      quoteAlignmentCancelled = true;
+      cancelEvents.forEach((name) =>
+        window.removeEventListener(name, cancelQuoteAlignment),
+      );
+    };
+    const alignIfUninterrupted = () => {
+      if (quoteAlignmentCancelled || window.location.hash !== "#quote") return;
+      alignDirectQuoteLink();
+    };
+    const scheduleQuoteAlignment = () => {
+      window.requestAnimationFrame(alignIfUninterrupted);
+      window.setTimeout(alignIfUninterrupted, 450);
+      window.setTimeout(() => {
+        alignIfUninterrupted();
+        cancelQuoteAlignment();
+      }, 1200);
+    };
+
+    cancelEvents.forEach((name) =>
+      window.addEventListener(name, cancelQuoteAlignment, { passive: true }),
     );
+    if (document.readyState === "complete") {
+      scheduleQuoteAlignment();
+    } else {
+      window.addEventListener("load", scheduleQuoteAlignment, { once: true });
+    }
   }
 
   function val(name) {
@@ -158,24 +184,38 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const btn = form.querySelector(".quote-submit");
-    if (status) status.textContent = "";
+    const btn = submitButton;
+    if (!btn) return;
+    if (status) {
+      status.textContent = "";
+      status.classList.remove("is-error");
+    }
+    form.setAttribute("aria-busy", "true");
     btn.disabled = true;
     btn.textContent = "Sending…";
     try {
       if (configured) {
-        const res = await fetch(action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
-        });
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 12000);
+        let res;
+        try {
+          res = await fetch(action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+            signal: controller.signal,
+          });
+        } finally {
+          window.clearTimeout(timeout);
+        }
         if (!res.ok) throw new Error("send failed");
         trackQuoteConversion("Quote form");
       } else {
         trackQuoteConversion("Quote form");
         emailLead();
+        form.setAttribute("aria-busy", "false");
         btn.disabled = false;
-        btn.textContent = "Request my free estimate";
+        btn.textContent = defaultButtonText;
         if (status) {
           status.textContent =
             "Your email draft is open. Send it to complete your request.";
@@ -188,17 +228,24 @@
         event_category: "lead",
         event_label: err.message,
       });
+      form.setAttribute("aria-busy", "false");
       btn.disabled = false;
       btn.textContent = "Try sending again";
       if (status) {
+        status.classList.add("is-error");
         status.textContent =
           "That did not send. Try again or call (401) 602-0958.";
       }
       return;
     }
 
+    form.setAttribute("aria-busy", "false");
     btn.textContent = "Sent";
     card.classList.add("is-sent");
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+    success?.focus({ preventScroll: true });
   });
 })();

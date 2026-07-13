@@ -296,9 +296,10 @@
       media="(max-width: 767px)"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="css/styles.css?v=20260713d" />
+    <link rel="stylesheet" href="css/styles.css?v=20260713e" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="sitehdr" id="siteHeader">
       <a class="brand" href="#top" aria-label="Cook Flooring & Tile home">
         <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -317,6 +318,7 @@
       </nav>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <section class="masthead" id="top" aria-labelledby="mastheadTitle">
       <div class="masthead__inner">
         <div class="masthead__copy">
@@ -339,7 +341,8 @@
             <span>I'm planning</span>
             <a href="#quote" data-project-choice="Refinish existing floors">Refinish my floors</a>
             <a href="#quote" data-project-choice="Hardwood install">Install hardwood</a>
-            <a href="#quote" data-project-choice="Deck">Deck or tile</a>
+            <a href="#quote" data-project-choice="Bathroom / tile">Bathroom or tile</a>
+            <a href="#quote" data-project-choice="Deck">Deck</a>
           </div>
           <ul class="masthead__trust" aria-label="Cook Flooring trust points">
             <li>Real Rhode Island work</li>
@@ -379,15 +382,14 @@
       </a>
     </section>
 
-    <div class="loader" id="loader">
-      <div class="loader__label" id="loaderLabel">Loading scene</div>
-      <div class="loader__bar">
-        <div class="loader__fill" id="loaderFill"></div>
-      </div>
-    </div>
-
     <section class="floor" id="floor" aria-labelledby="floorSceneTitle">
       <div class="hero__sticky">
+        <div class="loader" id="loader" role="status" aria-live="polite">
+          <div class="loader__label" id="loaderLabel">Loading scene</div>
+          <div class="loader__bar">
+            <div class="loader__fill" id="loaderFill"></div>
+          </div>
+        </div>
         <canvas class="hero__canvas" id="floorCanvas"></canvas>
         <div class="hero__overlay">
           <div class="hero__block" id="floorIntro">
@@ -1216,10 +1218,9 @@
 
         <div class="quote-card reveal" id="quoteCard">
           <!--
-            Submitting opens the visitor's email app with the details prefilled
-            to nickbilodeau1150@gmail.com (see data-owner-email below). No
-             Submitting posts to Formspree. If action= is removed, js/quote-form.js
-             falls back to a prefilled email draft to nickbilodeau1150@gmail.com.
+            Submitting posts to Formspree. If action= is removed,
+            js/quote-form.js falls back to a prefilled email draft to
+            nickbilodeau1150@gmail.com.
           -->
           <form
             class="quote-form"
@@ -1238,17 +1239,17 @@
             <div class="field row">
               <div>
                 <label for="qName">Name</label>
-                <input id="qName" name="name" type="text" required autocomplete="name" />
+                <input id="qName" name="name" type="text" required autocomplete="name" maxlength="100" />
               </div>
               <div>
                 <label for="qPhone">Phone</label>
-                <input id="qPhone" name="phone" type="tel" required autocomplete="tel" />
+                <input id="qPhone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="30" />
               </div>
             </div>
 
             <div class="field">
               <label for="qEmail">Email <span>(optional)</span></label>
-              <input id="qEmail" name="email" type="email" autocomplete="email" />
+              <input id="qEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" />
             </div>
 
             <div class="field row">
@@ -1265,7 +1266,7 @@
               </div>
               <div>
                 <label for="qTown">Town (RI)</label>
-                <input id="qTown" name="town" type="text" required />
+                <input id="qTown" name="town" type="text" required autocomplete="address-level2" maxlength="100" />
               </div>
             </div>
 
@@ -1275,6 +1276,7 @@
                 id="qDetails"
                 name="details"
                 placeholder="Room count, rough size, timeline, or anything else."
+                maxlength="1200"
               ></textarea>
             </div>
 
@@ -1286,13 +1288,13 @@
               Get my competitive quote
             </button>
             <a class="quote-call" href="tel:+14016020958">Prefer to talk? Call (401) 602-0958</a>
-            <p class="quote-status" aria-live="polite"></p>
+            <p class="quote-status" role="status" aria-live="polite" aria-atomic="true"></p>
             <p class="quote-fineprint">
               We'll only use your info to get you a quote. No spam, ever.
             </p>
           </form>
 
-          <div class="quote-success" aria-live="polite">
+          <div class="quote-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1">
             <div class="quote-success__mark">
               <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
@@ -1305,6 +1307,7 @@
         </div>
       </div>
     </section>
+    </main>
 
     <footer>
       <strong>Cook Flooring &amp; Tile</strong> · Hardwood, tile &amp; decks ·
@@ -1339,6 +1342,6 @@
 
     <script src="js/video-autoplay.js" defer></script>
 
-    <script src="js/quote-form.js?v=20260710b" defer></script>
+    <script src="js/quote-form.js?v=20260713d" defer></script>
   </body>
 </html>
