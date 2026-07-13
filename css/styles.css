@@ -1599,6 +1599,44 @@
         background: var(--bg);
         color: var(--ink);
       }
+      .section-quote {
+        width: min(920px, 100%);
+        scroll-margin-top: 92px;
+        margin: clamp(38px, 6vw, 72px) auto;
+        padding: clamp(20px, 3vw, 30px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border: 1px solid rgba(var(--accent-rgb), 0.3);
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.12), rgba(255, 255, 255, 0.025));
+      }
+      .section-quote p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(15px, 1.6vw, 18px);
+        line-height: 1.55;
+      }
+      .section-quote strong { color: var(--ink); }
+      .section-quote .btn-action {
+        flex: 0 0 auto;
+        min-height: 48px;
+        text-align: center;
+      }
+      .section-quote--center { margin-bottom: 0; }
+      @media (max-width: 700px) {
+        .section-quote {
+          align-items: stretch;
+          flex-direction: column;
+          gap: 16px;
+          margin: 34px auto;
+          padding: 20px;
+        }
+        .section-quote .btn-action { width: 100%; }
+        .section-quote--center { margin-bottom: 0; }
+      }
       .sitehdr .sitenav .nav-hide-sm { display: inline; }
 
       /* ---- Generic dark content section ---- */
