@@ -599,13 +599,38 @@
 
       @media (max-width: 600px) {
         .masthead {
-          padding-top: 94px;
-          padding-bottom: 44px;
+          min-height: 100svh;
+          align-items: start;
+          padding: 94px 22px calc(100px + env(safe-area-inset-bottom));
+          background:
+            linear-gradient(90deg, rgba(13, 16, 18, 0.98) 0%, rgba(13, 16, 18, 0.88) 54%, rgba(13, 16, 18, 0.42) 100%),
+            linear-gradient(180deg, rgba(13, 16, 18, 0.02) 34%, rgba(13, 16, 18, 0.96) 91%),
+            url("../assets/campaign/hardwood-living-ad-v1.png") 76% center / auto 100% no-repeat,
+            #0d1012;
+        }
+        .masthead::after { display: none; }
+        .masthead__inner { display: block; }
+        .masthead__copy { max-width: 31rem; }
+        .masthead__eyebrow {
+          max-width: 28ch;
+          margin-bottom: 14px;
+          font-size: 10px;
+          line-height: 1.45;
+          letter-spacing: 0.16em;
         }
         .masthead h1 {
           font-size: clamp(42px, 13.2vw, 58px);
+          max-width: 8.7ch;
+          text-wrap: balance;
+        }
+        .masthead__lead {
+          max-width: 31ch;
+          margin-top: 18px;
+          font-size: 16px;
+          line-height: 1.5;
         }
         .masthead__actions {
+          margin-top: 24px;
           align-items: stretch;
         }
         .masthead__actions > * {
@@ -613,34 +638,44 @@
           flex: 1 1 100%;
         }
         .masthead__media {
-          min-height: 470px;
-        }
-        .masthead__floor {
-          inset: 0 8% 10% 0;
-        }
-        .masthead__detail {
-          width: 46%;
-          height: 42%;
+          display: none;
         }
         .masthead__trust {
-          display: grid;
-        }
-        .masthead__price-card {
+          display: flex;
+          gap: 6px 14px;
           margin-top: 18px;
-          padding: 14px 15px;
+          color: rgba(239, 228, 212, 0.76);
+          font-size: 11px;
         }
+        .masthead__trust li:last-child { display: none; }
+        .masthead__trust li::before { margin-right: 5px; }
+        .project-choice { display: none; }
+        .masthead__price-card {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          max-width: 34ch;
+          margin-top: 16px;
+          padding: 11px 13px;
+          border-radius: 12px;
+          background: rgba(16, 21, 23, 0.66);
+          backdrop-filter: blur(10px);
+        }
+        .masthead__price-kicker { display: none; }
         .masthead__price-card strong {
-          font-size: 16px;
+          font-size: 14px;
+          line-height: 1.3;
+        }
+        .masthead__price-card > span:last-child {
+          display: none;
         }
         .masthead__scene-link {
-          position: relative;
-          bottom: auto;
-          left: auto;
-          width: max-content;
-          max-width: calc(100% - 44px);
-          margin: 24px auto -24px;
-          text-align: center;
-          transform: none;
+          display: none;
+        }
+        .callbar a {
+          padding-inline: 10px;
+          font-size: 14px;
+          white-space: nowrap;
         }
       }
 
