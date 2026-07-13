@@ -320,8 +320,13 @@
             quotes and builds your job. We also handle decks, tile, and LVP.
           </p>
           <div class="masthead__actions">
-            <a class="btn-action btn-action--large" href="#quote">Get a free estimate</a>
+            <a class="btn-action btn-action--large" href="#quote">Price my project</a>
             <a class="masthead__call" href="tel:+14016020958">Call (401) 602-0958</a>
+          </div>
+          <div class="masthead__price-card" aria-label="Competitive pricing promise">
+            <span class="masthead__price-kicker">Clear, competitive pricing</span>
+            <strong>Direct from the crew. No salesman markup.</strong>
+            <span>Free in-home estimate · Itemized written quote in 24 hours</span>
           </div>
           <div class="project-choice" aria-label="Choose a project to start your estimate">
             <span>I'm planning</span>
@@ -457,15 +462,15 @@
           </div>
         </div>
 
-        <!-- Honest three-stage journey. -->
+        <!-- Three real projects, intentionally not presented as one room's sequence. -->
         <div class="journey">
-          <h2 class="journey__h reveal">Start to finish</h2>
+          <h2 class="journey__h reveal">Real work, room by room</h2>
           <p class="journey__sub reveal">
-            A quick look at the room before, during, and after the work.
+            A few honest snapshots from separate flooring projects.
           </p>
           <div class="stages">
             <figure class="stage reveal">
-              <span class="stage__label">Before</span>
+              <span class="stage__label">Room refresh</span>
               <img
                 src="assets/before-paneling-carpet.jpg"
                 srcset="assets/responsive/before-paneling-carpet-480.webp 480w, assets/responsive/before-paneling-carpet-800.webp 800w"
@@ -477,11 +482,11 @@
                 decoding="async"
               />
               <figcaption class="stage__cap">
-                Tired paneling and old carpet, the starting point.
+                An older room ready for a complete refresh.
               </figcaption>
             </figure>
             <figure class="stage stage--mid reveal">
-              <span class="stage__label">During</span>
+              <span class="stage__label">Hardwood in progress</span>
               <img
                 src="assets/wide-hardwood-progress.jpg"
                 srcset="assets/responsive/wide-hardwood-progress-480.webp 480w, assets/responsive/wide-hardwood-progress-800.webp 800w, assets/responsive/wide-hardwood-progress-1200.webp 1200w"
@@ -497,17 +502,19 @@
               </figcaption>
             </figure>
             <figure class="stage stage--after reveal">
-              <span class="stage__label">After</span>
+              <span class="stage__label">Finished LVP floor</span>
               <img
-                src="assets/campaign/dining-floor-ad-v1.png"
-                width="1150"
-                height="1368"
-                alt="Real finished dining room floor with Cook Flooring & Tile's quality and value message"
+                src="assets/featured/lvp-dining-finished-580.webp"
+                srcset="assets/featured/lvp-dining-finished-360.webp 360w, assets/featured/lvp-dining-finished-580.webp 580w"
+                sizes="(max-width: 760px) calc(100vw - 44px), 33vw"
+                width="580"
+                height="435"
+                alt="Finished luxury vinyl plank floor in a dining room"
                 loading="lazy"
                 decoding="async"
               />
               <figcaption class="stage__cap">
-                Floors built for real life, with quality you can see.
+                A separate completed dining-room installation.
               </figcaption>
             </figure>
           </div>
@@ -1166,19 +1173,19 @@
     <section class="funnel" id="quote">
       <div class="funnel__inner">
         <div class="funnel__pitch reveal">
-          <p class="work__kicker">Free in-home estimate</p>
+          <p class="work__kicker">Free competitive quote</p>
           <h2 class="funnel__h">
-            Tell us what you need. We'll text you back.
+            Get the straight price before you commit.
           </h2>
           <p class="funnel__p">
             Send a few details and we'll text you within the hour, then get you
-            a written quote within 24 hours. No pressure, no obligation, just a
-            straight answer on what your project takes.
+            a competitive, itemized written quote within 24 hours. No pressure,
+            no obligation, just a clear number from the crew doing the work.
           </p>
           <ul class="funnel__trust">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Owner-operated, licensed and insured in Rhode Island
+              Competitive pricing, direct from an owner-operated crew
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1205,8 +1212,12 @@
             method="POST"
             data-owner-email="nickbilodeau1150@gmail.com"
           >
-            <p class="quote-card__eyebrow">Get your free estimate</p>
-            <p class="quote-card__hint">Takes about 30 seconds.</p>
+            <p class="quote-card__eyebrow">Price your project</p>
+            <p class="quote-card__hint">Takes about 30 seconds. No pressure, no obligation.</p>
+            <div class="quote-card__value">
+              <strong>Competitive, itemized pricing</strong>
+              <span>Get the full number before work begins.</span>
+            </div>
 
             <div class="field row">
               <div>
@@ -1256,7 +1267,7 @@
             <input id="qUtmCampaign" name="utm_campaign" type="hidden" />
 
             <button class="quote-submit" type="submit">
-              Request my free estimate
+              Get my competitive quote
             </button>
             <a class="quote-call" href="tel:+14016020958">Prefer to talk? Call (401) 602-0958</a>
             <p class="quote-status" aria-live="polite"></p>
@@ -1290,8 +1301,8 @@
 
     <!-- Sticky mobile action bar -->
     <div class="callbar" aria-label="Quick contact">
-      <a class="callbar__call" href="tel:+14016020958">Call</a>
-      <a class="callbar__quote" href="#quote">Free estimate</a>
+      <a class="callbar__call" href="tel:+14016020958">Call the crew</a>
+      <a class="callbar__quote" href="#quote">Price my project</a>
     </div>
 
     <script src="js/header-scroll.js" defer></script>

@@ -460,6 +460,35 @@
       .masthead__call:hover {
         border-color: rgba(var(--accent-rgb), 0.75);
       }
+      .masthead__price-card {
+        display: grid;
+        gap: 5px;
+        max-width: 470px;
+        margin-top: 22px;
+        padding: 15px 17px;
+        border: 1px solid rgba(var(--accent-rgb), 0.48);
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.18), rgba(239, 228, 212, 0.045));
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      }
+      .masthead__price-kicker {
+        color: var(--accent-soft);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .masthead__price-card strong {
+        color: var(--ink);
+        font-size: 17px;
+        line-height: 1.25;
+      }
+      .masthead__price-card > span:last-child {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
       .project-choice {
         display: flex;
         flex-wrap: wrap;
@@ -595,6 +624,13 @@
         }
         .masthead__trust {
           display: grid;
+        }
+        .masthead__price-card {
+          margin-top: 18px;
+          padding: 14px 15px;
+        }
+        .masthead__price-card strong {
+          font-size: 16px;
         }
         .masthead__scene-link {
           position: relative;
@@ -789,7 +825,7 @@
         margin: 0;
       }
 
-      /* Before / During / After — honest 3-stage journey. */
+      /* Three independent project snapshots, never presented as one room's sequence. */
       .journey {
         margin-top: clamp(70px, 11vh, 150px);
       }
@@ -1134,6 +1170,7 @@
          ============================================================ */
       .funnel {
         position: relative;
+        scroll-margin-top: 78px;
         background:
           radial-gradient(
             120% 90% at 85% -10%,
@@ -1213,6 +1250,23 @@
         color: var(--muted);
         font-size: 14px;
         margin: 0 0 22px;
+      }
+      .quote-card__value {
+        display: grid;
+        gap: 3px;
+        margin: 0 0 20px;
+        padding: 12px 14px;
+        border: 1px solid rgba(var(--accent-rgb), 0.38);
+        border-radius: 12px;
+        background: rgba(var(--accent-rgb), 0.12);
+      }
+      .quote-card__value strong {
+        color: var(--ink);
+        font-size: 14px;
+      }
+      .quote-card__value span {
+        color: var(--muted);
+        font-size: 12px;
       }
       .field {
         margin-bottom: 14px;
@@ -2133,7 +2187,11 @@
         font-size: 15px;
       }
       .callbar__call { color: var(--ink); border: 1px solid var(--line-strong); }
-      .callbar__quote { background: var(--accent); color: var(--button-ink); }
+      .callbar__quote {
+        background: var(--accent);
+        color: var(--button-ink);
+        box-shadow: 0 8px 24px rgba(var(--accent-shadow-rgb), 0.3);
+      }
 
       @media (max-width: 860px) {
         .service-hero__grid,
@@ -2151,7 +2209,7 @@
         .sitehdr .sitenav .nav-hide-sm { display: none; }
         .sitehdr__phone { display: none; }
         .callbar { display: flex; }
-        body { padding-bottom: 64px; }
+        body { padding-bottom: 82px; }
         .sitehdr .btn-action { min-height: 44px; }
         .field input,
         .field select,
