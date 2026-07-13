@@ -2273,6 +2273,12 @@
       }
 
       @media (max-width: 860px) {
+        .sitehdr,
+        .sitehdr.is-stuck {
+          background: var(--bg);
+          backdrop-filter: none;
+          border-bottom-color: var(--line);
+        }
         .service-hero__grid,
         .service-layout {
           grid-template-columns: 1fr;
