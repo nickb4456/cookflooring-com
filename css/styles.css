@@ -597,15 +597,13 @@
         }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 767px) {
         .masthead {
           min-height: 100svh;
           align-items: start;
           padding: 94px 22px calc(100px + env(safe-area-inset-bottom));
           background:
-            linear-gradient(90deg, rgba(13, 16, 18, 0.98) 0%, rgba(13, 16, 18, 0.88) 54%, rgba(13, 16, 18, 0.42) 100%),
-            linear-gradient(180deg, rgba(13, 16, 18, 0.02) 34%, rgba(13, 16, 18, 0.96) 91%),
-            url("../assets/campaign/hardwood-living-ad-v1.png") 76% center / auto 100% no-repeat,
+            url("../assets/responsive/finished-bay-window-800.webp") center / cover no-repeat,
             #0d1012;
         }
         .masthead::after { display: none; }
@@ -614,7 +612,9 @@
         .masthead__eyebrow {
           max-width: 28ch;
           margin-bottom: 14px;
+          color: #171a1c;
           font-size: 10px;
+          font-weight: 850;
           line-height: 1.45;
           letter-spacing: 0.16em;
         }
@@ -626,13 +626,16 @@
         .masthead__lead {
           max-width: 31ch;
           margin-top: 18px;
+          color: #171a1c;
           font-size: 16px;
+          font-weight: 750;
           line-height: 1.5;
         }
         .masthead__actions {
           margin-top: 24px;
           align-items: stretch;
         }
+        .masthead__call { display: none; }
         .masthead__actions > * {
           justify-content: center;
           flex: 1 1 100%;
@@ -644,8 +647,11 @@
           display: flex;
           gap: 6px 14px;
           margin-top: 18px;
-          color: rgba(239, 228, 212, 0.76);
+          color: #171a1c;
           font-size: 11px;
+        }
+        .masthead__trust li {
+          font-weight: 750;
         }
         .masthead__trust li:last-child { display: none; }
         .masthead__trust li::before { margin-right: 5px; }
