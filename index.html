@@ -296,23 +296,18 @@
       media="(max-width: 767px)"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="css/styles.css?v=20260713i" />
+    <link rel="stylesheet" href="css/styles.css?v=20260714j" />
   </head>
-  <body>
+  <body class="home-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="sitehdr" id="siteHeader">
       <a class="brand" href="#top" aria-label="Cook Flooring & Tile home">
         <img class="brand__logo" src="assets/logo.svg" width="170" height="40" alt="" />
       </a>
       <nav class="sitenav" aria-label="Primary">
-        <a class="nav-hide-sm" href="/services/hardwood-floor-installation-ri/">Hardwood</a>
-        <a class="nav-hide-sm" href="/services/floor-refinishing-ri/">Refinishing</a>
-        <a class="nav-hide-sm" href="#decks">Decks</a>
+        <a class="nav-hide-sm" href="#work">Work</a>
         <a class="nav-hide-sm" href="#services">Services</a>
-        <a class="nav-hide-sm" href="#bathrooms">Bathrooms</a>
         <a class="nav-hide-sm" href="#area">Service area</a>
-        <a class="nav-hide-sm" href="#faq">FAQ</a>
-        <a class="sitehdr__phone" href="tel:+14016020958">(401) 602-0958</a>
         <a class="btn-action" href="#quote">Free estimate</a>
       </nav>
     </header>
@@ -322,29 +317,43 @@
       <div class="masthead__inner">
         <div class="masthead__copy">
           <p class="masthead__eyebrow">Owner-operated crew · Cranston, Rhode Island</p>
-          <h1 id="mastheadTitle">Hardwood installed with care. Finished to last.</h1>
+          <h1 id="mastheadTitle">
+            <span class="masthead__desktop-text">Crafted floors.<br />Clear process.</span>
+            <span class="masthead__mobile-text">Hardwood installed with care. Finished to last.</span>
+          </h1>
           <p class="masthead__lead">
-            Hardwood installation and refinishing with careful layout, clean
-            transitions, and a written scope before work begins. Deck, tile,
-            and LVP projects are handled by the same local crew.
+            <span class="masthead__desktop-text">
+              Hardwood installation and refinishing with careful layout, clean
+              transitions, and a written scope before work begins.
+            </span>
+            <span class="masthead__mobile-text">
+              Hardwood installation and refinishing with careful layout, clean
+              transitions, and a written scope before work begins. Deck, tile,
+              and LVP projects are handled by the same local crew.
+            </span>
           </p>
           <div class="masthead__actions">
             <a class="btn-action btn-action--large" href="#quote">Request an estimate</a>
             <a class="masthead__call" href="tel:+14016020958">Call (401) 602-0958</a>
           </div>
-          <div class="masthead__price-card" aria-label="What to expect from Cook Flooring">
+          <div class="masthead__price-card masthead__desktop-hide" aria-label="What to expect from Cook Flooring">
             <span class="masthead__price-kicker">What to expect</span>
             <strong>A clear scope, careful prep, and a clean finish.</strong>
             <span>On-site walkthrough · Written itemized estimate · Direct crew contact</span>
           </div>
-          <div class="project-choice" aria-label="Choose a project to start your estimate">
+          <div class="project-choice masthead__desktop-hide" aria-label="Choose a project to start your estimate">
             <span>I'm planning</span>
             <a href="#quote" data-project-choice="Refinish existing floors">Refinish my floors</a>
             <a href="#quote" data-project-choice="Hardwood install">Install hardwood</a>
             <a href="#quote" data-project-choice="Bathroom / tile">Bathroom or tile</a>
             <a href="#quote" data-project-choice="Deck">Deck</a>
           </div>
-          <ul class="masthead__trust" aria-label="Cook Flooring trust points">
+          <ul class="masthead__trust masthead__trust--desktop" aria-label="Cook Flooring trust points">
+            <li>Registered and insured</li>
+            <li>Written, itemized scope</li>
+            <li>Owner-operated crew</li>
+          </ul>
+          <ul class="masthead__trust masthead__trust--mobile" aria-label="Cook Flooring trust points">
             <li>Real Rhode Island projects</li>
             <li>Registered and insured</li>
             <li>Owner-operated crew</li>
