@@ -630,7 +630,7 @@
           align-items: start;
           padding: 94px 22px calc(100px + env(safe-area-inset-bottom));
           background:
-            url("../assets/responsive/finished-bay-window-800.webp") center / cover no-repeat,
+            url("../assets/responsive/finished-bay-window-800.webp") left center / cover no-repeat,
             #0d1012;
         }
         .masthead::after { display: none; }
