@@ -599,7 +599,9 @@
         inset: 0 15% 8% 0;
       }
       .masthead__floor img {
-        object-position: center 72%;
+        object-position: 76% center;
+        transform: scale(1.45) translateX(-10%);
+        transform-origin: center;
       }
       .masthead__detail {
         width: 43%;
@@ -609,7 +611,9 @@
         transform: translateY(2%);
       }
       .masthead__detail img {
-        object-position: center 74%;
+        object-position: center 78%;
+        transform: scale(1.22) translateY(-5%);
+        transform-origin: center;
       }
 
       @media (max-width: 920px) {
@@ -630,7 +634,7 @@
           align-items: start;
           padding: 94px 22px calc(100px + env(safe-area-inset-bottom));
           background:
-            url("../assets/responsive/finished-bay-window-800.webp") left center / cover no-repeat,
+            url("../assets/featured/white-oak-room-progress-960.webp") 100% center / cover no-repeat,
             #0d1012;
         }
         .masthead::after { display: none; }
@@ -653,7 +657,7 @@
         }
         .masthead h1 {
           font-size: clamp(42px, 13.2vw, 58px);
-          max-width: 8.7ch;
+          max-width: 10.5ch;
           text-wrap: balance;
         }
         .masthead__lead {
@@ -1592,6 +1596,11 @@
         color: var(--ink);
         flex: 0 0 auto;
       }
+      .brand__logo {
+        display: block;
+        width: 220px;
+        height: auto;
+      }
       .brand__mark {
         display: grid;
         gap: 3px;
@@ -1863,6 +1872,11 @@
         aspect-ratio: 4 / 5;
         object-fit: cover;
         display: block;
+      }
+      .service-photo--right-crop img {
+        object-position: 78% center;
+        transform: scale(1.45) translateX(-10%);
+        transform-origin: center;
       }
       .service-content {
         padding: clamp(48px, 8vw, 88px) 0;
@@ -2362,6 +2376,7 @@
         .sitehdr__phone { display: none; }
         .callbar { display: flex; }
         body { padding-bottom: 82px; }
+        .brand__logo { width: 175px; }
         .sitehdr .btn-action { min-height: 44px; }
         .field input,
         .field select,
@@ -2379,6 +2394,7 @@
       @media (max-width: 360px) {
         .sitehdr { padding-inline: 12px; }
         .brand { gap: 8px; }
+        .brand__logo { width: 150px; }
         .brand__mark { width: 18px; }
         .brand__name { font-size: 16px; }
         .sitehdr .btn-action {
