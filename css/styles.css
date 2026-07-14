@@ -1833,10 +1833,10 @@
         border-bottom-color: var(--line);
       }
       .service-main {
-        padding-top: clamp(52px, 8vw, 96px);
+        padding-top: 0;
       }
       .service-hero {
-        padding: clamp(58px, 10vw, 108px) 0 clamp(38px, 7vw, 72px);
+        padding: clamp(36px, 4vw, 44px) 0 clamp(38px, 7vw, 72px);
         background:
           linear-gradient(180deg, rgba(16, 18, 20, 0.98), rgba(21, 25, 27, 0.94)),
           var(--bg);
