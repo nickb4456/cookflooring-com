@@ -40,3 +40,21 @@
   clears, all 10 sections present, scroll reveals fire, quote form mounts, zero
   console/page errors.
 - Note: now requires http(s) serving (external ES modules) — was inline before.
+
+## 2026-07-16
+
+### Accessible work-gallery photo lightbox
+Added keyboard-operable lightbox for all six `.gallery__grid` figures. Each figure gains
+`tabindex="0"` and `role="button"`; Enter/Space/click opens a full-screen overlay;
+Escape and backdrop-click close it; focus returns to the originating figure on close.
+Loads the 960 w srcset image in a responsive, reduced-motion-aware dialog.
+
+### Generic secure lead-endpoint support
+Replaced the Formspree-only regex in `quote-form.js` with a `URL`-constructor HTTPS check
+so any well-formed HTTPS endpoint (Netlify, Cloudflare Workers, Lambda, etc.) routes
+through the existing fetch path instead of falling back to mailto.
+
+### Paid-click lead attribution fields
+Added hidden fields `utm_medium`, `utm_term`, `utm_content`, and `gclid` to the quote form
+in `index.html`, populated from URL params at page load. Enables Google Ads offline
+conversion import and full campaign attribution in Formspree lead records.

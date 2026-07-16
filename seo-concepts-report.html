@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO Concepts Report</title>
+    <meta
+      name="description"
+      content="A plain-English report explaining core SEO concepts: crawling, indexing, content, URLs, structured data, images, local SEO, and measurement."
+    />
+    <style>
+      :root {
+        --bg: #f5f2ec;
+        --paper: #fffaf2;
+        --ink: #171a1d;
+        --muted: #5e6266;
+        --line: #d8d0c3;
+        --accent: #b86f58;
+        --accent-dark: #7f5446;
+        --slate: #34464b;
+        --blue: #466f84;
+        --green: #60745e;
+        --shadow: 0 18px 50px rgba(23, 26, 29, 0.12);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(255, 250, 242, 0.9), rgba(245, 242, 236, 0.96)),
+          var(--bg);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent-dark);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100vw - 36px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 56px 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--accent-dark);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0;
+        line-height: 1.06;
+      }
+
+      h1 {
+        max-width: 900px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.7rem, 7vw, 5.7rem);
+        font-weight: 700;
+      }
+
+      .dek {
+        max-width: 780px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 34px;
+        align-items: end;
+      }
+
+      .summary-card {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 250, 242, 0.78);
+        box-shadow: var(--shadow);
+      }
+
+      .summary-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.93rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .summary-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .toc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 22px 0;
+      }
+
+      .toc a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 250, 242, 0.72);
+        color: var(--ink);
+        font-size: 0.92rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 22px 0 64px;
+      }
+
+      section {
+        margin-top: 28px;
+        padding: 32px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: 74px minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+        margin-bottom: 24px;
+      }
+
+      .number {
+        display: grid;
+        width: 58px;
+        height: 58px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.9rem, 4vw, 3.1rem);
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .note,
+      .concept,
+      .source-card,
+      .mistake {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffdf8;
+      }
+
+      .concept h3,
+      .source-card h3,
+      .mistake h3 {
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+        line-height: 1.25;
+      }
+
+      .concept p,
+      .source-card p,
+      .mistake p,
+      .note p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 11px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(70, 111, 132, 0.12);
+        color: var(--blue);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .callout {
+        margin-top: 20px;
+        padding: 20px;
+        border-left: 5px solid var(--accent);
+        border-radius: var(--radius);
+        background: rgba(184, 111, 88, 0.1);
+      }
+
+      .callout p {
+        margin: 0;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li {
+        position: relative;
+        padding: 13px 14px 13px 42px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffdf8;
+      }
+
+      .checklist li::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 18px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .matrix {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffdf8;
+      }
+
+      .matrix th,
+      .matrix td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .matrix th {
+        background: #eee7dc;
+        color: var(--slate);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .matrix tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .sources {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .footer {
+        padding: 32px 0 54px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .grid,
+        .two,
+        .sources {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 24px;
+        }
+
+        .section-head {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .toc {
+          display: none;
+        }
+
+        section,
+        .summary-card,
+        .concept,
+        .source-card,
+        .mistake,
+        .note {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">SEO concepts report</p>
+          <h1>How search engines understand, trust, and show a website.</h1>
+          <p class="dek">
+            SEO is not a trick. It is the work of making pages easy to crawl,
+            easy to understand, useful to people, and measurable over time.
+          </p>
+        </div>
+        <aside class="summary-card" aria-label="Report summary">
+          <strong>Plain-English summary</strong>
+          <p>
+            A strong SEO foundation starts with crawlable pages, descriptive
+            URLs, clear content, clean metadata, visible images, honest
+            structured data, and proof that real people find the pages useful.
+          </p>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="shell toc" aria-label="Report sections">
+      <a href="#foundation">Foundation</a>
+      <a href="#crawl">Crawl and index</a>
+      <a href="#content">Content</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#metadata">Metadata</a>
+      <a href="#images">Images</a>
+      <a href="#structured-data">Structured data</a>
+      <a href="#local">Local SEO</a>
+      <a href="#measure">Measure</a>
+      <a href="#checklist">Checklist</a>
+    </nav>
+
+    <main class="shell">
+      <section id="foundation">
+        <div class="section-head">
+          <div class="number">1</div>
+          <div>
+            <h2>The SEO foundation</h2>
+            <p class="lead">
+              SEO helps search engines understand a page and helps users decide
+              whether that page is worth visiting. It starts with users, then
+              gives search engines enough structure to interpret the page.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="concept">
+            <span class="tag">Meaning</span>
+            <h3>Search engines need clarity</h3>
+            <p>
+              A page should make its topic obvious through its URL, title, main
+              heading, body copy, internal links, image context, and structured
+              data.
+            </p>
+          </article>
+          <article class="concept">
+            <span class="tag">People</span>
+            <h3>Good SEO serves real users</h3>
+            <p>
+              The page has to answer the searcher's question, show useful proof,
+              and make the next step simple. Ranking is weaker if the page gets
+              attention but does not satisfy the visitor.
+            </p>
+          </article>
+          <article class="concept">
+            <span class="tag">Time</span>
+            <h3>Results are not instant</h3>
+            <p>
+              Search changes can take days, weeks, or months to show their full
+              effect. SEO is an iteration loop, not a one-day switch.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <p>
+            The practical goal: publish pages that search engines can crawl and
+            that a visitor can immediately recognize as useful, specific, and
+            trustworthy.
+          </p>
+        </div>
+      </section>
+
+      <section id="crawl">
+        <div class="section-head">
+          <div class="number">2</div>
+          <div>
+            <h2>Crawling and indexing</h2>
+            <p class="lead">
+              Crawling is discovery. Indexing is storage and interpretation. A
+              page that cannot be discovered or understood has little chance of
+              showing up for the right searches.
+            </p>
+          </div>
+        </div>
+
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>Concept</th>
+              <th>What it means</th>
+              <th>What to do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Internal links</td>
+              <td>Search engines often discover pages by following links.</td>
+              <td>Link important pages from navigation, service sections, and related pages.</td>
+            </tr>
+            <tr>
+              <td>Sitemap</td>
+              <td>A sitemap lists important URLs and helps crawlers find them efficiently.</td>
+              <td>Keep only real indexable URLs in it, not page fragments or dead pages.</td>
+            </tr>
+            <tr>
+              <td>Robots rules</td>
+              <td>Robots directives tell crawlers what they may access.</td>
+              <td>Do not block CSS, JavaScript, images, or important pages by accident.</td>
+            </tr>
+            <tr>
+              <td>Canonical URL</td>
+              <td>The canonical tells search engines the preferred version of a page.</td>
+              <td>Use one clean canonical URL per page to reduce duplicate confusion.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="content">
+        <div class="section-head">
+          <div class="number">3</div>
+          <div>
+            <h2>Helpful content beats empty keywords</h2>
+            <p class="lead">
+              A page should match a real search intent. That means the content
+              should explain the service, answer likely questions, show proof,
+              and help the visitor take the next step.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="concept">
+            <h3>Weak page</h3>
+            <p>
+              "Best flooring company, best flooring contractor, affordable
+              flooring near me." This repeats phrases but gives the reader no
+              reason to trust the business.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Strong page</h3>
+            <p>
+              "Hardwood installation in Rhode Island, including subfloor checks,
+              layout, nail-down installation, transitions, trim, and written
+              estimates." This gives search engines and people a clearer answer.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <p>
+            Use natural service language. Search engines are better at reading
+            meaning than they used to be, but they still need specific terms
+            people actually search for.
+          </p>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <div class="section-head">
+          <div class="number">4</div>
+          <div>
+            <h2>Site architecture and URLs</h2>
+            <p class="lead">
+              Page structure tells both visitors and crawlers how the business
+              is organized. Good URLs describe the topic before the page even
+              loads.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="concept">
+            <h3>Use descriptive URLs</h3>
+            <p>
+              A URL like <strong>/services/deck-builder-ri/</strong> gives a
+              stronger clue than a vague page ID or only a homepage section.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Give each main service a page</h3>
+            <p>
+              Service pages give each topic room to rank for its own intent:
+              hardwood, refinishing, tile, LVP, decks, and related variations.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Connect related pages</h3>
+            <p>
+              Internal links pass context. A homepage service card should link
+              to the matching service page, and each service page should link
+              back to the quote path.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="metadata">
+        <div class="section-head">
+          <div class="number">5</div>
+          <div>
+            <h2>Metadata and search appearance</h2>
+            <p class="lead">
+              Metadata does not replace a good page. It helps search engines
+              summarize the page and helps users choose the result.
+            </p>
+          </div>
+        </div>
+
+        <ul class="checklist">
+          <li><strong>Title tag:</strong> Make the page topic and location clear without stuffing.</li>
+          <li><strong>Meta description:</strong> Write a human summary with the service, area, and reason to click.</li>
+          <li><strong>Open Graph and Twitter tags:</strong> Control how the page appears when shared.</li>
+          <li><strong>Favicon and site name:</strong> Small trust signals that make the result feel legitimate.</li>
+          <li><strong>H1 heading:</strong> Use one clear main heading that matches the page promise.</li>
+        </ul>
+      </section>
+
+      <section id="images">
+        <div class="section-head">
+          <div class="number">6</div>
+          <div>
+            <h2>Image SEO</h2>
+            <p class="lead">
+              Images are content, not decoration. Search engines can discover
+              and understand images best when they are standard HTML images with
+              useful surrounding context.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="concept">
+            <h3>Use real HTML images</h3>
+            <p>
+              Use <strong>img</strong> elements for important images. Search
+              engines do not treat CSS background images the same way.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Write useful alt text</h3>
+            <p>
+              Alt text should describe what is in the image and why it matters,
+              such as "finished bathroom tile floor in a Rhode Island home."
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Serve responsive versions</h3>
+            <p>
+              Use <strong>srcset</strong>, sizes, width, and height so the page
+              loads quickly and avoids layout shift.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="structured-data">
+        <div class="section-head">
+          <div class="number">7</div>
+          <div>
+            <h2>Structured data</h2>
+            <p class="lead">
+              Structured data is machine-readable context. It can help search
+              engines understand a business, service, page, breadcrumb path,
+              image, FAQ, product, event, or article.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="concept">
+            <h3>Use it to clarify, not invent</h3>
+            <p>
+              Structured data should match visible page content. Do not mark up
+              claims, reviews, FAQs, or services that are not actually on the
+              page.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Validate before publishing</h3>
+            <p>
+              JSON-LD should parse cleanly, use the right schema types, and
+              connect entities with stable IDs where appropriate.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <p>
+            Good examples for a local service site: LocalBusiness or
+            HomeAndConstructionBusiness, Service, WebSite, WebPage,
+            BreadcrumbList, FAQPage, and ImageObject.
+          </p>
+        </div>
+      </section>
+
+      <section id="local">
+        <div class="section-head">
+          <div class="number">8</div>
+          <div>
+            <h2>Local SEO</h2>
+            <p class="lead">
+              Local SEO connects a service, a location, and a real business.
+              The site should make that relationship obvious without bloating
+              every paragraph with city names.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="concept">
+            <h3>Consistent NAP</h3>
+            <p>
+              Keep name, address area, phone number, and website consistent
+              across the site, Google Business Profile, citations, and social
+              profiles.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Service plus location</h3>
+            <p>
+              Pages should naturally pair services with the market: "floor
+              refinishing in Rhode Island," "bathroom tile installer RI," and
+              similar plain phrases.
+            </p>
+          </article>
+          <article class="concept">
+            <h3>Proof matters</h3>
+            <p>
+              Real project photos, before-and-after examples, reviews, service
+              area details, and clear contact paths help people trust the page.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="measure">
+        <div class="section-head">
+          <div class="number">9</div>
+          <div>
+            <h2>Measurement and iteration</h2>
+            <p class="lead">
+              SEO gets better when you measure the right signals and make
+              controlled changes. The goal is not only more traffic. The goal is
+              more qualified traffic that turns into calls, forms, and jobs.
+            </p>
+          </div>
+        </div>
+
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>What it tells you</th>
+              <th>How to use it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Impressions</td>
+              <td>How often the page appears in search results.</td>
+              <td>If impressions are low, improve crawlability, topical coverage, and links.</td>
+            </tr>
+            <tr>
+              <td>Clicks</td>
+              <td>How often users choose your result.</td>
+              <td>If impressions are high but clicks are low, improve title, description, and page promise.</td>
+            </tr>
+            <tr>
+              <td>Queries</td>
+              <td>The searches that trigger the page.</td>
+              <td>Use real query language to improve headings and service-page copy.</td>
+            </tr>
+            <tr>
+              <td>Conversions</td>
+              <td>Calls, forms, quote requests, and booked work.</td>
+              <td>SEO is only valuable if the page helps the visitor take action.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="checklist">
+        <div class="section-head">
+          <div class="number">10</div>
+          <div>
+            <h2>SEO checklist</h2>
+            <p class="lead">
+              This is the short practical version. If these are in place, the
+              site has a real SEO foundation.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="note">
+            <ul class="checklist">
+              <li>Each important service has its own crawlable URL.</li>
+              <li>The homepage links to each service page with descriptive anchor text.</li>
+              <li>Every page has one clear H1, title tag, meta description, and canonical URL.</li>
+              <li>The sitemap lists real URLs and avoids fragments or test pages.</li>
+              <li>Robots rules allow important pages, CSS, JavaScript, images, and media.</li>
+            </ul>
+          </div>
+          <div class="note">
+            <ul class="checklist">
+              <li>Important images use HTML img tags, alt text, width, height, and responsive sources.</li>
+              <li>Structured data matches visible content and validates cleanly.</li>
+              <li>Local business details are consistent across the site and profiles.</li>
+              <li>Pages answer real customer questions before asking for the lead.</li>
+              <li>Search Console is used to measure indexing, queries, clicks, and crawl issues.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources">
+        <div class="section-head">
+          <div class="number">S</div>
+          <div>
+            <h2>Sources used</h2>
+            <p class="lead">
+              These are the official Google Search Central references used to
+              build the report.
+            </p>
+          </div>
+        </div>
+
+        <div class="sources">
+          <article class="source-card">
+            <h3>SEO Starter Guide</h3>
+            <p>
+              Core SEO framing: help search engines understand content and help
+              people decide whether to visit.
+            </p>
+            <p><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">Open source</a></p>
+          </article>
+          <article class="source-card">
+            <h3>Sitemaps</h3>
+            <p>
+              How sitemaps help search engines discover important URLs and
+              understand files on a site.
+            </p>
+            <p><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview">Open source</a></p>
+          </article>
+          <article class="source-card">
+            <h3>Structured Data</h3>
+            <p>
+              How standardized markup gives explicit clues about page meaning
+              and can support richer search results.
+            </p>
+            <p><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data">Open source</a></p>
+          </article>
+          <article class="source-card">
+            <h3>Image SEO</h3>
+            <p>
+              Best practices for discoverable images, HTML image elements,
+              alt text, responsive sources, and landing-page context.
+            </p>
+            <p><a href="https://developers.google.com/search/docs/appearance/google-images">Open source</a></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        Prepared as a reusable SEO concepts report. The strongest SEO habit is
+        simple: publish useful pages, make them easy to crawl, and measure what
+        real searchers do next.
+      </div>
+    </footer>
+  </body>
+</html>

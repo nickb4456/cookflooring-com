@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quote form state harness</title>
+  </head>
+  <body>
+    <div id="quoteCard">
+      <form
+        id="quoteForm"
+        action="https://formspree.io/f/testonly"
+        data-owner-email="owner@example.com"
+      >
+        <label for="hName">Name</label>
+        <input id="hName" name="name" required />
+        <label for="hPhone">Phone</label>
+        <input id="hPhone" name="phone" required />
+        <label for="hProject">Project</label>
+        <select id="hProject" name="project_type" required>
+          <option value="">Choose one</option>
+          <option>Hardwood install</option>
+        </select>
+        <label for="hTown">Town</label>
+        <input id="hTown" name="town" required />
+        <input name="email" />
+        <textarea name="details"></textarea>
+        <button class="quote-submit" type="submit">Get my competitive quote</button>
+        <p class="quote-status" role="status"></p>
+      </form>
+      <div class="quote-success" tabindex="-1">Success state</div>
+    </div>
+    <script>
+      window.__events = [];
+      window.gtag = (...args) => window.__events.push(args);
+      window.fetch = async () => {
+        if (new URLSearchParams(window.location.search).has("success")) {
+          return { ok: true };
+        }
+        throw new Error("offline test");
+      };
+    </script>
+    <script src="../../js/quote-form.js"></script>
+  </body>
+</html>

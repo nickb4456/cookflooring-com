@@ -9,8 +9,15 @@
   const card = document.getElementById("quoteCard");
   if (!form || !card) return;
 
+  // AGENT_TARGET: lead-endpoint — accept any HTTPS POST endpoint, not just Formspree
   const action = form.getAttribute("action") || "";
-  const configured = /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(action);
+  let configured = false;
+  try {
+    const u = new URL(action);
+    configured = u.protocol === "https:";
+  } catch (_) {
+    configured = false;
+  }
   const projectSelect = form.elements.project_type;
   const status = form.querySelector(".quote-status");
   const success = card.querySelector(".quote-success");
@@ -21,15 +28,24 @@
     form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
 
+  // AGENT_TARGET: paid-click-attribution — capture UTM + gclid from URL params
   const params = new URLSearchParams(window.location.search);
   const sourceField = form.elements.source_url;
   const utmSourceField = form.elements.utm_source;
   const utmCampaignField = form.elements.utm_campaign;
+  const utmMediumField = form.elements.utm_medium;
+  const utmTermField = form.elements.utm_term;
+  const utmContentField = form.elements.utm_content;
+  const gclidField = form.elements.gclid;
   if (sourceField) sourceField.value = window.location.href;
   if (utmSourceField) utmSourceField.value = params.get("utm_source") || "";
   if (utmCampaignField) {
     utmCampaignField.value = params.get("utm_campaign") || "";
   }
+  if (utmMediumField) utmMediumField.value = params.get("utm_medium") || "";
+  if (utmTermField) utmTermField.value = params.get("utm_term") || "";
+  if (utmContentField) utmContentField.value = params.get("utm_content") || "";
+  if (gclidField) gclidField.value = params.get("gclid") || "";
 
   function alignDirectQuoteLink() {
     if (window.location.hash !== "#quote") return;

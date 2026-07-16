@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Cook Flooring runtime QA harness</title>
+<script>
+  fetch("/")
+    .then((response) => response.text())
+    .then((html) => {
+      const capture = `<base href="/">
+        <script>
+          window.__qaErrors = [];
+          addEventListener("error", (event) => {
+            window.__qaErrors.push(event.message || "resource load error");
+          }, true);
+          addEventListener("unhandledrejection", (event) => {
+            window.__qaErrors.push(String(event.reason || "unhandled rejection"));
+          });
+        <\/script>`;
+      document.open();
+      document.write(html.replace(/<head([^>]*)>/i, `<head$1>${capture}`));
+      document.close();
+    });
+</script>
