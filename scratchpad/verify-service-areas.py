@@ -69,8 +69,10 @@ def main():
 
     home_path = ROOT / "index.html"
     home = read(home_path)
-    assert "RI, MA, and CT installation; RI-only refinishing and decks" in home
-    assert "Installations in RI, MA, and CT. Floor refinishing in RI only." in home
+    assert "select nearby MA/CT projects; RI-only refinishing and decks" in home
+    assert "select nearby MA/CT projects. Refinishing stays in RI." in home
+    assert "Nearby Massachusetts communities" in home
+    assert "Nearby Connecticut communities" in home
     assert '<label for="qTown">Town and state</label>' in home
 
     graph = parse_json_ld(home_path)[0]["@graph"]
@@ -80,10 +82,14 @@ def main():
         offer["itemOffered"]["name"]: area_names(offer["itemOffered"]["areaServed"])
         for offer in offers
     }
-    tri_state = {"Rhode Island", "Massachusetts", "Connecticut"}
-    assert service_areas["Hardwood floor installation"] == tri_state
-    assert service_areas["Luxury vinyl plank (LVP) installation"] == tri_state
-    assert service_areas["Bathroom and shower tile installation"] == tri_state
+    installation_area = {
+        "Rhode Island",
+        "Nearby Massachusetts communities",
+        "Nearby Connecticut communities",
+    }
+    assert service_areas["Hardwood floor installation"] == installation_area
+    assert service_areas["Luxury vinyl plank (LVP) installation"] == installation_area
+    assert service_areas["Bathroom and shower tile installation"] == installation_area
     assert service_areas["Hardwood floor refinishing"] == {"Rhode Island"}
     assert service_areas["Deck building and deck repair"] == {"Rhode Island"}
 
@@ -91,6 +97,19 @@ def main():
         text = read(path)
         for state in ("Rhode Island", "Massachusetts", "Connecticut"):
             assert state in text, f"{state} missing from {path.relative_to(ROOT)}"
+        assert "select" in text.lower(), f"Select-project qualifier missing from {path.relative_to(ROOT)}"
+        assert "nearby" in text.lower(), f"Nearby-area qualifier missing from {path.relative_to(ROOT)}"
+
+    misleading_phrases = (
+        "across RI, MA",
+        "across Rhode Island, Massachusetts",
+        "Installation in RI, MA",
+        "RI · MA · CT installation",
+    )
+    for path in (home_path,) + INSTALL_PAGES:
+        text = read(path)
+        for phrase in misleading_phrases:
+            assert phrase not in text, f"Misleading phrase {phrase!r} remains in {path.relative_to(ROOT)}"
 
     refinishing = read(ROOT / "services/floor-refinishing-ri/index.html")
     assert "Floor sanding and refinishing are available in Rhode Island only" in refinishing

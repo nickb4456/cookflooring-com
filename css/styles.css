@@ -380,7 +380,7 @@
         min-height: 100svh;
         display: grid;
         align-items: center;
-        padding: clamp(104px, 12vh, 150px) clamp(22px, 5vw, 72px) clamp(60px, 8vh, 100px);
+        padding: clamp(104px, 12vh, 150px) 0 clamp(60px, 8vh, 100px);
         overflow: hidden;
         background:
           radial-gradient(70% 70% at 10% 18%, rgba(var(--accent-rgb), 0.16), transparent 68%),
@@ -427,7 +427,7 @@
       .masthead__inner {
         position: relative;
         z-index: 1;
-        width: min(1240px, 100%);
+        width: min(1180px, calc(100% - 48px));
         margin: 0 auto;
         display: grid;
         grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.88fr);
@@ -740,18 +740,19 @@
         .masthead {
           min-height: 100svh;
           align-items: start;
-          padding: 94px 22px calc(100px + env(safe-area-inset-bottom));
+          padding: 94px 24px calc(100px + env(safe-area-inset-bottom));
           background:
             url("../assets/featured/white-oak-room-progress-960.webp") 100% center / cover no-repeat,
             #0d1012;
         }
         .masthead::after { display: none; }
-        .masthead__inner { display: block; }
+        .masthead__inner { display: block; width: 100%; }
         .masthead__copy { max-width: 31rem; }
         .masthead__eyebrow {
-          max-width: 28ch;
+          max-width: 100%;
           margin-bottom: 14px;
           width: fit-content;
+          white-space: nowrap;
           padding: 6px 8px;
           border: 1px solid rgba(23, 26, 28, 0.13);
           border-radius: 8px;
@@ -839,8 +840,7 @@
       .work {
         position: relative;
         background: #111416;
-        padding: clamp(80px, 14vh, 180px) clamp(22px, 6vw, 80px)
-          clamp(60px, 10vh, 140px);
+        padding: clamp(80px, 14vh, 180px) 0 clamp(60px, 10vh, 140px);
         overflow: hidden;
       }
       /* Atmosphere: shop-warm copper and muted green, not a flat fill. */
@@ -872,7 +872,8 @@
       .work__inner {
         position: relative;
         z-index: 1;
-        max-width: 1200px;
+        width: min(1180px, calc(100% - 48px));
+        max-width: none;
         margin: 0 auto;
       }
       .work__kicker {
@@ -1206,7 +1207,7 @@
       /* Caption-complete site cut of the social advertising reel. */
       .proof-reel {
         position: relative;
-        padding: clamp(72px, 10vw, 132px) clamp(22px, 6vw, 80px);
+        padding: clamp(72px, 10vw, 132px) 0;
         background:
           radial-gradient(80% 100% at 100% 10%, rgba(var(--accent-rgb), 0.13), transparent 65%),
           #0d1012;
@@ -1214,7 +1215,7 @@
         border-bottom: 1px solid rgba(239, 228, 212, 0.08);
       }
       .proof-reel__inner {
-        width: min(1180px, 100%);
+        width: min(1180px, calc(100% - 48px));
         margin: 0 auto;
         display: grid;
         grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
@@ -1269,12 +1270,12 @@
 
       /* Additional user-supplied project photos, cropped before delivery. */
       .project-gallery {
-        padding: clamp(76px, 10vw, 132px) clamp(22px, 6vw, 80px);
+        padding: clamp(76px, 10vw, 132px) 0;
         background: #111416;
         border-bottom: 1px solid rgba(239, 228, 212, 0.08);
       }
       .project-gallery__inner {
-        width: min(1180px, 100%);
+        width: min(1180px, calc(100% - 48px));
         margin: 0 auto;
       }
       .project-gallery__head {
@@ -1370,19 +1371,20 @@
             transparent 55%
           ),
           linear-gradient(180deg, #121619, var(--bg));
-        padding: clamp(72px, 12vh, 150px) clamp(22px, 6vw, 80px);
+        padding: clamp(72px, 12vh, 150px) 0;
         overflow: hidden;
         border-top: 1px solid rgba(239, 228, 212, 0.07);
       }
       .funnel__inner {
         position: relative;
         z-index: 1;
-        max-width: 1140px;
+        width: min(1180px, calc(100% - 48px));
+        max-width: none;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: clamp(28px, 5vw, 72px);
-        align-items: center;
+        align-items: start;
       }
       .funnel__pitch .work__kicker {
         margin-bottom: 14px;
@@ -1757,6 +1759,8 @@
       .btn-action {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        min-height: 44px;
         gap: 8px;
         background: var(--accent);
         color: var(--button-ink);
@@ -1852,11 +1856,13 @@
       /* ---- Services ---- */
       .svc-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
       }
       .svc {
         position: relative;
+        display: flex;
+        flex-direction: column;
         padding: 28px 26px 26px;
         background: var(--bg-3);
         border: 1px solid var(--line);
@@ -1891,6 +1897,7 @@
         font-weight: 800;
         letter-spacing: 0.1em;
         text-transform: uppercase;
+        align-self: flex-start;
       }
       .svc--estimate {
         display: grid;
@@ -1922,15 +1929,19 @@
         line-height: 1.55;
         margin: 0 0 16px;
       }
+      .svc .spec { margin-top: auto; }
       .svc__ico { color: var(--accent); width: 30px; height: 30px; }
       .svc__more {
         display: inline-flex;
-        margin-top: 16px;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 6px;
         color: var(--ink);
         font-size: 14px;
         font-weight: 700;
         text-decoration: none;
         border-bottom: 1px solid rgba(var(--accent-rgb), 0.7);
+        align-self: flex-start;
       }
       .svc__more:hover { color: var(--accent); }
 
@@ -2319,11 +2330,52 @@
       .tile__list svg { color: var(--slate); width: 20px; height: 20px; flex: none; margin-top: 2px; }
 
       /* ---- Service area ---- */
+      .service-boundaries {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin: 0 0 34px;
+      }
+      .service-boundary {
+        min-height: 156px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-3);
+      }
+      .service-boundary__label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .service-boundary h3 {
+        margin: 0 0 8px;
+        font-family: "Fraunces", serif;
+        font-size: 21px;
+        font-weight: 600;
+      }
+      .service-boundary p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .area-towns__label {
+        margin: 0;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+      }
       .towns {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 8px;
+        margin-top: 14px;
       }
       .town {
         font-size: 14px;
@@ -2472,6 +2524,7 @@
         .service-layout {
           grid-template-columns: 1fr;
         }
+        .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .service-main {
           padding-top: 22px;
         }
@@ -2497,6 +2550,9 @@
         }
       }
       @media (max-width: 560px) {
+        .svc-grid,
+        .service-boundaries { grid-template-columns: 1fr; }
+        .service-boundary { min-height: 0; }
         .field.row { grid-template-columns: 1fr; }
       }
       @media (max-width: 360px) {
