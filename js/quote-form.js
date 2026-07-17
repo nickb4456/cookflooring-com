@@ -19,6 +19,7 @@
     configured = false;
   }
   const projectSelect = form.elements.project_type;
+  const quoteHeading = document.getElementById("quoteHeading");
   const status = form.querySelector(".quote-status");
   const success = card.querySelector(".quote-success");
   const submitButton = form.querySelector(".quote-submit");
@@ -27,6 +28,7 @@
   const ownerEmail =
     form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
+  const websitePhoneTapConversion = "AW-18284708507/wkVlCLD-utEcEJuF6o5E";
 
   // AGENT_TARGET: paid-click-attribution — capture UTM + gclid from URL params
   const params = new URLSearchParams(window.location.search);
@@ -121,7 +123,7 @@
     window.gtag("event", name, params || {});
   }
 
-  function trackQuoteConversion(label, callback) {
+  function trackAdsConversion(destination, label, callback) {
     let completed = false;
     const done = () => {
       if (completed) return;
@@ -135,27 +137,36 @@
     }
 
     sendTrackingEvent("conversion", {
-      send_to: requestQuoteConversion,
+      send_to: destination,
       value: 1.0,
       currency: "USD",
       event_label: label || "Quote form",
       event_callback: done,
       event_timeout: 800,
     });
-    sendTrackingEvent("generate_lead", {
-      event_category: "lead",
-      event_label: label || "Quote form",
-    });
 
     window.setTimeout(done, 900);
   }
 
+  function trackQuoteConversion(label, callback) {
+    trackAdsConversion(requestQuoteConversion, label, callback);
+    sendTrackingEvent("generate_lead", {
+      event_category: "lead",
+      event_label: label || "Quote form",
+    });
+  }
+
   document.querySelectorAll('a[href="#quote"]').forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (event) => {
       sendTrackingEvent("quote_cta_click", {
         event_category: "lead",
         event_label: link.textContent.trim() || "Quote CTA",
       });
+      if (event.detail === 0 && quoteHeading) {
+        window.requestAnimationFrame(() => {
+          quoteHeading.focus({ preventScroll: true });
+        });
+      }
     });
   });
 
@@ -192,7 +203,7 @@
       });
       if (!href) return;
       e.preventDefault();
-      trackQuoteConversion("Phone call click", () => {
+      trackAdsConversion(websitePhoneTapConversion, "Website phone tap", () => {
         window.location.href = href;
       });
     });
@@ -205,6 +216,7 @@
     if (status) {
       status.textContent = "";
       status.classList.remove("is-error");
+      status.setAttribute("aria-live", "polite");
     }
     form.setAttribute("aria-busy", "true");
     btn.disabled = true;
@@ -249,6 +261,7 @@
       btn.textContent = "Try sending again";
       if (status) {
         status.classList.add("is-error");
+        status.setAttribute("aria-live", "assertive");
         status.textContent =
           "That did not send. Try again or call (401) 602-0958.";
       }

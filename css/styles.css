@@ -233,6 +233,21 @@
         pointer-events: none;
         visibility: hidden;
       }
+      .scene-fallback {
+        position: absolute;
+        z-index: 4;
+        right: clamp(18px, 3vw, 40px);
+        bottom: clamp(18px, 3vw, 40px);
+        max-width: 34ch;
+        margin: 0;
+        padding: 12px 15px;
+        border: 1px solid rgba(var(--accent-rgb), 0.48);
+        border-radius: 12px;
+        color: var(--ink);
+        background: rgba(12, 13, 15, 0.9);
+        font-size: 13px;
+        line-height: 1.45;
+      }
       .loader__bar {
         width: min(280px, 60vw);
         height: 3px;
@@ -637,7 +652,7 @@
           display: none;
         }
         .home-page .masthead__inner {
-          height: clamp(600px, 45vw, 650px);
+          height: clamp(660px, 49vw, 710px);
           min-height: 0;
           grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
           gap: 0;
@@ -655,19 +670,38 @@
           padding: clamp(38px, 5vw, 64px);
         }
         .home-page .masthead h1 {
-          max-width: 10ch;
-          font-size: clamp(52px, 5.3vw, 72px);
+          max-width: none;
+          font-size: clamp(48px, 4vw, 58px);
         }
         .home-page .masthead__lead {
           max-width: 43ch;
-          margin-top: 22px;
+          margin-top: 18px;
+          font-size: 18px;
+        }
+        .home-page .masthead__actions {
+          margin-top: 24px;
         }
         .home-page .masthead__desktop-hide {
           display: none;
         }
+        .home-page .project-choice {
+          gap: 8px;
+          margin-top: 18px;
+        }
+        .home-page .project-choice > span {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+        .home-page .project-choice a {
+          min-height: 40px;
+          padding: 8px 13px;
+          font-size: 13px;
+        }
         .home-page .masthead__trust {
-          margin-top: 28px;
-          padding-top: 20px;
+          margin-top: 16px;
+          padding-top: 14px;
           border-top: 1px solid var(--line);
         }
         .home-page .masthead__media {
@@ -1451,7 +1485,12 @@
       .quote-card__hint {
         color: var(--muted);
         font-size: 14px;
-        margin: 0 0 22px;
+        margin: 0 0 6px;
+      }
+      .quote-card__required {
+        margin: 0 0 20px;
+        color: var(--accent-soft);
+        font-size: 13px;
       }
       .quote-card__value {
         display: grid;
@@ -1574,7 +1613,7 @@
         min-height: 18px;
         margin: 6px 0 0;
         color: var(--accent-soft);
-        font-size: 12px;
+        font-size: 14px;
         line-height: 1.45;
         text-align: center;
       }
@@ -2576,6 +2615,34 @@
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
+        }
+        .hero,
+        .floor {
+          height: auto;
+        }
+        .hero__sticky {
+          position: relative;
+          height: auto;
+          min-height: min(760px, 100svh);
+        }
+        .hero__overlay {
+          position: relative;
+          min-height: min(760px, 100svh);
+        }
+        .hero__canvas,
+        .loader,
+        .hero__scrollhint {
+          display: none;
+        }
+        .hero .hero__sticky {
+          background:
+            linear-gradient(to bottom, rgba(8, 9, 10, 0.3), rgba(8, 9, 10, 0.82)),
+            url("../assets/responsive/deck-composite-boards-1200.webp") center / cover;
+        }
+        .floor .hero__sticky {
+          background:
+            linear-gradient(to bottom, rgba(8, 9, 10, 0.28), rgba(8, 9, 10, 0.82)),
+            url("../assets/responsive/during-install-bruce-1200.webp") center / cover;
         }
       }
 

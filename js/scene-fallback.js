@@ -2,7 +2,8 @@
       setTimeout(() => {
         const l = document.getElementById("loader");
         if (l && !l.classList.contains("is-done")) {
-          document.getElementById("loaderLabel").textContent =
-            "Couldn't load 3D engine. Check your connection.";
+          l.classList.add("is-done");
+          const fallback = document.getElementById("floorSceneFallback");
+          if (fallback) fallback.hidden = false;
         }
       }, 8000);

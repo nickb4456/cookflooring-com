@@ -4,6 +4,21 @@
         );
         if (!videos.length) return;
 
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (reduceMotion) {
+          videos.forEach((video) => {
+            video.autoplay = false;
+            video.loop = false;
+            video.removeAttribute("autoplay");
+            video.removeAttribute("loop");
+            video.preload = "metadata";
+            video.pause();
+          });
+          return;
+        }
+
         // AGENT_TARGET: viewport-gated-reel-load — DOM attrs eager, network warm deferred to near-view
         const prepare = (video) => {
           video.muted = true;

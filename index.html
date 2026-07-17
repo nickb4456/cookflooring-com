@@ -310,7 +310,7 @@
       media="(max-width: 767px)"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="css/styles.css?v=20260716b" />
+    <link rel="stylesheet" href="css/styles.css?v=20260717c" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -332,13 +332,14 @@
         <div class="masthead__copy">
           <p class="masthead__eyebrow">Owner-operated · Cranston, RI</p>
           <h1 id="mastheadTitle">
-            <span class="masthead__desktop-text">Crafted floors.<br />Clear process.</span>
+            <span class="masthead__desktop-text">New hardwood.<br />Old floors renewed.</span>
             <span class="masthead__mobile-text">Hardwood installed with care. Finished to last.</span>
           </h1>
           <p class="masthead__lead">
             <span class="masthead__desktop-text">
-              Installation across Rhode Island, plus select projects in nearby
-              Massachusetts and Connecticut. Floor refinishing stays in RI.
+              Hardwood installation and refinishing lead our work. We also
+              install LVP and tile and build decks across Rhode Island, with
+              select installation projects in nearby Massachusetts and Connecticut.
             </span>
             <span class="masthead__mobile-text">
               Hardwood, LVP, and tile installation across RI, plus select nearby
@@ -354,8 +355,8 @@
             <strong>A clear scope, careful prep, and a clean finish.</strong>
             <span>On-site walkthrough · Written itemized estimate · Direct crew contact</span>
           </div>
-          <div class="project-choice masthead__desktop-hide" aria-label="Choose a project to start your estimate">
-            <span>I'm planning</span>
+          <div class="project-choice" aria-label="Choose a project to start your estimate">
+            <span>What are you planning?</span>
             <a href="#quote" data-project-choice="Refinish existing floors">Refinish my floors</a>
             <a href="#quote" data-project-choice="Hardwood install">Install hardwood</a>
             <a href="#quote" data-project-choice="Bathroom / tile">Bathroom or tile</a>
@@ -412,7 +413,10 @@
             <div class="loader__fill" id="loaderFill"></div>
           </div>
         </div>
-        <canvas class="hero__canvas" id="floorCanvas"></canvas>
+        <canvas class="hero__canvas" id="floorCanvas" aria-hidden="true"></canvas>
+        <p class="scene-fallback" id="floorSceneFallback" role="status" hidden>
+          The interactive floor preview is unavailable. Real project photos continue below.
+        </p>
         <div class="hero__overlay">
           <div class="hero__block" id="floorIntro">
             <p class="hero__eyebrow">Cook Flooring &amp; Tile · Rhode Island</p>
@@ -774,7 +778,10 @@
 
     <section class="hero" id="hero">
       <div class="hero__sticky">
-        <canvas class="hero__canvas" id="heroCanvas"></canvas>
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <p class="scene-fallback" id="heroSceneFallback" role="status" hidden>
+          The interactive deck preview is unavailable. Real deck photos continue below.
+        </p>
 
         <div class="hero__overlay">
           <div class="hero__block" id="introBlock">
@@ -815,7 +822,7 @@
             <li>Stairs, railings, trim details, and safer transitions</li>
           </ul>
           <p class="deck__cta">
-            <a class="btn-action" href="#quote">Get a deck estimate</a>
+            <a class="btn-action" href="#quote" data-project-choice="Deck">Get a deck estimate</a>
             <a class="svc__more" href="/services/deck-builder-ri/">See deck repair and building details</a>
           </p>
         </div>
@@ -991,7 +998,7 @@
           <article class="svc svc--estimate reveal">
             <h3 class="svc__h">Not sure which?</h3>
             <p class="svc__p">Tell us the room. We'll tell you the options.</p>
-            <a class="btn-action btn-action--dark" href="#quote">Get a free estimate</a>
+            <a class="btn-action btn-action--dark" href="#quote" data-project-choice="Not sure yet">Get a free estimate</a>
           </article>
         </div>
       </div>
@@ -1024,7 +1031,7 @@
               </li>
             </ul>
             <p style="margin-top:26px;">
-              <a class="btn-action" href="#quote" style="background:var(--slate);color:#101214;">Plan my bathroom →</a>
+              <a class="btn-action" href="#quote" data-project-choice="Bathroom / tile" style="background:var(--slate);color:#101214;">Plan my bathroom →</a>
               <a class="svc__more" href="/services/bathroom-tile-installation-ri/">See bathroom tile details</a>
             </p>
           </div>
@@ -1227,11 +1234,11 @@
     </section>
 
     <!-- Bottom of funnel: book the free estimate. -->
-    <section class="funnel" id="quote">
+    <section class="funnel" id="quote" aria-labelledby="quoteHeading">
       <div class="funnel__inner">
         <div class="funnel__pitch reveal">
           <p class="work__kicker">Free in-home estimate</p>
-          <h2 class="funnel__h">
+          <h2 class="funnel__h" id="quoteHeading" tabindex="-1">
             Start with a clear scope.
           </h2>
           <p class="funnel__p">
@@ -1270,6 +1277,7 @@
           >
             <p class="quote-card__eyebrow">Request an estimate</p>
             <p class="quote-card__hint">RI installations, plus select nearby MA/CT projects. Refinishing stays in RI.</p>
+            <p class="quote-card__required">Name, phone, project, and town are required.</p>
             <div class="quote-card__value">
               <strong>Written, itemized estimate</strong>
               <span>Know the scope before work begins.</span>
@@ -1377,15 +1385,15 @@
       }
     </script>
 
-    <script src="js/scene-loader.js" defer></script>
+    <script src="js/scene-loader.js?v=20260717a" defer></script>
 
-    <script src="js/scene-fallback.js" defer></script>
+    <script src="js/scene-fallback.js?v=20260717a" defer></script>
 
     <script src="js/reveal-animations.js" defer></script>
 
-    <script src="js/video-autoplay.js" defer></script>
+    <script src="js/video-autoplay.js?v=20260717a" defer></script>
 
-    <script src="js/quote-form.js?v=20260713d" defer></script>
+    <script src="js/quote-form.js?v=20260717a" defer></script>
     <script src="js/gallery-lightbox.js" defer></script>
   </body>
 </html>
