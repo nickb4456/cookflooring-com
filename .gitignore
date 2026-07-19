@@ -1,1 +1,7 @@
 .env
+.DS_Store
+
+# Internal working docs — this repo is PUBLIC and serves the live site.
+# Ads/account reports and scratch work must never be committed.
+.reports/
+scratchpad/
