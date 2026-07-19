@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-07-19 — Desktop board-row hero
+
+- Replaced the desktop (≥921px) home masthead card — rounded, bordered, shadowed
+  container with the photo boxed in its right pane — with a full-bleed board-row:
+  the dark copy panel plus three edge-to-edge photo boards separated by hairline
+  seams, sequenced as one job's arc (install in progress → transition detail →
+  finished floor). Added the third figure (`masthead__finish`,
+  white-oak-finished) hidden at all other widths.
+- Captions became bottom-left mono labels on gradient scrims; boards settle in
+  with a staggered load animation (disabled under `prefers-reduced-motion`);
+  photo crops tuned floor-forward.
+- Removed the home-page-only forced-solid header override so the home desktop
+  gets the sitewide transparent-to-solid header behavior.
+- Mobile and tablet verified pixel-identical to before (Playwright screenshot
+  diff at 390 and 800 wide: empty bounding box).
+- A mobile-only job-arc swipe strip was trialed under the hero and reverted
+  same-day: the available progress/finished photos read as different floors
+  (stain tones don't match across shots), so the strip undermined its own
+  "one job" framing. Mobile ships unchanged.
+
 ## 2026-06-28 — Live polish pass
 
 - Replaced remaining bathroom placeholder tiles with real job photos.
