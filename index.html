@@ -29,7 +29,7 @@
     <meta name="geo.region" content="US-RI" />
     <meta name="geo.placename" content="Cranston, Rhode Island" />
     <meta name="ICBM" content="41.7798, -71.4373" />
-    <meta name="theme-color" content="#101214" />
+    <meta name="theme-color" content="#f6f1ea" />
 
     <!-- Open Graph / social -->
     <meta property="og:type" content="business.business" />
@@ -68,6 +68,10 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
       media="(min-width: 861px)"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,600,0,0"
+      rel="stylesheet"
     />
 
     <!-- Structured data: local business + services + FAQ for search engines. -->
@@ -310,13 +314,13 @@
       media="(max-width: 767px)"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="css/styles.css?v=20260719b" />
+    <link rel="stylesheet" href="css/styles.css?v=20260811a" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="sitehdr" id="siteHeader">
       <a class="brand" href="#top" aria-label="Cook Flooring & Tile home">
-        <img class="brand__logo" src="assets/logo.svg" width="170" height="40" alt="" />
+        <img class="brand__logo" src="assets/logo-light.svg" width="170" height="40" alt="" />
       </a>
       <nav class="sitenav" aria-label="Primary">
         <a class="nav-hide-sm" href="#work">Work</a>
@@ -332,23 +336,17 @@
         <div class="masthead__copy">
           <p class="masthead__eyebrow">Owner-operated · Cranston, RI</p>
           <h1 id="mastheadTitle">
-            <span class="masthead__desktop-text">New hardwood.<br />Old floors renewed.</span>
-            <span class="masthead__mobile-text">Hardwood installed with care. Finished to last.</span>
+            Floors worth<br />coming home to.
           </h1>
           <p class="masthead__lead">
-            <span class="masthead__desktop-text">
-              Hardwood installation and refinishing lead our work. We also
-              install LVP and tile and build decks across Rhode Island, with
-              select installation projects in nearby Massachusetts and Connecticut.
-            </span>
-            <span class="masthead__mobile-text">
-              Hardwood, LVP, and tile installation across RI, plus select nearby
-              MA and CT projects. Refinishing and deck work stay in Rhode Island.
-            </span>
+            Hardwood installation and refinishing lead our work across Rhode Island.
           </p>
           <div class="masthead__actions">
-            <a class="btn-action btn-action--large" href="#quote">Request an estimate</a>
-            <a class="masthead__call" href="tel:+14016020958">Call (401) 602-0958</a>
+            <a class="btn-action btn-action--large" href="#quote">Request a free estimate</a>
+            <a class="masthead__call" href="tel:+14016020958">
+              <span class="material-symbols-rounded" aria-hidden="true">call</span>
+              Call (401) 602-0958
+            </a>
           </div>
           <div class="masthead__price-card masthead__desktop-hide" aria-label="What to expect from Cook Flooring">
             <span class="masthead__price-kicker">What to expect</span>
@@ -411,6 +409,39 @@
             <figcaption>Finished · Ready to live on</figcaption>
           </figure>
         </div>
+      </div>
+      <ul class="masthead__proofpoints" aria-label="Why homeowners choose Cook Flooring">
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Registered and insured</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Written, itemized scope</li>
+        <li><span class="material-symbols-rounded" aria-hidden="true">check</span>Owner-operated crew</li>
+      </ul>
+      <div class="masthead__preview-grid" aria-label="White oak project details">
+        <figure>
+          <img
+            src="assets/featured/white-oak-detail-960.webp"
+            srcset="assets/featured/white-oak-detail-480.webp 480w, assets/featured/white-oak-detail-800.webp 800w, assets/featured/white-oak-detail-960.webp 960w"
+            sizes="(max-width: 767px) 100vw, 50vw"
+            width="960"
+            height="1280"
+            alt="Clean white oak transition fitted at a mirrored closet"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>Clean transitions · Natural grain</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="assets/featured/white-oak-finished-960.webp"
+            srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
+            sizes="(max-width: 767px) 100vw, 50vw"
+            width="960"
+            height="1280"
+            alt="Finished white oak floor ready to live on"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>Finished · Ready to live on</figcaption>
+        </figure>
       </div>
       <a class="masthead__scene-link" href="#floor">
         <span>Watch a hardwood floor come together</span>
