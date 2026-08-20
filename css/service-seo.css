@@ -1,0 +1,121 @@
+/* Local-service conversion components shared by Cook Flooring service pages. */
+.service-page .service-hero { padding-top: clamp(34px, 5vw, 64px); }
+.service-page .service-hero__grid { align-items: center; }
+.service-page .service-hero h1 { max-width: 13ch; }
+.service-local-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.service-local-proof li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 11px;
+  border: 1px solid rgba(239, 228, 212, 0.16);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(239, 228, 212, 0.045);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.service-local-proof li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.service-intent {
+  padding: clamp(48px, 7vw, 76px) 0;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(239, 228, 212, 0.025), transparent);
+}
+.service-intent__head { max-width: 760px; margin-bottom: 28px; }
+.service-intent__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.service-intent__card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-3);
+}
+.service-intent__card span {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.service-intent__card h3 { margin: 0 0 9px; font-family: var(--display); font-size: 21px; font-weight: 600; }
+.service-intent__card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.service-area-detail {
+  padding: clamp(48px, 7vw, 76px) 0;
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.service-area-detail__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(300px, 1.2fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+.service-area-detail__towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+.service-area-detail__towns span {
+  padding: 8px 12px;
+  border: 1px solid rgba(var(--accent-rgb), .28);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(var(--accent-rgb), .075);
+  font-size: 13px;
+}
+.service-area-detail__note {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-3);
+}
+.service-area-detail__note strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 16px; }
+.service-area-detail__note p { margin: 0; color: var(--muted); line-height: 1.65; }
+.service-cta-band {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), .15), rgba(138, 166, 173, .08));
+}
+.service-cta-band__inner {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding-block: 34px;
+}
+.service-cta-band h2 { margin: 0 0 8px; font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight: 600; }
+.service-cta-band p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.6; }
+.service-cta-band .service-links { flex: 0 0 auto; margin: 0; }
+@media (max-width: 820px) {
+  .service-intent__grid { grid-template-columns: 1fr; }
+  .service-area-detail__grid { grid-template-columns: 1fr; }
+  .service-cta-band__inner { align-items: stretch; flex-direction: column; }
+  .service-cta-band .service-links { width: 100%; }
+  .service-cta-band .btn-action { width: 100%; }
+}
+@media (max-width: 560px) {
+  .service-local-proof { gap: 7px; }
+  .service-local-proof li { flex: 1 1 calc(50% - 7px); justify-content: center; text-align: center; }
+}
