@@ -1,20 +1,28 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
 
-# Allow major crawlers to read the public site.
+# Allow major crawlers to read the public site and machine-readable business summary.
 User-agent: GPTBot
 Allow: /
+Allow: /llms.txt
 User-agent: OAI-SearchBot
 Allow: /
+Allow: /llms.txt
 User-agent: ChatGPT-User
 Allow: /
+Allow: /llms.txt
 User-agent: PerplexityBot
 Allow: /
+Allow: /llms.txt
 User-agent: Google-Extended
 Allow: /
+Allow: /llms.txt
 User-agent: ClaudeBot
 Allow: /
+Allow: /llms.txt
 User-agent: Applebot-Extended
 Allow: /
+Allow: /llms.txt
 
 Sitemap: https://cookflooring.com/sitemap.xml
