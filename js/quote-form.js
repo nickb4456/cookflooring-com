@@ -26,7 +26,9 @@
   const defaultButtonText = submitButton?.textContent.trim() || "Get my competitive quote";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const ownerEmail =
-    form.getAttribute("data-owner-email") || "nickbilodeau1150@gmail.com";
+    window.COOK_FLOORING?.email ||
+    form.getAttribute("data-owner-email") ||
+    "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
   const websitePhoneTapConversion = "AW-18284708507/wkVlCLD-utEcEJuF6o5E";
 

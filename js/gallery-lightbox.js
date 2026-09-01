@@ -12,7 +12,7 @@
   overlay.innerHTML =
     '<button class="lightbox__close" aria-label="Close photo">&#x2715;</button>' +
     '<figure class="lightbox__figure">' +
-    '<img class="lightbox__img" src="" alt="" />' +
+    '<img class="lightbox__img" src="" alt="" width="1600" height="1200" />' +
     '<figcaption class="lightbox__caption"></figcaption>' +
     "</figure>";
   document.body.appendChild(overlay);

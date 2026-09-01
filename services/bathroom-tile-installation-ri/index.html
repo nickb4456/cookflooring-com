@@ -24,23 +24,13 @@
     <meta name="twitter:description" content="Bathroom floors, showers, and waterproof tile work throughout Rhode Island and for select nearby Massachusetts and Connecticut projects." />
     <meta name="twitter:image" content="https://cookflooring.com/assets/bathroom-after-real.jpg" />
     <meta name="twitter:image:alt" content="Finished bathroom tile floor installed in a Rhode Island home" />
-    <link rel="stylesheet" href="../../css/styles.css?v=20260716b" />
+    <link rel="stylesheet" href="../../css/styles.min.css?v=20260823a" />
+    <script src="../../js/business-config.js" defer></script>
+    <script src="../../js/service-shell.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
-          {
-            "@type": "HomeAndConstructionBusiness",
-            "@id": "https://cookflooring.com/#business",
-            "name": "Cook Flooring & Tile",
-            "url": "https://cookflooring.com/",
-            "telephone": "+1-401-602-0958",
-            "areaServed": [
-              { "@type": "State", "name": "Rhode Island" },
-              { "@type": "AdministrativeArea", "name": "Nearby Massachusetts communities" },
-              { "@type": "AdministrativeArea", "name": "Nearby Connecticut communities" }
-            ]
-          },
           {
             "@type": "Service",
             "@id": "https://cookflooring.com/services/bathroom-tile-installation-ri/#service",
@@ -107,17 +97,7 @@
     </script>
   </head>
   <body class="service-page">
-    <header class="sitehdr is-stuck">
-      <a class="brand" href="/" aria-label="Cook Flooring & Tile home">
-        <img class="brand__logo" src="../../assets/logo.svg" width="170" height="40" alt="" />
-      </a>
-      <nav class="sitenav" aria-label="Primary">
-        <a class="nav-hide-sm" href="/#work">Work</a>
-        <a class="nav-hide-sm" href="/#services">Services</a>
-        <a class="nav-hide-sm" href="/#bathrooms">Bathrooms</a>
-        <a class="btn-action" href="/#quote">Free estimate</a>
-      </nav>
-    </header>
+    <service-header></service-header>
 
     <main class="service-main">
       <section class="service-hero">
@@ -131,7 +111,7 @@
             </p>
             <div class="service-links">
               <a class="btn-action" href="/#quote">Get a free estimate</a>
-              <a class="btn-action btn-action--dark" href="tel:+14016020958">Call (401) 602-0958</a>
+              <a class="btn-action btn-action--dark" data-business-call href="tel:+14016020958">Call (401) 602-0958</a>
             </div>
           </div>
           <figure class="service-photo">
@@ -190,14 +170,6 @@
       <section class="service-related"><div class="wrap"><h2 class="block__h">Related interior services</h2><div class="service-related__links"><a href="/services/lvp-installation-ri/">Water-resistant LVP installation</a><a href="/#quote">Request a bathroom tile estimate</a></div></div></section>
     </main>
 
-    <footer class="service-footer">
-      <div class="wrap">
-        Cook Flooring &amp; Tile · RI installation · Select nearby MA/CT projects · <a href="tel:+14016020958">(401) 602-0958</a>
-      </div>
-    </footer>
-    <div class="callbar">
-      <a class="callbar__call" href="tel:+14016020958">Call</a>
-      <a class="callbar__quote" href="/#quote">Free estimate</a>
-    </div>
+    <service-footer></service-footer>
   </body>
 </html>

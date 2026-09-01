@@ -42,6 +42,14 @@
         const warmLoad = (video) => {
           if (video.dataset.reelWarmed === "1") return;
           video.dataset.reelWarmed = "1";
+          if (video.dataset.poster) {
+            video.poster = video.dataset.poster;
+            video.removeAttribute("data-poster");
+          }
+          video.querySelectorAll("source[data-src]").forEach((source) => {
+            source.src = source.dataset.src;
+            source.removeAttribute("data-src");
+          });
           if (video.preload !== "auto") video.preload = "auto";
           if (video.dataset.autoplayVideo !== undefined) {
             video.load();
@@ -99,7 +107,7 @@
               }
             });
           },
-          { threshold: 0.08, rootMargin: "35% 0px" },
+          { threshold: 0.08, rootMargin: "10% 0px" },
         );
 
         videos.forEach((video) => io.observe(video));

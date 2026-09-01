@@ -6,6 +6,7 @@
   const loader = document.getElementById("loader");
   const base = new URL(".", document.currentScript.src);
   const loaded = new Set();
+  window.__SCENE_READY = { floor: false, hero: false };
 
   function afterFirstPaint(fn) {
     const run = () => {
@@ -23,6 +24,10 @@
     loaded.add(name);
     try {
       await import(new URL(file, base).href);
+      await new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      );
+      window.__SCENE_READY[name] = true;
       document.documentElement.classList.add(readyClass);
       const fallback = document.getElementById(name + "SceneFallback");
       if (fallback) fallback.hidden = true;
@@ -48,7 +53,7 @@
         observer.disconnect();
         fn();
       },
-      { rootMargin: "900px 0px" },
+      { rootMargin: "100px 0px" },
     );
     observer.observe(target);
   }
@@ -58,7 +63,7 @@
     return;
   }
 
-  afterFirstPaint(() => {
+  loadNear(document.getElementById("floor"), () => {
     loadScene("floor", "floor-scene.js", "scene-floor-ready");
   });
   loadNear(document.getElementById("hero"), () => {
