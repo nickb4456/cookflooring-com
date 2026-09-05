@@ -30,7 +30,6 @@
     form.getAttribute("data-owner-email") ||
     "nickbilodeau1150@gmail.com";
   const requestQuoteConversion = "AW-18284708507/oWhECILIh8kcEJuF6o5E";
-  const websitePhoneTapConversion = "AW-18284708507/wkVlCLD-utEcEJuF6o5E";
 
   // AGENT_TARGET: paid-click-attribution — capture UTM + gclid from URL params
   const params = new URLSearchParams(window.location.search);
@@ -196,20 +195,7 @@
     );
   });
 
-  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      sendTrackingEvent("phone_click", {
-        event_category: "lead",
-        event_label: href,
-      });
-      if (!href) return;
-      e.preventDefault();
-      trackAdsConversion(websitePhoneTapConversion, "Website phone tap", () => {
-        window.location.href = href;
-      });
-    });
-  });
+  // Phone-tap conversion moved to js/lead-tracking.js (shared with service pages).
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
