@@ -66,7 +66,10 @@ def local_path(page: Path, href: str) -> Path | None:
 def main() -> None:
     tree = ET.parse(SITEMAP)
     urls = [node.text.strip() for node in tree.findall("sm:url/sm:loc", NS) if node.text]
-    assert len(urls) == 6, f"expected 6 sitemap URLs, found {len(urls)}"
+    assert len(urls) == len(set(urls)), 'duplicate sitemap URLs'
+    public_pages = {ROOT / 'index.html', *ROOT.glob('services/*/index.html'), *ROOT.glob('service-area/*/index.html'), *ROOT.glob('guides/*/index.html')}
+    expected_urls = {'https://cookflooring.com/' + str(page.relative_to(ROOT)).removesuffix('index.html') for page in public_pages}
+    assert set(urls) == expected_urls, f'sitemap coverage mismatch: {set(urls) ^ expected_urls}'
 
     pages: list[Path] = []
     for url in urls:

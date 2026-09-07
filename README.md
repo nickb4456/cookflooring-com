@@ -26,6 +26,8 @@ every block was extracted verbatim (no reformatting), so behavior is identical.
 │                           <script type="importmap"> (must precede the modules).
 ├── services/               Crawlable SEO landing pages for hardwood install,
 │                           refinishing, bathroom tile, LVP, and decks.
+├── guides/                 Printable homeowner resources, including the
+│                           flooring estimate checklist.
 ├── css/
 │   └── styles.css          All styling (1,147 lines, was the single <style>).
 ├── js/
@@ -63,6 +65,12 @@ every block was extracted verbatim (no reformatting), so behavior is identical.
   (it opens the visitor's mail app prefilled, via the form's `data-owner-email`).
   If you later paste a Formspree endpoint into the form `action=`, it POSTs there
   instead. Phone everywhere is **(401) 602-0958**. Everything else is static.
+
+Service and guide navigation is present in the HTML so it works before
+JavaScript loads. These pages no longer load `js/service-shell.js`.
+When changing the business contact details or resource navigation, update the
+static headers and footers across `services/`, `service-area/`, and `guides/`,
+as well as the homepage and `js/business-config.js`.
 
 ## Run locally
 
