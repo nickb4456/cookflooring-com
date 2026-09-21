@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-21 — Deploy workflow for agents
+
+- Added `_tools/deploy.py` (`check`, `build-css`, `ship`, `verify-live`) and
+  `_tools/selftest.sh`. `ship` gates the commit, fast-forward pushes `main`,
+  waits for the Pages build, then proves each changed file on cookflooring.com
+  is byte-equal to the commit (Cloudflare email rewriting undone first).
+- `AGENTS.md` gained a Deploy section; Codex skill `cook-flooring-deploy` points
+  at it.
+- Untracked `scratchpad/` (it was being served live) and `.reports/`. Both were
+  committed before the ignore rule. Local copies kept.
+
 ## 2026-07-19 — Desktop board-row hero
 
 - Replaced the desktop (≥921px) home masthead card — rounded, bordered, shadowed
