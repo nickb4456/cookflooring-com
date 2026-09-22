@@ -2536,6 +2536,10 @@
         margin-top: 14px;
       }
       .town {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        text-decoration: none;
         font-size: 14px;
         color: var(--ink);
         background: var(--bg-3);
@@ -2545,6 +2549,7 @@
         font-weight: 500;
       }
       .town--more { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.42); }
+      a.town:hover { text-decoration: underline; text-underline-offset: 3px; }
 
       /* ---- About (father & son) ---- */
       .about-grid {

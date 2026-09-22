@@ -3,7 +3,7 @@
 //     lead there.
 //   - Otherwise, open the visitor's email app with everything prefilled to the
 //     owner address in data-owner-email. No backend required.
-// Either way, always show the thank-you card so the visitor is never trapped.
+// Only show the thank-you card after the endpoint accepts the submission.
 (function () {
   const form = document.getElementById("quoteForm");
   const card = document.getElementById("quoteCard");
@@ -49,6 +49,9 @@
   if (utmTermField) utmTermField.value = params.get("utm_term") || "";
   if (utmContentField) utmContentField.value = params.get("utm_content") || "";
   if (gclidField) gclidField.value = params.get("gclid") || "";
+  ["gbraid", "wbraid"].forEach((name) => {
+    if (form.elements[name]) form.elements[name].value = params.get(name) || "";
+  });
 
   function alignDirectQuoteLink() {
     if (window.location.hash !== "#quote") return;
@@ -105,6 +108,9 @@
       "Email:   " + val("email"),
       "Project: " + val("project_type"),
       "Town:    " + val("town"),
+      "Request: " + (val("request_type") || "Free estimate"),
+      "Best time to call: " + (val("preferred_call_time") || "No preference"),
+      "Page: " + val("source_url"),
       "",
       "Details:",
       val("details"),
@@ -227,7 +233,10 @@
         if (!res.ok) throw new Error("send failed");
         trackQuoteConversion("Quote form");
       } else {
-        trackQuoteConversion("Quote form");
+        sendTrackingEvent("quote_email_draft_open", {
+          event_category: "lead",
+          event_label: "Email draft, submission not confirmed",
+        });
         emailLead();
         form.setAttribute("aria-busy", "false");
         btn.disabled = false;

@@ -1,0 +1,86 @@
+/* City pages extend the existing light homepage design. */
+.city-page .sitehdr { position: sticky; top: 0; }
+.city-page .breadcrumbs { color: var(--muted); font-size: 14px; flex-wrap: wrap; }
+.city-page .breadcrumbs a { min-height: 44px; display: inline-flex; align-items: center; }
+.city-page h1, .city-page h2, .city-page h3 { font-family: var(--display); }
+.city-page h1 { font-size: clamp(34px, 4.1vw, 61px); line-height: 1.12; letter-spacing: -0.035em; margin: 18px 0 22px; }
+.city-page h1 span { display: block; color: #8b4a2e; }
+.city-page h2 { font-size: clamp(28px, 3vw, 42px); line-height: 1.18; letter-spacing: -0.025em; margin: 12px 0 22px; }
+.city-page h3 { font-size: 21px; line-height: 1.35; margin: 0 0 14px; }
+.city-page p, .city-page li { line-height: 1.7; }
+.city-page main p { color: var(--muted); }
+.city-page .city-hero { padding: 18px 0 46px; }
+.city-hero__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+.city-hero__copy { padding: 14px 0; }
+.city-intro { font-size: 18px; max-width: 58ch; }
+.city-hero__photo { position: relative; margin: 0; border-radius: 8px; overflow: hidden; background: #e2d8c9; }
+.city-hero__photo img { display: block; width: 100%; height: clamp(360px, 38vw, 520px); object-fit: cover; object-position: center 62%; }
+.city-hero__photo figcaption { position: absolute; inset: auto 0 0; padding: 36px 20px 18px; color: #fff; background: linear-gradient(transparent, rgba(25, 23, 19, .78)); font-size: 14px; }
+.city-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; margin-top: 25px; }
+.city-page .btn-action, .city-call { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; }
+.city-page .city-call { color: #713b25; font-weight: 750; text-underline-offset: 4px; padding: 10px 0; }
+.city-page .city-note { font-size: 14px; line-height: 1.6; margin-top: 19px; }
+.city-proof-strip { border-block: 1px solid var(--line); background: #eee7db; }
+.city-proof-strip .wrap { display: flex; justify-content: space-between; gap: 16px; padding-block: 22px; font-size: 15px; font-weight: 700; color: #2f6371; }
+.city-section { padding: clamp(44px, 6vw, 80px) 0; }
+.city-section--tint { background: #f0eadf; border-block: 1px solid var(--line); }
+.city-section__intro { max-width: 65ch; }
+.city-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.city-service { padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: #fffdf8; display: flex; flex-direction: column; align-items: flex-start; }
+.city-service h3 a { color: var(--ink); text-decoration: none; display: inline-block; padding-block: 5px; }
+.city-service h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.city-service p { margin: 0 0 20px; }
+.city-service .city-text-link { margin-top: auto; }
+.city-service--help { background: #e9e1d2; }
+.city-page .city-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #713b25; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; line-height: 1.5; }
+.city-planning, .city-faq-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: start; }
+.city-checklist { margin-top: 38px; background: #fffdf8; padding: 28px; border-left: 4px solid #2f6371; border-radius: 0 8px 8px 0; }
+.city-checklist ul { padding-left: 20px; }
+.city-checklist li + li { margin-top: 14px; }
+.city-work { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+.city-work figure { margin: 0; }
+.city-work img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.city-work figcaption { padding-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.city-faq { border-bottom: 1px solid #cbbfad; }
+.city-faq summary { cursor: pointer; font-weight: 700; font-size: 17px; padding: 20px 8px 20px 0; line-height: 1.5; }
+.city-faq p { margin: 0 0 22px; }
+.city-page .city-faq-layout a { color: #713b25; text-underline-offset: 4px; }
+.city-quote__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(30px, 6vw, 80px); align-items: start; }
+.city-next { padding-left: 24px; margin: 28px 0; }
+.city-next li { padding-left: 8px; margin-bottom: 14px; }
+.city-next li::marker { color: #2f6371; font-weight: 800; }
+.city-page .quote-card { padding: clamp(22px, 3vw, 36px); }
+.city-page .quote-card__hint { font-size: 14px; margin-bottom: 24px; }
+.city-page .field label { font-family: var(--font); text-transform: none; letter-spacing: 0; font-size: 14px; }
+.city-page .field label span { color: var(--muted); font-weight: 400; }
+.city-page .field input, .city-page .field select, .city-page .field textarea { font-size: 16px; min-height: 48px; }
+.city-page .field textarea { min-height: 100px; }
+.city-page .quote-fineprint { font-size: 13px; line-height: 1.6; }
+.city-page .quote-status { font-size: 16px; }
+.city-page .city-nearby { padding-top: 0; }
+.city-nearby h2 { font-size: 26px; }
+.city-page footer .seo-links { margin-top: 24px; }
+.city-page footer a { min-height: 44px; display: inline-flex; align-items: center; color: #f0c99d; text-underline-offset: 4px; }
+.city-page .callbar a { min-height: 48px; }
+@media (max-width: 1050px) { .city-services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .city-hero__grid, .city-planning, .city-work, .city-faq-layout, .city-quote__grid { grid-template-columns: 1fr; }
+  .city-page .city-hero { padding-top: 0; }
+  .city-hero__copy { padding: 0; }
+  .city-hero__photo img { height: 320px; }
+  .city-proof-strip .wrap { flex-wrap: wrap; justify-content: center; gap: 8px 20px; font-size: 14px; text-align: center; }
+  .city-checklist { margin-top: 0; }
+  .city-page .breadcrumbs { padding-block: 8px; gap: 0 10px; }
+  .city-page .sitehdr { gap: 8px; padding-inline: 20px; }
+  .city-page .brand__logo { width: 140px; }
+  .city-page .sitehdr .btn-action { padding: 10px 12px; font-size: 13px; }
+  .city-page footer { padding-bottom: 112px; }
+}
+@media (max-width: 520px) {
+  .city-services { grid-template-columns: 1fr; }
+  .city-actions { gap: 4px; flex-direction: column; align-items: stretch; }
+  .city-page .wrap { width: calc(100% - 40px); }
+  .city-page .city-hero__copy .eyebrow2 { font-size: 11px; }
+  .city-page .sitehdr { padding-inline: 14px; }
+  .city-page .brand__logo { width: 125px; }
+}
