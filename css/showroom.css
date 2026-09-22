@@ -1,0 +1,904 @@
+/* ==================================================================
+   Showroom (2026-09-22)
+   A white gallery where the floors are the only colour. Near-black type,
+   hairlines instead of boxes, square photo corners, and one accent:
+   gold, used as a fill (buttons, rules, ticks), never as small text.
+   Loaded after stain-board.css on every page. Rollback = remove the link.
+   ================================================================== */
+
+body.sb {
+  --gold: #e2b33c;
+  --gold-hi: #f0c552;
+  --gold-deep: #b98a14;
+  --paper: #ffffff;
+  --paper-2: #f7f7f5;
+  --ink: #0b0b0c;
+  --muted: #55575c;
+  --faint: #8a8c91;
+  --hair: #e6e6e3;
+  --line: #e6e6e3;
+  --line-strong: #cfcfcb;
+
+  /* the old stain names, repointed */
+  --natural: var(--paper);
+  --natural-hi: var(--paper);
+  --golden: var(--paper-2);
+  --walnut: #0b0b0c;
+  --jacobean: #0b0b0c;
+  --tile: var(--gold);
+  --tile-hi: var(--gold-hi);
+  --char: #0b0b0c;
+  --accent: var(--gold);
+  --accent-rgb: 226, 179, 60;
+  --button-ink: #0b0b0c;
+  --board-radius: 0;
+  --board-shadow: none;
+  --band: var(--paper);
+
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 18px;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+html:has(body.sb) {
+  background: var(--paper);
+}
+body.sb ::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ---- Every band is white; the gallery rooms alternate with a whisper grey ---- */
+body.sb .sb-band,
+body.sb .sb-hero,
+body.sb #work,
+body.sb .proof-reel,
+body.sb .project-gallery,
+body.sb .block,
+body.sb .service-hero,
+body.sb .service-content,
+body.sb .service-proof,
+body.sb .service-faq,
+body.sb .service-related,
+body.sb .city-hero,
+body.sb .city-section,
+body.sb .estimate-guide,
+body.sb #decks,
+body.sb #why,
+body.sb #bathrooms,
+body.sb #about,
+body.sb .city-section--tint,
+body.sb .city-nearby {
+  --band: var(--paper);
+  --ink: #0b0b0c;
+  --muted: #55575c;
+  --faint: #8a8c91;
+  --line: #e6e6e3;
+  --line-strong: #cfcfcb;
+  --accent: var(--gold);
+  --button-ink: #0b0b0c;
+  --slate: #0b0b0c;
+  border-top: 1px solid var(--hair);
+  box-shadow: none;
+}
+body.sb .project-gallery,
+body.sb #decks,
+body.sb #why,
+body.sb .service-proof,
+body.sb .city-section--tint {
+  --band: var(--paper-2);
+}
+body.sb .sb-hero::before,
+body.sb .block::before,
+body.sb #work::before,
+body.sb .proof-reel::before,
+body.sb .project-gallery::before,
+body.sb .funnel::before,
+body.sb .service-hero::before,
+body.sb .service-content::before,
+body.sb .service-proof::before,
+body.sb .service-faq::before,
+body.sb .service-related::before,
+body.sb .city-hero::before,
+body.sb .city-section::before {
+  content: none;
+}
+
+/* The one dark room: the estimate */
+body.sb .funnel,
+body.sb .city-quote {
+  --band: #0b0b0c;
+  --ink: #fafaf9;
+  --muted: #b4b5b8;
+  --faint: #8a8c91;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --accent: var(--gold);
+  --button-ink: #0b0b0c;
+  border-top: 0;
+}
+
+/* ---- Type: normal width, heavy, very tight ---- */
+body.sb h1,
+body.sb h2,
+body.sb h3,
+body.sb .block__h,
+body.sb .work__head,
+body.sb .journey__h,
+body.sb .funnel__h,
+body.sb .hero__title,
+body.sb .svc__h {
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+body.sb h2,
+body.sb .block__h,
+body.sb .work__head,
+body.sb .funnel__h,
+body.sb .journey__h,
+body.sb .project-gallery__head h2 {
+  font-size: clamp(38px, 5.2vw, 76px);
+  line-height: 0.98;
+  font-stretch: 100%;
+}
+body.sb h3 {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+body.sb main p,
+body.sb .block__lead,
+body.sb .work__lead {
+  color: var(--muted);
+}
+
+/* Section labels: a short gold rule, then the words in ink */
+body.sb .eyebrow2,
+body.sb .work__kicker,
+body.sb .hero__eyebrow,
+body.sb .sb-hero__where,
+body.sb .service-boundary__label,
+body.sb .area-towns__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-stretch: 100%;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+body.sb .eyebrow2::before,
+body.sb .work__kicker::before,
+body.sb .hero__eyebrow::before,
+body.sb .sb-hero__where::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  border: 0;
+}
+body.sb .spec,
+body.sb .review__stars,
+body.sb .svc--featured::before {
+  color: var(--ink);
+  font-stretch: 100%;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---- Actions: gold pill, ink text; secondary = ink outline pill ---- */
+body.sb .btn-action,
+body.sb .quote-submit,
+body.sb .hero__cta,
+body.sb .callbar__quote,
+body.sb .sitehdr .btn-action.btn-action,
+body.sb .sitenav .btn-action,
+body.sb #about .btn-action,
+body.sb #bathrooms .btn-action,
+body.sb .svc--estimate .btn-action {
+  border-radius: 999px;
+  background: var(--gold);
+  color: #0b0b0c;
+  font-stretch: 100%;
+  font-weight: 650;
+  letter-spacing: -0.005em;
+  box-shadow: none;
+  border: 0;
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+body.sb .btn-action:hover,
+body.sb .quote-submit:hover,
+body.sb .hero__cta:hover,
+body.sb .sitehdr .btn-action.btn-action:hover {
+  background: var(--gold-hi);
+  color: #0b0b0c;
+  filter: none;
+  transform: translateY(-1px);
+}
+body.sb .btn-action:active,
+body.sb .quote-submit:active {
+  transform: none;
+  box-shadow: none;
+}
+body.sb .btn-action--dark {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+body.sb .btn-action--dark:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+body.sb a:not(.btn-action):not(.sb-swatch):not(.town):not(.sb-hero__scene) {
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+}
+body.sb .svc__more,
+body.sb .city-text-link {
+  color: var(--ink);
+  font-weight: 650;
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 100% 2px
+    no-repeat;
+  padding-bottom: 3px;
+  border: 0;
+}
+body.sb .svc__more:hover,
+body.sb .city-text-link:hover {
+  background-size: 100% 100%;
+}
+body.sb :focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+body.sb .funnel :focus-visible,
+body.sb .city-quote :focus-visible {
+  outline-color: var(--gold);
+}
+
+/* ---- Header: pure white, hairline, quiet links ---- */
+body.sb .sitehdr,
+body.sb .sitehdr.is-stuck,
+body.sb.service-page .sitehdr,
+body.sb.city-page .sitehdr {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--hair);
+}
+body.sb .sitenav a:not(.btn-action) {
+  color: var(--ink);
+  font-weight: 550;
+  font-stretch: 100%;
+}
+body.sb .sitenav a:not(.btn-action):hover {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+/* ==================================================================
+   Hero
+   ================================================================== */
+body.sb .sb-hero {
+  padding: clamp(112px, 10vw, 150px) 0 0;
+  border-top: 0;
+}
+body.sb .sb-hero__inner {
+  width: min(1320px, calc(100% - 64px));
+}
+body.sb .sr-hero__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+body.sb .sb-hero__where {
+  margin: 0 0 clamp(20px, 2vw, 28px);
+}
+body.sb .sb-hero__title {
+  font-size: clamp(56px, 9.4vw, 156px);
+  line-height: 0.88;
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  margin-left: -0.05em;
+}
+body.sb .sr-dot {
+  color: var(--gold);
+}
+body.sb .sb-hero__copy {
+  padding: 0 0 0.6em;
+}
+body.sb .sb-hero__lead {
+  max-width: 36ch;
+  margin: 0 0 28px;
+  font-size: clamp(18px, 1.35vw, 20px);
+  line-height: 1.55;
+  color: var(--muted);
+}
+body.sb .sb-hero__actions {
+  gap: 14px 24px;
+}
+body.sb .sb-hero__actions .btn-action--large {
+  min-height: 58px;
+  padding: 0 30px;
+  font-size: 17px;
+}
+body.sb .sb-hero__call {
+  font-size: 17px;
+  font-weight: 650;
+}
+body.sb .sb-hero__call .inline-icon {
+  fill: var(--ink);
+}
+body.sb .sb-hero__trust {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+  gap: 8px 22px;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--muted);
+}
+body.sb .sb-hero__trust li::before {
+  width: 16px;
+  height: 16px;
+  background: var(--gold)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.9' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 10px no-repeat;
+  border-radius: 50%;
+  transform: none;
+}
+
+/* Triptych: three equal photos on one baseline */
+body.sb .sb-hero__boards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  height: auto;
+  margin-top: clamp(40px, 5vw, 72px);
+}
+body.sb .sb-board,
+body.sb .sb-board--2,
+body.sb .sb-board--3 {
+  height: clamp(300px, 34vw, 520px);
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--paper-2);
+}
+body.sb .sb-board--1 img {
+  object-position: center 70%;
+}
+body.sb .sb-board figcaption {
+  left: 0;
+  bottom: 0;
+  padding: 10px 14px;
+  border-radius: 0;
+  background: #ffffff;
+  color: var(--ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-size: 13px;
+  font-weight: 550;
+  font-stretch: 100%;
+}
+
+/* Project picker: quiet outline pills under the photos */
+body.sb .sb-choice {
+  margin: 28px 0 0;
+  gap: 10px;
+}
+body.sb .sb-choice > span {
+  width: auto;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  font-stretch: 100%;
+  color: var(--muted);
+}
+body.sb .sb-choice a {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 550;
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+body.sb .sb-choice a:hover {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+/* Index: a numbered table of contents on one hairline */
+body.sb .sb-rail {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  width: min(1320px, calc(100% - 64px));
+  margin: clamp(48px, 5vw, 72px) auto 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+}
+body.sb .sb-swatch {
+  --sw: transparent;
+  --sw-ink: var(--ink);
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 14px;
+  min-height: 0;
+  padding: 20px 16px 22px 0;
+  background: none;
+  color: var(--ink);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: color 0.18s ease;
+}
+body.sb .sb-swatch::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto auto 0;
+  width: 0;
+  height: 3px;
+  background: var(--gold);
+  opacity: 1;
+  transition: width 0.3s ease;
+}
+body.sb .sb-swatch:hover {
+  transform: none;
+  box-shadow: none;
+  padding-bottom: 22px;
+}
+body.sb .sb-swatch:hover::before {
+  width: 100%;
+}
+body.sb .sb-swatch small {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  opacity: 1;
+  font-variant-numeric: tabular-nums;
+}
+body.sb .sb-swatch span {
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 650;
+  font-stretch: 100%;
+  letter-spacing: -0.02em;
+}
+body.sb .sb-swatch span::after {
+  content: none;
+}
+body.sb .sb-swatch:hover span {
+  text-decoration: none;
+}
+body.sb .sb-hero__scene {
+  width: min(1320px, calc(100% - 64px));
+  margin: 0 auto;
+  min-height: 0;
+  padding: 18px 0 clamp(40px, 5vw, 64px);
+  justify-content: flex-start;
+  background: none;
+  color: var(--muted);
+  border-top: 1px solid var(--hair);
+  font-size: 14px;
+  font-weight: 550;
+  font-stretch: 100%;
+}
+body.sb .sb-hero__scene:hover {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.sb .sb-hero__title {
+    animation: sr-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.sb .sb-board {
+    animation: sr-reveal 1.1s cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+  body.sb .sb-board--1 {
+    animation-delay: 0.15s;
+  }
+  body.sb .sb-board--2 {
+    animation-delay: 0.27s;
+  }
+  body.sb .sb-board--3 {
+    animation-delay: 0.39s;
+  }
+  body.sb .sb-swatch {
+    animation: sr-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+@keyframes sr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sr-reveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ==================================================================
+   3D rooms stay dark; their type joins the system
+   ================================================================== */
+body.sb .hero,
+body.sb .floor,
+body.sb .hero__sticky,
+body.sb .loader {
+  background: #0b0b0c;
+}
+body.sb .hero__overlay,
+body.sb .hero__block {
+  --ink: #fafaf9;
+  --muted: #c9cacc;
+}
+body.sb .hero__title {
+  color: #fafaf9;
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+body.sb .hero__eyebrow {
+  color: #fafaf9;
+}
+body.sb .hero__sub {
+  color: #c9cacc;
+}
+body.sb .loader__fill {
+  background: var(--gold);
+}
+
+/* ==================================================================
+   Cards become hairline panels: no fill, no shadow, square
+   ================================================================== */
+body.sb .feature__note,
+body.sb .craft-clip,
+body.sb .section-quote,
+body.sb .svc,
+body.sb .review,
+body.sb .service-boundary,
+body.sb .faq-item,
+body.sb .service-card,
+body.sb .service-faq__item,
+body.sb .city-service,
+body.sb .city-checklist,
+body.sb .city-faq {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--hair);
+  border-radius: 0;
+  box-shadow: none;
+  --ink: #0b0b0c;
+  --muted: #55575c;
+  --accent: var(--gold);
+  --button-ink: #0b0b0c;
+}
+body.sb .section-quote,
+body.sb .service-card,
+body.sb .city-checklist {
+  border-left: 3px solid var(--gold);
+}
+body.sb .svc-grid,
+body.sb .reviews-grid {
+  gap: 0;
+}
+body.sb .svc + .svc {
+  border-top: 0;
+}
+body.sb .svc .inline-icon,
+body.sb .svc svg {
+  stroke: var(--ink);
+  color: var(--ink);
+}
+body.sb .svc--estimate {
+  background: #0b0b0c;
+  border-color: #0b0b0c;
+  --ink: #fafaf9;
+  --muted: #b4b5b8;
+  color: #fafaf9;
+}
+body.sb .svc--estimate .svc__h,
+body.sb .svc--estimate .svc__p {
+  color: #fafaf9;
+}
+body.sb .review__q {
+  font-stretch: 100%;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* FAQ: a clean list, hairlines between */
+body.sb .faq-item {
+  border-width: 1px 0 0;
+  padding: 0;
+}
+body.sb .faq-item:last-of-type {
+  border-bottom-width: 1px;
+}
+body.sb .faq-item + .faq-item {
+  margin-top: 0;
+}
+body.sb .faq-item summary {
+  padding-block: 24px;
+  font-weight: 650;
+  font-stretch: 100%;
+  letter-spacing: -0.015em;
+}
+
+/* Photos: square corners, captions as small white labels */
+body.sb .gallery__grid figure,
+body.sb .project-gallery__item,
+body.sb .deck-proof figure,
+body.sb .deck-progress figure,
+body.sb .stage,
+body.sb .feature__media,
+body.sb .about-fig,
+body.sb .service-photo,
+body.sb .service-proof__item,
+body.sb .city-hero__photo,
+body.sb .city-work figure,
+body.sb .tilecell,
+body.sb .proof-reel__media {
+  border-radius: 0;
+  box-shadow: none;
+}
+body.sb .feature__tag,
+body.sb .stage__label,
+body.sb .gallery__grid figcaption,
+body.sb .project-gallery__item figcaption,
+body.sb .deck-proof figcaption,
+body.sb .deck-progress figcaption,
+body.sb .proof-reel__media figcaption,
+body.sb .service-proof__item figcaption,
+body.sb .city-hero__photo figcaption,
+body.sb .city-work figcaption,
+body.sb .tilecell__label {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 0;
+  background: #ffffff;
+  color: #0b0b0c;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-stretch: 100%;
+  font-size: 12.5px;
+  font-weight: 550;
+}
+
+/* Towns and related links: outline pills */
+body.sb .town,
+body.sb .service-related__links a {
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  font-weight: 550;
+}
+body.sb .town:hover,
+body.sb .service-related__links a:hover {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+/* Bathrooms and About are white rooms now; keep their icons ink */
+body.sb #bathrooms .tile__list svg,
+body.sb .funnel__trust svg {
+  stroke: var(--gold);
+  color: var(--gold);
+}
+body.sb #bathrooms .tile__list svg {
+  stroke: var(--ink);
+  color: var(--ink);
+}
+body.sb #bathrooms .svc__more {
+  color: var(--ink);
+}
+
+/* ==================================================================
+   Estimate: black room, white form sheet
+   ================================================================== */
+body.sb .funnel__h {
+  font-size: clamp(48px, 7vw, 112px);
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  color: #fafaf9;
+}
+body.sb .quote-card {
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  --ink: #0b0b0c;
+  --muted: #55575c;
+  --accent: var(--gold);
+  --button-ink: #0b0b0c;
+}
+body.sb .quote-card__eyebrow {
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #0b0b0c;
+}
+body.sb .quote-card__value {
+  background: var(--paper-2);
+  border-left: 3px solid var(--gold);
+  border-radius: 0;
+}
+body.sb .quote-form input,
+body.sb .quote-form select,
+body.sb .quote-form textarea {
+  background-color: #ffffff;
+  border: 0;
+  border-bottom: 1.5px solid #cfcfcb;
+  border-radius: 0;
+  padding-left: 0;
+  box-shadow: none;
+}
+body.sb .quote-form select {
+  padding-left: 0;
+}
+body.sb .quote-form textarea {
+  border: 1.5px solid #cfcfcb;
+  padding-left: 12px;
+}
+body.sb .quote-form input:focus,
+body.sb .quote-form select:focus,
+body.sb .quote-form textarea:focus {
+  border-color: #0b0b0c;
+  box-shadow: 0 2px 0 0 var(--gold);
+}
+body.sb .quote-submit {
+  min-height: 60px;
+}
+
+/* Footer and call bar */
+body.sb footer,
+body.sb .service-footer {
+  background: #0b0b0c;
+  color: #9a9ba0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+body.sb footer a,
+body.sb footer strong,
+body.sb .service-footer a {
+  color: #fafaf9 !important;
+}
+body.sb footer .seo-links a,
+body.sb .service-footer .seo-links a {
+  color: #c9cacc !important;
+}
+body.sb .callbar,
+body.sb .callbar.callbar.callbar {
+  background: rgba(11, 11, 12, 0.96);
+}
+body.sb .callbar .callbar__call,
+html body.sb .callbar a.callbar__call {
+  border-radius: 999px;
+  color: #fafaf9;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+body.sb .callbar .callbar__quote,
+html body.sb .callbar a.callbar__quote {
+  background: var(--gold);
+  color: #0b0b0c;
+  border-radius: 999px;
+}
+body.sb .lightbox {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+/* Service pages, city pages, guide: same white rooms */
+body.sb.service-page,
+body.sb.city-page {
+  background: var(--paper);
+}
+body.sb .city-proof-strip {
+  background: #0b0b0c;
+}
+body.sb .city-service--help {
+  background: #0b0b0c;
+  border-color: #0b0b0c;
+  --ink: #fafaf9;
+  --muted: #b4b5b8;
+  color: #fafaf9;
+}
+body.sb .city-service--help h3,
+body.sb .city-service--help p,
+body.sb .city-service--help .city-text-link {
+  color: #fafaf9;
+}
+body.sb.service-page .service-hero h1,
+body.sb .estimate-guide h1,
+body.sb.city-page h1 {
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+body.sb .service-list li::marker,
+body.sb .estimate-checklist li::marker,
+body.sb .city-next li::marker {
+  color: var(--gold-deep);
+}
+
+/* ==================================================================
+   Small screens
+   ================================================================== */
+@media (max-width: 900px) {
+  body.sb .sr-hero__top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  body.sb .sb-hero__boards {
+    order: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+  body.sb .sb-board--1 {
+    grid-column: 1 / -1;
+  }
+  body.sb .sb-board,
+  body.sb .sb-board--2,
+  body.sb .sb-board--3 {
+    display: block;
+    height: clamp(220px, 52vw, 420px);
+  }
+  body.sb .sb-rail {
+    grid-template-columns: 1fr 1fr;
+  }
+  body.sb .sb-swatch {
+    border-bottom: 1px solid var(--hair);
+    border-top: 0;
+  }
+  body.sb .sb-swatch:last-child {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  body.sb {
+    font-size: 17px;
+  }
+  body.sb .sb-hero {
+    padding-top: 96px;
+  }
+  body.sb .sb-hero__inner,
+  body.sb .sb-rail,
+  body.sb .sb-hero__scene {
+    width: calc(100% - 40px);
+  }
+  body.sb .sb-hero__title {
+    font-size: clamp(50px, 15vw, 72px);
+    font-stretch: 100%;
+  }
+  body.sb .sb-choice > span {
+    width: 100%;
+  }
+  body.sb .sb-choice a {
+    flex: 1 1 calc(50% - 10px);
+    justify-content: center;
+  }
+}

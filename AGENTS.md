@@ -13,10 +13,12 @@ split by concern, byte-faithful.
   the JSON-LD `@graph` (SEO: business + WebSite + FAQ) and the Three.js
   `<script type="importmap">` (must be parsed before the module scripts).
 - `css/styles.css` — base styling (older layers).
-- `css/stain-board.css` — the current design (2026-09-22), loaded last on
-  every page and scoped to `body.sb`. Style changes go here first. It is
-  not minified, so `build-css` does not touch it; bump its `?v=` on every
-  page when you edit it.
+- Homepage (2026-09-22 v3): `index.html` + `css/home-v3.css` +
+  `js/home-v3.js`, standalone (no styles.min.css / stain-board). Palette:
+  ink #0a0a0a, white, gold #e2b33c; gold is a fill, never small text.
+- Inner pages: `css/stain-board.css` (layout layer, scoped to `body.sb`)
+  then `css/showroom.css` (colour layer: white rooms, ink, gold). Style
+  changes for inner pages go in showroom.css; bump its `?v=` on every page.
 - `js/`
   - `header-scroll.js` — sticky-header solidify on scroll.
   - `hero-deck-scene.js` — [ES module] Three.js scene on `#heroCanvas`; the deck
@@ -101,6 +103,9 @@ Laws:
 - Edits to the 3D modules: avoid reformatting/dedenting whole files — they
   contain template literals and procedural-texture strings.
 
-## Sections (scroll order)
+## Sections (homepage scroll order)
 
-hero · floor · work · services · bathrooms · area · about · why · faq · quote.
+hero · ticker · services (#services) · before/after (#difference) · work
+(#work, pinned sideways on wide screens) · crew (#about) · process (#process)
+· decks (#decks) · area (#area) · faq (#faq) · estimate (#quote) · footer.
+The Three.js scenes are no longer on the homepage.

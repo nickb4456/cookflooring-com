@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-09-22 (evening) — Homepage v3: black, white, and gold
+
+- New standalone homepage: `index.html` body rebuilt from scratch, styled by
+  `css/home-v3.css`, driven by `js/home-v3.js`. The homepage no longer loads
+  `styles.min.css` or `stain-board.css`.
+- Sections: full-bleed photo hero ("Rhode Island flooring, laid by hand."),
+  gold town ticker, services as a large numbered index with a cursor-follow
+  photo preview, bathroom before/after drag slider, pinned sideways work
+  gallery (12 photos), crew section with the hammer video, 4-step process,
+  decks mosaic, town list, FAQ, estimate form, giant wordmark footer, and a
+  full-screen menu.
+- Kept verbatim: head meta, JSON-LD, FAQ text, form fields/ids/hidden
+  attribution inputs, Formspree action, tracking scripts, phone/email hooks.
+- Removed from the homepage: both Three.js scenes (deck and floor), the ad
+  reel video, the lightbox gallery, and the stage/"room by room" blocks. The
+  JS files are still in `js/` if they come back.
+- New brand mark: gold running-bond planks on an ink tile (`favicon.svg`,
+  `assets/logo.svg`, `assets/logo-light.svg`).
+- Inner pages keep their layout but load `css/showroom.css` after
+  `stain-board.css`: white rooms, ink type, gold actions. Brown stain tones are
+  gone site-wide.
+- New images: `assets/v3/amber-hardwood-crew-{900,1600}.webp` (web-sized from
+  `wide-hardwood-progress.jpg`).
+
 ## 2026-09-22 — Stain-board redesign (whole site)
 
 - New visual system in `css/stain-board.css`, loaded after `styles.min.css`

@@ -1,5 +1,5 @@
 /* ==================================================================
-   Stain board (2026-09-22)
+   Stain board (2026-09-22), repainted modern the same day
    Every page reads like a refinisher's stain sample board: each band is
    one real stain tone with a faint grain, pale at the top, walnut and
    Jacobean toward the estimate. Loaded after styles.min.css on every page;
@@ -17,48 +17,52 @@
 }
 
 body.sb {
-  /* Stains */
-  --natural: #e6d2ae;
-  --natural-hi: #f2e6cf;
-  --golden: #d29b55;
-  --walnut: #4a2f1f;
-  --jacobean: #2a1c14;
-  --tile: #2b5f6e;
-  --tile-hi: #9fcad3;
-  --char: #17100b;
+  /* Palette (2026-09-22 modern pass). The old stain names are kept so every
+     rule and older layer keeps working: natural = paper, natural-hi = card
+     white, golden = mist, walnut = graphite, jacobean = midnight,
+     tile = Ocean State blue. */
+  --natural: #f5f7fa;
+  --natural-hi: #ffffff;
+  --golden: #e8edf3;
+  --walnut: #111827;
+  --jacobean: #0a1020;
+  --tile: #1d5bd8;
+  --tile-hi: #8db4ff;
+  --char: #070b14;
 
   /* Roles (the older layers read these names) */
   --bg: var(--natural);
   --bg-2: var(--natural-hi);
   --bg-3: var(--natural-hi);
-  --ink: #1e140d;
-  --muted: #4d3b2c;
-  --faint: #6b5644;
-  --line: rgba(30, 20, 13, 0.16);
-  --line-strong: rgba(30, 20, 13, 0.32);
+  --ink: #0f172a;
+  --muted: #475467;
+  --faint: #667085;
+  --line: rgba(15, 23, 42, 0.16);
+  --line-strong: rgba(15, 23, 42, 0.32);
   --accent: var(--tile);
-  --accent-rgb: 43, 95, 110;
-  --accent-shadow-rgb: 20, 45, 52;
+  --accent-rgb: 29, 91, 216;
+  --accent-shadow-rgb: 12, 40, 100;
   --accent-soft: var(--tile);
-  --oak-light: #3a7686;
+  --oak-light: #3b6fe0;
   --button-ink: #ffffff;
   --slate: var(--tile);
   --mineral: var(--tile);
-  --clay: #7a4a26;
-  --copper-deep: #7a4a26;
+  --clay: #334155;
+  --copper-deep: #334155;
   --plaster: var(--natural-hi);
   --font:
     "Archivo", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font);
-  --board-radius: 3px;
+  --board-radius: 16px;
   --board-shadow:
-    0 1px 0 rgba(255, 248, 235, 0.35) inset,
-    0 10px 24px -14px rgba(30, 20, 13, 0.45);
+    0 0 0 1px rgba(15, 23, 42, 0.06),
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 18px 40px -22px rgba(15, 23, 42, 0.28);
 
   /* Grain: long horizontal fibres, drawn once, tinted by each band */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='480'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0019 0.19' numOctaves='4' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.09 0 0 0 0 0.04 0 0 -1.7 0 0.98'/%3E%3C/filter%3E%3Crect width='1600' height='480' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grain: none;
 
   --band: var(--natural);
   --grain-alpha: 0.2;
@@ -72,7 +76,7 @@ body.sb {
 }
 html:has(body.sb) {
   color-scheme: light;
-  background: var(--char, #17100b);
+  background: var(--char, #070b14);
 }
 
 /* ---- Band tones. A band sets its stain and the ink that reads on it. ---- */
@@ -95,8 +99,8 @@ body.sb .estimate-guide {
   isolation: isolate;
   background: var(--band) !important;
   color: var(--ink);
-  border-top: 1px solid rgba(0, 0, 0, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 248, 235, 0.22);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: none;
 }
 body.sb .sb-hero::before,
 body.sb #work::before,
@@ -129,21 +133,21 @@ body.sb #why,
 body.sb .service-proof,
 body.sb .city-section--tint {
   --band: var(--golden);
-  --muted: #3b2717;
-  --faint: #4d3421;
-  --line: rgba(30, 20, 13, 0.22);
+  --muted: #334155;
+  --faint: #475467;
+  --line: rgba(15, 23, 42, 0.22);
   --grain-alpha: 0.14;
 }
 /* Tile blue: the one wet room */
 body.sb #bathrooms {
   --band: var(--tile);
-  --ink: #f6efe2;
-  --muted: #d9e8ea;
-  --faint: #c0d6da;
-  --line: rgba(246, 239, 226, 0.22);
-  --line-strong: rgba(246, 239, 226, 0.4);
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
+  --faint: #94a3b8;
+  --line: rgba(241, 245, 249, 0.22);
+  --line-strong: rgba(241, 245, 249, 0.4);
   --accent: var(--natural-hi);
-  --button-ink: var(--ink-dark, #1e140d);
+  --button-ink: var(--ink-dark, #0f172a);
   --grain-alpha: 0.16;
 }
 /* Special walnut */
@@ -151,13 +155,13 @@ body.sb .proof-reel,
 body.sb #about,
 body.sb .service-faq {
   --band: var(--walnut);
-  --ink: #f4e8d3;
-  --muted: #dcc9ad;
-  --faint: #c4ae8f;
-  --line: rgba(244, 232, 211, 0.18);
-  --line-strong: rgba(244, 232, 211, 0.36);
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
+  --faint: #94a3b8;
+  --line: rgba(241, 245, 249, 0.18);
+  --line-strong: rgba(241, 245, 249, 0.36);
   --accent: var(--tile-hi);
-  --button-ink: #1e140d;
+  --button-ink: #0f172a;
   --slate: var(--tile-hi);
   --grain-alpha: 0.4;
 }
@@ -165,13 +169,13 @@ body.sb .service-faq {
 body.sb .funnel,
 body.sb .city-quote {
   --band: var(--jacobean);
-  --ink: #f4e8d3;
-  --muted: #d6c3a6;
-  --faint: #bca78a;
-  --line: rgba(244, 232, 211, 0.16);
-  --line-strong: rgba(244, 232, 211, 0.34);
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
+  --faint: #94a3b8;
+  --line: rgba(241, 245, 249, 0.16);
+  --line-strong: rgba(241, 245, 249, 0.34);
   --accent: var(--tile-hi);
-  --button-ink: #1e140d;
+  --button-ink: #0f172a;
   --slate: var(--tile-hi);
   --grain-alpha: 0.45;
 }
@@ -259,13 +263,13 @@ body.sb .callbar__quote {
   font-stretch: 108%;
   font-weight: 700;
   letter-spacing: 0;
-  border-radius: 2px;
+  border-radius: 12px;
   background: var(--accent);
   color: var(--button-ink);
   border: 0;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
-    0 3px 0 rgba(0, 0, 0, 0.28);
+    0 10px 24px -12px rgba(var(--accent-rgb), 0.75);
   text-decoration: none;
   transition:
     transform 0.12s ease,
@@ -278,11 +282,12 @@ body.sb .hero__cta:hover {
   filter: brightness(1.08);
   background: var(--accent);
   color: var(--button-ink);
+  transform: translateY(-1px);
 }
 body.sb .btn-action:active,
 body.sb .quote-submit:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.28);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px -2px rgba(var(--accent-rgb), 0.6);
 }
 body.sb .btn-action--dark {
   background: transparent;
@@ -312,7 +317,7 @@ body.sb #about :focus-visible,
 body.sb .proof-reel :focus-visible,
 body.sb #bathrooms :focus-visible,
 body.sb .sb-swatch:focus-visible {
-  outline-color: #f2e6cf;
+  outline-color: #f8fafc;
 }
 
 /* ---- Header: a plain natural board, one seam under it ---- */
@@ -320,10 +325,10 @@ body.sb .sitehdr,
 body.sb .sitehdr.is-stuck,
 body.sb.service-page .sitehdr,
 body.sb.city-page .sitehdr {
-  background: rgba(230, 210, 174, 0.94);
+  background: rgba(255, 255, 255, 0.82);
   -webkit-backdrop-filter: saturate(1.2) blur(10px);
   backdrop-filter: saturate(1.2) blur(10px);
-  border-bottom: 1px solid rgba(30, 20, 13, 0.18);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: none;
   color: var(--ink);
 }
@@ -445,8 +450,8 @@ body.sb .sb-choice a {
   display: inline-flex;
   align-items: center;
   min-height: 42px;
-  padding: 0 14px;
-  border-radius: 2px;
+  padding: 0 16px;
+  border-radius: 999px;
   background: var(--natural-hi);
   color: var(--ink);
   font-size: 15px;
@@ -476,10 +481,13 @@ body.sb .sb-hero__trust li {
 }
 body.sb .sb-hero__trust li::before {
   content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--tile);
-  transform: rotate(45deg);
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--tile)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 11px no-repeat;
 }
 
 /* Three photo boards, ends staggered like a running-bond floor */
@@ -496,7 +504,8 @@ body.sb .sb-board {
   height: 100%;
   overflow: hidden;
   background: var(--walnut);
-  box-shadow: 0 18px 40px -18px rgba(30, 20, 13, 0.55);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.55);
 }
 body.sb .sb-board--2 {
   height: 84%;
@@ -515,11 +524,14 @@ body.sb .sb-board img {
 }
 body.sb .sb-board figcaption {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 7px 11px;
-  background: rgba(23, 16, 11, 0.82);
-  color: #f2e6cf;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(7, 11, 20, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
   font-size: 13px;
   font-weight: 600;
   font-stretch: 90%;
@@ -531,12 +543,14 @@ body.sb .sb-rail {
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
   margin-top: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 0 clamp(12px, 2vw, 24px) clamp(12px, 2vw, 24px);
+  border-top: 0;
 }
 body.sb .sb-swatch {
   --sw: var(--natural);
-  --sw-ink: #1e140d;
+  --sw-ink: #0f172a;
   position: relative;
   isolation: isolate;
   display: flex;
@@ -548,9 +562,11 @@ body.sb .sb-swatch {
   background-color: var(--sw);
   color: var(--sw-ink);
   text-decoration: none;
-  border-left: 1px solid rgba(0, 0, 0, 0.28);
-  box-shadow: inset 1px 0 0 rgba(255, 248, 235, 0.18);
-  transition: padding-bottom 0.25s ease;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.07);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 body.sb .sb-swatch:first-child {
   border-left: 0;
@@ -579,7 +595,14 @@ body.sb .sb-swatch span {
   line-height: 1.1;
 }
 body.sb .sb-swatch:hover {
-  padding-bottom: 26px;
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 0 0 1px rgba(15, 23, 42, 0.07),
+    0 18px 36px -20px rgba(15, 23, 42, 0.45);
+}
+body.sb .sb-swatch span::after {
+  content: " \2192";
+  font-stretch: 100%;
 }
 body.sb .sb-swatch:hover span {
   text-decoration: underline;
@@ -587,7 +610,7 @@ body.sb .sb-swatch:hover span {
   text-underline-offset: 0.18em;
 }
 body.sb .sb-swatch--natural {
-  --sw: #dcc39a;
+  --sw: #ffffff;
   --gx: -120px;
 }
 body.sb .sb-swatch--golden {
@@ -596,17 +619,17 @@ body.sb .sb-swatch--golden {
 }
 body.sb .sb-swatch--tile {
   --sw: var(--tile);
-  --sw-ink: #f6efe2;
+  --sw-ink: #f1f5f9;
   --gx: -560px;
 }
 body.sb .sb-swatch--walnut {
   --sw: var(--walnut);
-  --sw-ink: #f4e8d3;
+  --sw-ink: #f1f5f9;
   --gx: -700px;
 }
 body.sb .sb-swatch--jacobean {
   --sw: var(--jacobean);
-  --sw-ink: #f4e8d3;
+  --sw-ink: #f1f5f9;
   --gx: -820px;
 }
 body.sb .sb-swatch--tile::before {
@@ -620,7 +643,7 @@ body.sb .sb-hero__scene {
   gap: 10px;
   min-height: 48px;
   background: var(--char);
-  color: #e6d2ae;
+  color: #cbd5e1;
   font-size: 14px;
   font-weight: 600;
   font-stretch: 92%;
@@ -706,11 +729,11 @@ body.sb .loader {
 }
 body.sb .hero__overlay,
 body.sb .hero__block {
-  --ink: #f4e8d3;
-  --muted: #dcc9ad;
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
 }
 body.sb .hero__title {
-  color: #f4e8d3;
+  color: #f1f5f9;
   font-size: clamp(40px, 6vw, 96px);
   line-height: 0.92;
   font-stretch: 125%;
@@ -719,14 +742,14 @@ body.sb .hero__title {
 }
 body.sb .hero__eyebrow,
 body.sb .hero__sub {
-  color: #dcc9ad;
+  color: #cbd5e1;
 }
 body.sb .hero__cta {
   --accent: var(--tile-hi);
-  --button-ink: #1e140d;
+  --button-ink: #0f172a;
 }
 body.sb .loader__fill {
-  background: var(--golden);
+  background: var(--tile-hi);
 }
 
 /* ==================================================================
@@ -753,15 +776,15 @@ body.sb .service-faq__item,
 body.sb .city-service,
 body.sb .city-checklist {
   background: var(--natural-hi);
-  color: #1e140d;
+  color: #0f172a;
   border: 0;
   border-radius: var(--board-radius);
   box-shadow: var(--board-shadow);
-  --ink: #1e140d;
-  --muted: #4d3b2c;
-  --faint: #6b5644;
-  --line: rgba(30, 20, 13, 0.16);
-  --line-strong: rgba(30, 20, 13, 0.32);
+  --ink: #0f172a;
+  --muted: #475467;
+  --faint: #667085;
+  --line: rgba(15, 23, 42, 0.16);
+  --line-strong: rgba(15, 23, 42, 0.32);
   --accent: var(--tile);
   --button-ink: #ffffff;
 }
@@ -801,7 +824,8 @@ body.sb .service-photo,
 body.sb .service-proof__item,
 body.sb .city-hero__photo,
 body.sb .city-work figure {
-  border-radius: 2px;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 body.sb .proof-reel h2 {
@@ -825,19 +849,19 @@ body.sb .svc svg {
 }
 body.sb .svc--estimate {
   background: var(--jacobean);
-  --ink: #f4e8d3;
-  --muted: #dcc9ad;
-  color: #f4e8d3;
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
+  color: #f1f5f9;
 }
 body.sb .svc--estimate .svc__h,
 body.sb .svc--estimate .svc__p {
-  color: #f4e8d3;
+  color: #f1f5f9;
 }
 body.sb .svc--estimate .btn-action,
 body.sb .svc--estimate .btn-action--dark {
   background: var(--tile-hi);
-  color: #1e140d;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+  color: #0f172a;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.6);
 }
 body.sb .spec {
   color: var(--tile);
@@ -851,20 +875,20 @@ body.sb #bathrooms .tile__list svg {
 }
 body.sb #bathrooms .btn-action {
   background: var(--natural-hi);
-  color: #1e140d;
+  color: #0f172a;
 }
 body.sb #bathrooms .svc__more {
-  color: #f6efe2;
+  color: #f1f5f9;
   text-decoration-color: var(--tile-hi);
 }
 body.sb .tilecell__label {
-  background: rgba(23, 16, 11, 0.82);
-  color: #f2e6cf;
+  background: rgba(7, 11, 20, 0.82);
+  color: #f8fafc;
   font-family: var(--font);
   font-stretch: 90%;
   letter-spacing: 0;
   text-transform: none;
-  border-radius: 0;
+  border-radius: 999px;
 }
 
 /* Service area */
@@ -876,18 +900,18 @@ body.sb .service-related__links a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0 16px;
-  border-radius: 2px;
+  padding: 0 18px;
+  border-radius: 999px;
   background: var(--natural-hi);
-  color: #1e140d;
+  color: #0f172a;
   border: 0;
-  box-shadow: inset 0 0 0 1px rgba(30, 20, 13, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.24);
   font-weight: 650;
   text-decoration: none;
 }
 body.sb .town:hover,
 body.sb .service-related__links a:hover {
-  background: #1e140d;
+  background: #0f172a;
   color: var(--natural-hi);
 }
 body.sb .service-boundary h3 {
@@ -900,7 +924,7 @@ body.sb #about .about-fig img {
 }
 body.sb #about .btn-action {
   background: var(--tile-hi);
-  color: #1e140d;
+  color: #0f172a;
 }
 
 /* Why: golden oak */
@@ -910,7 +934,7 @@ body.sb .review__q {
   font-weight: 740;
   font-size: 22px;
   line-height: 1.2;
-  color: #1e140d;
+  color: #0f172a;
 }
 body.sb .review__stars {
   color: var(--tile);
@@ -950,16 +974,16 @@ body.sb .quote-card__eyebrow {
   font-stretch: 112%;
   font-size: 24px;
   font-weight: 780;
-  color: #1e140d;
+  color: #0f172a;
 }
 body.sb .quote-card__value {
   background: var(--natural);
   border: 0;
   border-left: 4px solid var(--tile);
-  border-radius: 0;
+  border-radius: 12px;
 }
 body.sb .quote-form label {
-  color: #1e140d;
+  color: #0f172a;
   font-weight: 650;
   font-size: 15px;
   letter-spacing: 0;
@@ -967,16 +991,16 @@ body.sb .quote-form label {
   font-stretch: 94%;
 }
 body.sb .quote-form label span {
-  color: #6b5644;
+  color: #667085;
   font-weight: 500;
 }
 body.sb .quote-form input,
 body.sb .quote-form select,
 body.sb .quote-form textarea {
-  background-color: #fffaf0;
-  color: #1e140d;
-  border: 1px solid rgba(30, 20, 13, 0.3);
-  border-radius: 2px;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.3);
+  border-radius: 12px;
   font-family: var(--font);
   font-size: 16px;
 }
@@ -984,7 +1008,7 @@ body.sb .quote-form input:focus,
 body.sb .quote-form select:focus,
 body.sb .quote-form textarea:focus {
   border-color: var(--tile);
-  box-shadow: 0 0 0 3px rgba(43, 95, 110, 0.25);
+  box-shadow: 0 0 0 3px rgba(29, 91, 216, 0.22);
   outline: none;
 }
 body.sb .quote-submit {
@@ -996,52 +1020,52 @@ body.sb .quote-call,
 body.sb .quote-fineprint,
 body.sb .quote-card__hint,
 body.sb .quote-card__required {
-  color: #4d3b2c;
+  color: #475467;
 }
 body.sb .quote-call {
   font-weight: 650;
 }
 body.sb .quote-success h3,
 body.sb .quote-success p {
-  color: #1e140d;
+  color: #0f172a;
 }
 
 /* Footer and call bar */
 body.sb footer,
 body.sb .service-footer {
   background: var(--char);
-  color: #dcc9ad;
+  color: #cbd5e1;
   border-top: 0;
   font-family: var(--font);
 }
 body.sb footer a,
 body.sb footer strong,
 body.sb .service-footer a {
-  color: #f2e6cf !important;
+  color: #f8fafc !important;
 }
 body.sb footer .seo-links a,
 body.sb .service-footer .seo-links a {
-  color: #dcc9ad !important;
+  color: #cbd5e1 !important;
 }
 body.sb .callbar,
 body.sb .callbar.callbar.callbar {
-  background: rgba(23, 16, 11, 0.96);
-  border-top: 1px solid rgba(244, 232, 211, 0.14);
+  background: rgba(7, 11, 20, 0.96);
+  border-top: 1px solid rgba(241, 245, 249, 0.14);
 }
 body.sb .callbar .callbar__call,
 html body.sb .callbar a.callbar__call {
-  color: #f2e6cf;
+  color: #f8fafc;
   background: transparent;
-  box-shadow: inset 0 0 0 1px rgba(244, 232, 211, 0.4);
-  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(241, 245, 249, 0.4);
+  border-radius: 12px;
 }
 body.sb .callbar .callbar__quote,
 html body.sb .callbar a.callbar__quote {
   background: var(--tile-hi);
-  color: #1e140d;
+  color: #0f172a;
 }
 body.sb .lightbox {
-  background: rgba(23, 16, 11, 0.94);
+  background: rgba(7, 11, 20, 0.94);
 }
 
 /* ==================================================================
@@ -1085,7 +1109,7 @@ body.sb .service-hero p {
   font-size: 19px;
 }
 body.sb .service-photo {
-  box-shadow: 0 24px 48px -24px rgba(30, 20, 13, 0.6);
+  box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.6);
 }
 body.sb .service-content {
   --band: var(--natural-hi);
@@ -1098,13 +1122,13 @@ body.sb .service-card {
   border-left: 6px solid var(--tile);
 }
 body.sb .service-card p {
-  color: #4d3b2c;
+  color: #475467;
 }
 body.sb .service-faq__item h3 {
-  color: #1e140d;
+  color: #0f172a;
 }
 body.sb .service-faq__item p {
-  color: #4d3b2c;
+  color: #475467;
 }
 body.sb .service-related {
   --band: var(--natural);
@@ -1155,7 +1179,7 @@ body.sb .city-proof-strip {
   border: 0;
 }
 body.sb .city-proof-strip .wrap {
-  color: #f4e8d3;
+  color: #f1f5f9;
 }
 body.sb .city-section {
   --band: var(--natural);
@@ -1171,36 +1195,36 @@ body.sb.city-page .city-call {
   text-decoration-thickness: 2px;
 }
 body.sb .city-quote .city-call {
-  color: #f4e8d3;
+  color: #f1f5f9;
   text-decoration-color: var(--tile-hi);
 }
 body.sb .city-service--help {
   background: var(--walnut);
-  --ink: #f4e8d3;
-  --muted: #dcc9ad;
-  color: #f4e8d3;
+  --ink: #f1f5f9;
+  --muted: #cbd5e1;
+  color: #f1f5f9;
 }
 body.sb .city-service--help h3,
 body.sb .city-service--help p,
 body.sb .city-service--help .city-text-link {
-  color: #f4e8d3;
+  color: #f1f5f9;
 }
 body.sb .city-checklist {
   border-left: 6px solid var(--tile);
 }
 body.sb .city-faq {
   background: var(--natural-hi);
-  border-radius: 2px;
+  border-radius: 12px;
   box-shadow: var(--board-shadow);
   padding: 4px 20px;
-  --ink: #1e140d;
-  --muted: #4d3b2c;
+  --ink: #0f172a;
+  --muted: #475467;
 }
 body.sb .city-faq + .city-faq {
   margin-top: 8px;
 }
 body.sb .city-faq p {
-  color: #4d3b2c;
+  color: #475467;
 }
 body.sb .city-next li::marker {
   color: var(--tile-hi);
@@ -1226,7 +1250,6 @@ body.sb .city-next li::marker {
   }
   body.sb .sb-swatch {
     min-height: 88px;
-    border-top: 1px solid rgba(0, 0, 0, 0.28);
   }
   body.sb .sb-swatch:nth-child(odd) {
     border-left: 0;
@@ -1286,10 +1309,13 @@ body.sb .project-gallery__item figcaption,
 body.sb .deck-proof figcaption,
 body.sb .deck-progress figcaption,
 body.sb .feature__tag {
-  background: rgba(23, 16, 11, 0.84);
-  color: #f2e6cf;
+  background: rgba(7, 11, 20, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
   border: 0;
-  border-radius: 0;
+  border-radius: 999px;
+  margin: 10px;
   box-shadow: none;
 }
 
@@ -1307,7 +1333,7 @@ body.sb .svc--featured::before {
 body.sb .quote-card__required {
   font-size: 14px;
   font-weight: 600;
-  color: #4d3b2c;
+  color: #475467;
 }
 body.sb .quote-card::before {
   content: none;
@@ -1345,7 +1371,7 @@ body.sb .hero__scrollhint {
 }
 
 body.sb .sitehdr .btn-action.btn-action {
-  border-radius: 2px;
+  border-radius: 12px;
   background: var(--tile);
   color: #fff;
 }

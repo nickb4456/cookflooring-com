@@ -33,8 +33,8 @@
       renderer.toneMappingExposure = 1.05;
 
       const scene = new THREE.Scene();
-      scene.fog = new THREE.Fog(0x2a211a, 40, 140);
-      scene.background = new THREE.Color(0x241c16);
+      scene.fog = new THREE.Fog(0x141416, 40, 140);
+      scene.background = new THREE.Color(0x0b0b0c);
 
       const camera = new THREE.PerspectiveCamera(40, 2, 0.1, 250);
 
