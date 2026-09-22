@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-22 (night) — Estimate section alignment
+
+- The estimate section (#quote) now uses the same 1320px centered content
+  column as every other section. It ran edge to edge on wide screens, with the
+  form card pinned to the right edge (1920: 538/72 px vs 300/300 elsewhere).
+- The form card is capped at half the width, so at 1024px the headline column
+  is no longer crushed to 300px. `home-v3.css?v=3`.
+
 ## 2026-09-22 (evening) — Homepage v3: black, white, and gold
 
 - New standalone homepage: `index.html` body rebuilt from scratch, styled by

@@ -1259,16 +1259,16 @@ body.menu-open {
    ================================================================== */
 .funnel3 {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(560px, 50%));
   gap: clamp(40px, 6vw, 110px);
   align-items: start;
-  padding: clamp(96px, 12vw, 176px) var(--pad);
+  /* Same 1320px content column as every other section (it ran edge to edge on wide screens). */
+  padding: clamp(96px, 12vw, 176px) max(var(--pad), calc((100% - var(--max)) / 2));
   background: var(--ink);
   color: #fff;
 }
 .funnel3__pitch {
   max-width: 640px;
-  justify-self: end;
 }
 .funnel3__pitch h2 {
   color: #fff;
