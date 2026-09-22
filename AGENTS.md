@@ -12,7 +12,11 @@ split by concern, byte-faithful.
 - `index.html` — markup. Two things are inline on purpose and must stay inline:
   the JSON-LD `@graph` (SEO: business + WebSite + FAQ) and the Three.js
   `<script type="importmap">` (must be parsed before the module scripts).
-- `css/styles.css` — all styling.
+- `css/styles.css` — base styling (older layers).
+- `css/stain-board.css` — the current design (2026-09-22), loaded last on
+  every page and scoped to `body.sb`. Style changes go here first. It is
+  not minified, so `build-css` does not touch it; bump its `?v=` on every
+  page when you edit it.
 - `js/`
   - `header-scroll.js` — sticky-header solidify on scroll.
   - `hero-deck-scene.js` — [ES module] Three.js scene on `#heroCanvas`; the deck

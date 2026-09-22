@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-09-22 — Stain-board redesign (whole site)
+
+- New visual system in `css/stain-board.css`, loaded after `styles.min.css`
+  (and after `city-pages.css`) on all 22 site pages, scoped to `body.sb`.
+  Each section is a band in a real floor-stain tone (Natural, Golden oak,
+  Special walnut, Jacobean, plus the logo's tile blue for bathrooms) with a
+  faint procedural wood grain. Rollback = drop the link and the `sb` class.
+- Type: Archivo variable (self-hosted `assets/fonts/archivo-var-latin.woff2`,
+  OFL), expanded heavy cuts for headlines. Replaces Hepta Slab and the mono
+  caps labels (`--font-mono` now points at Archivo inside `body.sb`).
+- Action color: tile blue `#2b5f6e` (light tile `#9fcad3` on dark bands).
+- Homepage masthead rebuilt as `.sb-hero`: full-width headline, three
+  staggered photo boards, and a stain-swatch rail that doubles as section nav
+  (Work, Decks, Bathrooms, About, Estimate). The four duplicated trust
+  blocks (desktop list, mobile list, proof-point row, preview photo grid)
+  became one list; the "What to expect" line moved into the lead.
+- Service pages and the guide switched from the dark theme to the light
+  header (`logo-light.svg`); theme-color is `#e6d2ae` everywhere.
+- Phone: "Hardwood up close" gallery was 86 px slivers (also on the old live
+  site); now two even rows.
+- Unchanged: all copy, JSON-LD, forms, tracking, both Three.js scenes,
+  lightbox, sitemap.
+
 ## 2026-09-21 — Deploy workflow for agents
 
 - Added `_tools/deploy.py` (`check`, `build-css`, `ship`, `verify-live`) and

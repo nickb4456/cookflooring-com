@@ -1,0 +1,1400 @@
+/* ==================================================================
+   Stain board (2026-09-22)
+   Every page reads like a refinisher's stain sample board: each band is
+   one real stain tone with a faint grain, pale at the top, walnut and
+   Jacobean toward the estimate. Loaded after styles.min.css on every page;
+   everything is scoped to body.sb so removing this file (and the class)
+   restores the previous design.
+   ================================================================== */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../assets/fonts/archivo-var-latin.woff2") format("woff2");
+}
+
+body.sb {
+  /* Stains */
+  --natural: #e6d2ae;
+  --natural-hi: #f2e6cf;
+  --golden: #d29b55;
+  --walnut: #4a2f1f;
+  --jacobean: #2a1c14;
+  --tile: #2b5f6e;
+  --tile-hi: #9fcad3;
+  --char: #17100b;
+
+  /* Roles (the older layers read these names) */
+  --bg: var(--natural);
+  --bg-2: var(--natural-hi);
+  --bg-3: var(--natural-hi);
+  --ink: #1e140d;
+  --muted: #4d3b2c;
+  --faint: #6b5644;
+  --line: rgba(30, 20, 13, 0.16);
+  --line-strong: rgba(30, 20, 13, 0.32);
+  --accent: var(--tile);
+  --accent-rgb: 43, 95, 110;
+  --accent-shadow-rgb: 20, 45, 52;
+  --accent-soft: var(--tile);
+  --oak-light: #3a7686;
+  --button-ink: #ffffff;
+  --slate: var(--tile);
+  --mineral: var(--tile);
+  --clay: #7a4a26;
+  --copper-deep: #7a4a26;
+  --plaster: var(--natural-hi);
+  --font:
+    "Archivo", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font);
+  --board-radius: 3px;
+  --board-shadow:
+    0 1px 0 rgba(255, 248, 235, 0.35) inset,
+    0 10px 24px -14px rgba(30, 20, 13, 0.45);
+
+  /* Grain: long horizontal fibres, drawn once, tinted by each band */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='480'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0019 0.19' numOctaves='4' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.09 0 0 0 0 0.04 0 0 -1.7 0 0.98'/%3E%3C/filter%3E%3Crect width='1600' height='480' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  --band: var(--natural);
+  --grain-alpha: 0.2;
+  color-scheme: light;
+  background: var(--natural);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  font-stretch: 100%;
+}
+html:has(body.sb) {
+  color-scheme: light;
+  background: var(--char, #17100b);
+}
+
+/* ---- Band tones. A band sets its stain and the ink that reads on it. ---- */
+body.sb .sb-band,
+body.sb .sb-hero,
+body.sb #work,
+body.sb .proof-reel,
+body.sb .project-gallery,
+body.sb .block,
+body.sb .funnel,
+body.sb .service-hero,
+body.sb .service-content,
+body.sb .service-proof,
+body.sb .service-faq,
+body.sb .service-related,
+body.sb .city-hero,
+body.sb .city-section,
+body.sb .estimate-guide {
+  position: relative;
+  isolation: isolate;
+  background: var(--band) !important;
+  color: var(--ink);
+  border-top: 1px solid rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 235, 0.22);
+}
+body.sb .sb-hero::before,
+body.sb #work::before,
+body.sb .proof-reel::before,
+body.sb .project-gallery::before,
+body.sb .block::before,
+body.sb .funnel::before,
+body.sb .service-hero::before,
+body.sb .service-content::before,
+body.sb .service-proof::before,
+body.sb .service-faq::before,
+body.sb .service-related::before,
+body.sb .city-hero::before,
+body.sb .city-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 1600px 480px;
+  opacity: var(--grain-alpha);
+  mix-blend-mode: multiply;
+}
+
+/* Golden oak */
+body.sb .project-gallery,
+body.sb #decks,
+body.sb #why,
+body.sb .service-proof,
+body.sb .city-section--tint {
+  --band: var(--golden);
+  --muted: #3b2717;
+  --faint: #4d3421;
+  --line: rgba(30, 20, 13, 0.22);
+  --grain-alpha: 0.14;
+}
+/* Tile blue: the one wet room */
+body.sb #bathrooms {
+  --band: var(--tile);
+  --ink: #f6efe2;
+  --muted: #d9e8ea;
+  --faint: #c0d6da;
+  --line: rgba(246, 239, 226, 0.22);
+  --line-strong: rgba(246, 239, 226, 0.4);
+  --accent: var(--natural-hi);
+  --button-ink: var(--ink-dark, #1e140d);
+  --grain-alpha: 0.16;
+}
+/* Special walnut */
+body.sb .proof-reel,
+body.sb #about,
+body.sb .service-faq {
+  --band: var(--walnut);
+  --ink: #f4e8d3;
+  --muted: #dcc9ad;
+  --faint: #c4ae8f;
+  --line: rgba(244, 232, 211, 0.18);
+  --line-strong: rgba(244, 232, 211, 0.36);
+  --accent: var(--tile-hi);
+  --button-ink: #1e140d;
+  --slate: var(--tile-hi);
+  --grain-alpha: 0.4;
+}
+/* Jacobean: the estimate, darkest board on the sample */
+body.sb .funnel,
+body.sb .city-quote {
+  --band: var(--jacobean);
+  --ink: #f4e8d3;
+  --muted: #d6c3a6;
+  --faint: #bca78a;
+  --line: rgba(244, 232, 211, 0.16);
+  --line-strong: rgba(244, 232, 211, 0.34);
+  --accent: var(--tile-hi);
+  --button-ink: #1e140d;
+  --slate: var(--tile-hi);
+  --grain-alpha: 0.45;
+}
+
+/* ---- Type ---- */
+body.sb h1,
+body.sb h2,
+body.sb h3,
+body.sb .block__h,
+body.sb .work__head,
+body.sb .journey__h,
+body.sb .funnel__h,
+body.sb .hero__title,
+body.sb .svc__h {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 780;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+body.sb h2,
+body.sb .block__h,
+body.sb .work__head,
+body.sb .funnel__h,
+body.sb .journey__h {
+  font-size: clamp(30px, 3.7vw, 54px);
+  line-height: 1.02;
+}
+body.sb h3 {
+  font-stretch: 104%;
+  font-weight: 720;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+body.sb p,
+body.sb li {
+  text-wrap: pretty;
+}
+body.sb .block__lead,
+body.sb .work__lead,
+body.sb .journey__sub,
+body.sb .funnel__p,
+body.sb .svc__p,
+body.sb main p {
+  color: var(--muted);
+}
+body.sb strong,
+body.sb b {
+  color: var(--ink);
+  font-weight: 700;
+}
+/* Small labels: sentence case, regular tracking, a narrow cut of the same face */
+body.sb .eyebrow2,
+body.sb .work__kicker,
+body.sb .hero__eyebrow,
+body.sb .quote-card__eyebrow,
+body.sb .service-boundary__label,
+body.sb .review__stars,
+body.sb .area-towns__label,
+body.sb .stage__label,
+body.sb .spec {
+  font-family: var(--font);
+  font-stretch: 82%;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  color: var(--muted);
+}
+body.sb .eyebrow2::before,
+body.sb .work__kicker::before {
+  content: none;
+}
+body.sb a {
+  text-underline-offset: 0.2em;
+}
+
+/* ---- Actions: tile blue, square ends like a cut board ---- */
+body.sb .btn-action,
+body.sb .quote-submit,
+body.sb .hero__cta,
+body.sb .callbar__quote {
+  font-family: var(--font);
+  font-stretch: 108%;
+  font-weight: 700;
+  letter-spacing: 0;
+  border-radius: 2px;
+  background: var(--accent);
+  color: var(--button-ink);
+  border: 0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 3px 0 rgba(0, 0, 0, 0.28);
+  text-decoration: none;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+body.sb .btn-action:hover,
+body.sb .quote-submit:hover,
+body.sb .hero__cta:hover {
+  filter: brightness(1.08);
+  background: var(--accent);
+  color: var(--button-ink);
+}
+body.sb .btn-action:active,
+body.sb .quote-submit:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.28);
+}
+body.sb .btn-action--dark {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+body.sb .btn-action--dark:hover {
+  background: var(--ink);
+  color: var(--band, var(--natural));
+}
+body.sb .svc__more,
+body.sb .city-text-link,
+body.sb .city-page .city-text-link {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+body.sb :focus-visible {
+  outline: 3px solid var(--tile);
+  outline-offset: 3px;
+}
+body.sb .funnel :focus-visible,
+body.sb #about :focus-visible,
+body.sb .proof-reel :focus-visible,
+body.sb #bathrooms :focus-visible,
+body.sb .sb-swatch:focus-visible {
+  outline-color: #f2e6cf;
+}
+
+/* ---- Header: a plain natural board, one seam under it ---- */
+body.sb .sitehdr,
+body.sb .sitehdr.is-stuck,
+body.sb.service-page .sitehdr,
+body.sb.city-page .sitehdr {
+  background: rgba(230, 210, 174, 0.94);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid rgba(30, 20, 13, 0.18);
+  box-shadow: none;
+  color: var(--ink);
+}
+body.sb .sitenav a:not(.btn-action) {
+  color: var(--ink);
+  font-weight: 600;
+  font-stretch: 100%;
+}
+body.sb .sitenav a:not(.btn-action):hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--tile);
+  text-decoration-thickness: 2px;
+}
+body.sb .sitenav .btn-action {
+  background: var(--tile);
+  color: #fff;
+}
+
+/* ==================================================================
+   Homepage hero
+   ================================================================== */
+body.sb .sb-hero {
+  --band: var(--natural);
+  padding: clamp(92px, 8.6vw, 116px) 0 0;
+  border-top: 0;
+  overflow: hidden;
+}
+body.sb .sb-hero__inner {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+}
+body.sb .sb-hero__where {
+  margin: 0 0 14px;
+  font-stretch: 86%;
+  font-size: 16px;
+  font-weight: 650;
+  color: var(--muted);
+}
+body.sb .sb-hero__title {
+  margin: 0;
+  font-size: clamp(54px, 8.6vw, 150px);
+  line-height: 0.86;
+  font-stretch: 125%;
+  font-weight: 820;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  text-wrap: initial;
+}
+body.sb .sb-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  margin-top: clamp(24px, 2.6vw, 36px);
+}
+body.sb .sb-hero__copy {
+  padding-bottom: clamp(28px, 3vw, 44px);
+}
+body.sb .sb-hero__lead {
+  margin: 0 0 26px;
+  max-width: 34ch;
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.5;
+  color: var(--muted);
+}
+body.sb .sb-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 26px;
+}
+body.sb .sb-hero__actions .btn-action--large {
+  min-height: 56px;
+  padding: 0 28px;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+}
+body.sb .sb-hero__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+}
+body.sb .sb-hero__call:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--tile);
+  text-decoration-thickness: 2px;
+}
+body.sb .sb-hero__call .inline-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--tile);
+}
+body.sb .sb-choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 26px 0 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+body.sb .sb-choice > span {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 650;
+  font-stretch: 86%;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+body.sb .sb-choice a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 2px;
+  background: var(--natural-hi);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+body.sb .sb-choice a:hover {
+  background: var(--ink);
+  color: var(--natural-hi);
+}
+body.sb .sb-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--ink);
+}
+body.sb .sb-hero__trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+body.sb .sb-hero__trust li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--tile);
+  transform: rotate(45deg);
+}
+
+/* Three photo boards, ends staggered like a running-bond floor */
+body.sb .sb-hero__boards {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  gap: 10px;
+  height: clamp(340px, 30vw, 460px);
+  align-items: start;
+}
+body.sb .sb-board {
+  position: relative;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--walnut);
+  box-shadow: 0 18px 40px -18px rgba(30, 20, 13, 0.55);
+}
+body.sb .sb-board--2 {
+  height: 84%;
+  margin-top: 8%;
+}
+body.sb .sb-board--3 {
+  height: 92%;
+  margin-top: 3%;
+}
+body.sb .sb-board img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 62%;
+}
+body.sb .sb-board figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 7px 11px;
+  background: rgba(23, 16, 11, 0.82);
+  color: #f2e6cf;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: 90%;
+}
+
+/* The rail: the stain board itself. Each sample is a link to its band. */
+body.sb .sb-rail {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+body.sb .sb-swatch {
+  --sw: var(--natural);
+  --sw-ink: #1e140d;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  min-height: clamp(104px, 9vw, 132px);
+  padding: 16px clamp(14px, 2vw, 28px) 18px;
+  background-color: var(--sw);
+  color: var(--sw-ink);
+  text-decoration: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.28);
+  box-shadow: inset 1px 0 0 rgba(255, 248, 235, 0.18);
+  transition: padding-bottom 0.25s ease;
+}
+body.sb .sb-swatch:first-child {
+  border-left: 0;
+}
+body.sb .sb-swatch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grain);
+  background-size: 900px 300px;
+  background-position: var(--gx, 0) 0;
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+body.sb .sb-swatch small {
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: 86%;
+  opacity: 0.82;
+}
+body.sb .sb-swatch span {
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 760;
+  font-stretch: 110%;
+  line-height: 1.1;
+}
+body.sb .sb-swatch:hover {
+  padding-bottom: 26px;
+}
+body.sb .sb-swatch:hover span {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+body.sb .sb-swatch--natural {
+  --sw: #dcc39a;
+  --gx: -120px;
+}
+body.sb .sb-swatch--golden {
+  --sw: var(--golden);
+  --gx: -340px;
+}
+body.sb .sb-swatch--tile {
+  --sw: var(--tile);
+  --sw-ink: #f6efe2;
+  --gx: -560px;
+}
+body.sb .sb-swatch--walnut {
+  --sw: var(--walnut);
+  --sw-ink: #f4e8d3;
+  --gx: -700px;
+}
+body.sb .sb-swatch--jacobean {
+  --sw: var(--jacobean);
+  --sw-ink: #f4e8d3;
+  --gx: -820px;
+}
+body.sb .sb-swatch--tile::before {
+  opacity: 0.3;
+}
+
+body.sb .sb-hero__scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  background: var(--char);
+  color: #e6d2ae;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: 92%;
+  text-decoration: none;
+}
+body.sb .sb-hero__scene::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+body.sb .sb-hero__scene:hover {
+  color: #fff;
+}
+
+/* One orchestrated entrance: the boards drop into place, then the samples. */
+@media (prefers-reduced-motion: no-preference) {
+  body.sb .sb-hero__title {
+    animation: sb-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.sb .sb-board {
+    animation: sb-lay 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.sb .sb-board--1 {
+    animation-delay: 0.12s;
+  }
+  body.sb .sb-board--2 {
+    animation-delay: 0.22s;
+  }
+  body.sb .sb-board--3 {
+    animation-delay: 0.32s;
+  }
+  body.sb .sb-swatch {
+    animation: sb-rise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  body.sb .sb-swatch:nth-child(1) {
+    animation-delay: 0.45s;
+  }
+  body.sb .sb-swatch:nth-child(2) {
+    animation-delay: 0.52s;
+  }
+  body.sb .sb-swatch:nth-child(3) {
+    animation-delay: 0.59s;
+  }
+  body.sb .sb-swatch:nth-child(4) {
+    animation-delay: 0.66s;
+  }
+  body.sb .sb-swatch:nth-child(5) {
+    animation-delay: 0.73s;
+  }
+}
+@keyframes sb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sb-lay {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==================================================================
+   3D scenes: kept as dark renders; overlay type joins the system.
+   ================================================================== */
+body.sb .hero,
+body.sb .floor,
+body.sb .hero__sticky,
+body.sb .loader {
+  background: var(--char);
+}
+body.sb .hero__overlay,
+body.sb .hero__block {
+  --ink: #f4e8d3;
+  --muted: #dcc9ad;
+}
+body.sb .hero__title {
+  color: #f4e8d3;
+  font-size: clamp(40px, 6vw, 96px);
+  line-height: 0.92;
+  font-stretch: 125%;
+  font-weight: 820;
+  letter-spacing: -0.03em;
+}
+body.sb .hero__eyebrow,
+body.sb .hero__sub {
+  color: #dcc9ad;
+}
+body.sb .hero__cta {
+  --accent: var(--tile-hi);
+  --button-ink: #1e140d;
+}
+body.sb .loader__fill {
+  background: var(--golden);
+}
+
+/* ==================================================================
+   Homepage bands
+   ================================================================== */
+body.sb #work {
+  --band: var(--natural);
+}
+body.sb .work__head {
+  font-size: clamp(38px, 5.6vw, 84px);
+  line-height: 0.95;
+  font-stretch: 122%;
+}
+body.sb .feature__note,
+body.sb .craft-clip,
+body.sb .section-quote,
+body.sb .svc,
+body.sb .review,
+body.sb .service-boundary,
+body.sb .faq-item,
+body.sb .quote-card,
+body.sb .service-card,
+body.sb .service-faq__item,
+body.sb .city-service,
+body.sb .city-checklist {
+  background: var(--natural-hi);
+  color: #1e140d;
+  border: 0;
+  border-radius: var(--board-radius);
+  box-shadow: var(--board-shadow);
+  --ink: #1e140d;
+  --muted: #4d3b2c;
+  --faint: #6b5644;
+  --line: rgba(30, 20, 13, 0.16);
+  --line-strong: rgba(30, 20, 13, 0.32);
+  --accent: var(--tile);
+  --button-ink: #ffffff;
+}
+body.sb .craft-clip {
+  overflow: hidden;
+}
+body.sb .section-quote {
+  border-left: 6px solid var(--tile);
+}
+
+/* Captions and stage labels: a small dark tag laid on the photo */
+body.sb .feature__tag,
+body.sb .stage__label,
+body.sb .gallery__grid figcaption,
+body.sb .project-gallery__item figcaption,
+body.sb .deck-proof figcaption,
+body.sb .deck-progress figcaption,
+body.sb .proof-reel__media figcaption,
+body.sb .service-proof__item figcaption,
+body.sb .city-hero__photo figcaption,
+body.sb .city-work figcaption {
+  font-family: var(--font);
+  font-stretch: 90%;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+body.sb .gallery__grid figure,
+body.sb .project-gallery__item,
+body.sb .deck-proof figure,
+body.sb .deck-progress figure,
+body.sb .stage,
+body.sb .feature__media,
+body.sb .about-fig,
+body.sb .service-photo,
+body.sb .service-proof__item,
+body.sb .city-hero__photo,
+body.sb .city-work figure {
+  border-radius: 2px;
+}
+
+body.sb .proof-reel h2 {
+  color: var(--ink);
+}
+body.sb .project-gallery__head h2 {
+  font-size: clamp(34px, 4.6vw, 68px);
+  line-height: 0.98;
+  font-stretch: 120%;
+}
+
+/* Services: cut list on a natural board */
+body.sb #services {
+  --band: var(--natural);
+}
+body.sb .svc .inline-icon,
+body.sb .svc svg {
+  color: var(--tile);
+  fill: none;
+  stroke: var(--tile);
+}
+body.sb .svc--estimate {
+  background: var(--jacobean);
+  --ink: #f4e8d3;
+  --muted: #dcc9ad;
+  color: #f4e8d3;
+}
+body.sb .svc--estimate .svc__h,
+body.sb .svc--estimate .svc__p {
+  color: #f4e8d3;
+}
+body.sb .svc--estimate .btn-action,
+body.sb .svc--estimate .btn-action--dark {
+  background: var(--tile-hi);
+  color: #1e140d;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+body.sb .spec {
+  color: var(--tile);
+  font-weight: 650;
+}
+
+/* Tile band */
+body.sb #bathrooms .tile__list svg {
+  stroke: var(--tile-hi);
+  color: var(--tile-hi);
+}
+body.sb #bathrooms .btn-action {
+  background: var(--natural-hi);
+  color: #1e140d;
+}
+body.sb #bathrooms .svc__more {
+  color: #f6efe2;
+  text-decoration-color: var(--tile-hi);
+}
+body.sb .tilecell__label {
+  background: rgba(23, 16, 11, 0.82);
+  color: #f2e6cf;
+  font-family: var(--font);
+  font-stretch: 90%;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: 0;
+}
+
+/* Service area */
+body.sb #area {
+  --band: var(--natural);
+}
+body.sb .town,
+body.sb .service-related__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 2px;
+  background: var(--natural-hi);
+  color: #1e140d;
+  border: 0;
+  box-shadow: inset 0 0 0 1px rgba(30, 20, 13, 0.24);
+  font-weight: 650;
+  text-decoration: none;
+}
+body.sb .town:hover,
+body.sb .service-related__links a:hover {
+  background: #1e140d;
+  color: var(--natural-hi);
+}
+body.sb .service-boundary h3 {
+  font-size: 24px;
+}
+
+/* About: walnut */
+body.sb #about .about-fig img {
+  filter: saturate(1.05);
+}
+body.sb #about .btn-action {
+  background: var(--tile-hi);
+  color: #1e140d;
+}
+
+/* Why: golden oak */
+body.sb .review__q {
+  font-family: var(--display);
+  font-stretch: 108%;
+  font-weight: 740;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #1e140d;
+}
+body.sb .review__stars {
+  color: var(--tile);
+}
+
+/* FAQ */
+body.sb #faq {
+  --band: var(--natural);
+}
+body.sb .faq-item summary,
+body.sb .city-faq summary {
+  font-weight: 700;
+  font-stretch: 104%;
+  color: var(--ink);
+}
+body.sb .faq-item + .faq-item {
+  margin-top: 8px;
+}
+
+/* Estimate: Jacobean with a natural-oak form board */
+body.sb .funnel__h {
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: 0.92;
+  font-stretch: 125%;
+  font-weight: 820;
+}
+body.sb .funnel__trust svg {
+  stroke: var(--tile-hi);
+  color: var(--tile-hi);
+}
+body.sb .quote-card {
+  padding: clamp(22px, 3vw, 36px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+body.sb .quote-card__eyebrow {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-size: 24px;
+  font-weight: 780;
+  color: #1e140d;
+}
+body.sb .quote-card__value {
+  background: var(--natural);
+  border: 0;
+  border-left: 4px solid var(--tile);
+  border-radius: 0;
+}
+body.sb .quote-form label {
+  color: #1e140d;
+  font-weight: 650;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  font-stretch: 94%;
+}
+body.sb .quote-form label span {
+  color: #6b5644;
+  font-weight: 500;
+}
+body.sb .quote-form input,
+body.sb .quote-form select,
+body.sb .quote-form textarea {
+  background-color: #fffaf0;
+  color: #1e140d;
+  border: 1px solid rgba(30, 20, 13, 0.3);
+  border-radius: 2px;
+  font-family: var(--font);
+  font-size: 16px;
+}
+body.sb .quote-form input:focus,
+body.sb .quote-form select:focus,
+body.sb .quote-form textarea:focus {
+  border-color: var(--tile);
+  box-shadow: 0 0 0 3px rgba(43, 95, 110, 0.25);
+  outline: none;
+}
+body.sb .quote-submit {
+  width: 100%;
+  min-height: 56px;
+  font-size: 18px;
+}
+body.sb .quote-call,
+body.sb .quote-fineprint,
+body.sb .quote-card__hint,
+body.sb .quote-card__required {
+  color: #4d3b2c;
+}
+body.sb .quote-call {
+  font-weight: 650;
+}
+body.sb .quote-success h3,
+body.sb .quote-success p {
+  color: #1e140d;
+}
+
+/* Footer and call bar */
+body.sb footer,
+body.sb .service-footer {
+  background: var(--char);
+  color: #dcc9ad;
+  border-top: 0;
+  font-family: var(--font);
+}
+body.sb footer a,
+body.sb footer strong,
+body.sb .service-footer a {
+  color: #f2e6cf !important;
+}
+body.sb footer .seo-links a,
+body.sb .service-footer .seo-links a {
+  color: #dcc9ad !important;
+}
+body.sb .callbar,
+body.sb .callbar.callbar.callbar {
+  background: rgba(23, 16, 11, 0.96);
+  border-top: 1px solid rgba(244, 232, 211, 0.14);
+}
+body.sb .callbar .callbar__call,
+html body.sb .callbar a.callbar__call {
+  color: #f2e6cf;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(244, 232, 211, 0.4);
+  border-radius: 2px;
+}
+body.sb .callbar .callbar__quote,
+html body.sb .callbar a.callbar__quote {
+  background: var(--tile-hi);
+  color: #1e140d;
+}
+body.sb .lightbox {
+  background: rgba(23, 16, 11, 0.94);
+}
+
+/* ==================================================================
+   Service pages, Rhode Island hub, guide
+   ================================================================== */
+body.sb.service-page {
+  background: var(--natural);
+  color: var(--ink);
+}
+body.sb .service-main {
+  background: transparent;
+  padding-top: 0;
+}
+body.sb .breadcrumbs {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+body.sb .breadcrumbs a {
+  color: var(--ink);
+}
+body.sb.service-page .breadcrumbs {
+  padding-top: 92px;
+}
+body.sb .service-hero {
+  --band: var(--natural);
+  border-top: 0;
+  box-shadow: none;
+}
+body.sb.service-page .service-hero h1,
+body.sb .estimate-guide h1 {
+  font-size: clamp(40px, 5.4vw, 84px);
+  line-height: 0.94;
+  font-stretch: 122%;
+  font-weight: 820;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+body.sb .service-hero p {
+  color: var(--muted);
+  font-size: 19px;
+}
+body.sb .service-photo {
+  box-shadow: 0 24px 48px -24px rgba(30, 20, 13, 0.6);
+}
+body.sb .service-content {
+  --band: var(--natural-hi);
+  --grain-alpha: 0.14;
+}
+body.sb .service-list li::marker {
+  color: var(--tile);
+}
+body.sb .service-card {
+  border-left: 6px solid var(--tile);
+}
+body.sb .service-card p {
+  color: #4d3b2c;
+}
+body.sb .service-faq__item h3 {
+  color: #1e140d;
+}
+body.sb .service-faq__item p {
+  color: #4d3b2c;
+}
+body.sb .service-related {
+  --band: var(--natural);
+}
+body.sb .estimate-guide {
+  --band: var(--natural-hi);
+  padding-top: 32px;
+  padding-bottom: 64px;
+  border-top: 0;
+}
+body.sb .estimate-guide h2 {
+  font-size: clamp(26px, 3vw, 40px);
+}
+body.sb .estimate-guide a:not(.btn-action) {
+  color: var(--ink);
+  text-decoration-color: var(--tile);
+  text-decoration-thickness: 2px;
+}
+body.sb .estimate-checklist li::marker {
+  color: var(--tile);
+}
+
+/* ==================================================================
+   City pages
+   ================================================================== */
+body.sb.city-page h1,
+body.sb.city-page h2,
+body.sb.city-page h3 {
+  font-family: var(--display);
+}
+body.sb.city-page h1 {
+  font-size: clamp(40px, 5.6vw, 88px);
+  line-height: 0.94;
+  font-stretch: 122%;
+  font-weight: 820;
+  letter-spacing: -0.03em;
+}
+body.sb.city-page h1 span {
+  color: inherit;
+}
+body.sb .city-hero {
+  --band: var(--natural);
+  border-top: 0;
+  box-shadow: none;
+}
+body.sb .city-proof-strip {
+  background: var(--walnut);
+  border: 0;
+}
+body.sb .city-proof-strip .wrap {
+  color: #f4e8d3;
+}
+body.sb .city-section {
+  --band: var(--natural);
+}
+body.sb .city-nearby {
+  --band: var(--natural-hi);
+  --grain-alpha: 0.14;
+}
+body.sb.city-page .city-call {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--tile);
+  text-decoration-thickness: 2px;
+}
+body.sb .city-quote .city-call {
+  color: #f4e8d3;
+  text-decoration-color: var(--tile-hi);
+}
+body.sb .city-service--help {
+  background: var(--walnut);
+  --ink: #f4e8d3;
+  --muted: #dcc9ad;
+  color: #f4e8d3;
+}
+body.sb .city-service--help h3,
+body.sb .city-service--help p,
+body.sb .city-service--help .city-text-link {
+  color: #f4e8d3;
+}
+body.sb .city-checklist {
+  border-left: 6px solid var(--tile);
+}
+body.sb .city-faq {
+  background: var(--natural-hi);
+  border-radius: 2px;
+  box-shadow: var(--board-shadow);
+  padding: 4px 20px;
+  --ink: #1e140d;
+  --muted: #4d3b2c;
+}
+body.sb .city-faq + .city-faq {
+  margin-top: 8px;
+}
+body.sb .city-faq p {
+  color: #4d3b2c;
+}
+body.sb .city-next li::marker {
+  color: var(--tile-hi);
+  font-weight: 800;
+}
+
+/* ==================================================================
+   Small screens
+   ================================================================== */
+@media (max-width: 900px) {
+  body.sb .sb-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  body.sb .sb-hero__boards {
+    order: -1;
+    height: clamp(300px, 70vw, 460px);
+  }
+  body.sb .sb-hero__copy {
+    padding-bottom: 32px;
+  }
+  body.sb .sb-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.sb .sb-swatch {
+    min-height: 88px;
+    border-top: 1px solid rgba(0, 0, 0, 0.28);
+  }
+  body.sb .sb-swatch:nth-child(odd) {
+    border-left: 0;
+  }
+  body.sb .sb-swatch--jacobean {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  body.sb {
+    font-size: 16px;
+  }
+  body.sb .sb-hero {
+    padding-top: 88px;
+  }
+  body.sb .sb-hero__inner {
+    width: calc(100% - 36px);
+  }
+  body.sb .sb-hero__title {
+    font-size: clamp(44px, 13.4vw, 64px);
+    font-stretch: 118%;
+  }
+  body.sb .sb-hero__boards {
+    grid-template-columns: 1.5fr 1fr;
+    height: 340px;
+  }
+  body.sb .sb-board--3 {
+    display: none;
+  }
+  body.sb .sb-hero__actions .btn-action--large {
+    width: 100%;
+    justify-content: center;
+  }
+  body.sb .sb-choice a {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
+  body.sb .sb-swatch span {
+    font-size: 17px;
+  }
+  body.sb.service-page .breadcrumbs {
+    padding-top: 80px;
+  }
+}
+@media print {
+  body.sb .sb-band::before,
+  body.sb .block::before,
+  body.sb .estimate-guide::before {
+    display: none;
+  }
+}
+
+/* Photo tags: always the same dark tag with oak-white text */
+body.sb .stage__label,
+body.sb .gallery__grid figcaption,
+body.sb .project-gallery__item figcaption,
+body.sb .deck-proof figcaption,
+body.sb .deck-progress figcaption,
+body.sb .feature__tag {
+  background: rgba(23, 16, 11, 0.84);
+  color: #f2e6cf;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Old layers set mono caps labels; on the stain board they are sentence case */
+body.sb .quote-card__required,
+body.sb .quote-form label,
+body.sb .masthead__eyebrow,
+body.sb .hero__scrollhint,
+body.sb .loader__label,
+body.sb .svc--featured::before {
+  font-family: var(--font);
+  letter-spacing: 0;
+  text-transform: none;
+}
+body.sb .quote-card__required {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4d3b2c;
+}
+body.sb .quote-card::before {
+  content: none;
+  display: none;
+}
+body.sb .svc--featured::before {
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  font-stretch: 86%;
+  font-weight: 700;
+  color: var(--tile);
+}
+body.sb .spec::before,
+body.sb .tile .spec::before {
+  content: none;
+  display: none;
+}
+body.sb .review__stars {
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  font-weight: 700;
+}
+body.sb .quote-call {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3em;
+}
+body.sb .hero__scrollhint {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+body.sb .sitehdr .btn-action.btn-action {
+  border-radius: 2px;
+  background: var(--tile);
+  color: #fff;
+}
+body.sb .sitehdr .sitehdr__phone.sitehdr__phone {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0 4px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* FAQ and guide: give the boards their inner margin */
+body.sb .faq-item {
+  padding: 4px 22px;
+}
+body.sb .faq-item summary {
+  padding-block: 18px;
+}
+body.sb .estimate-guide {
+  padding-inline: clamp(20px, 4vw, 56px);
+}
+body.sb.service-page .breadcrumbs {
+  padding-top: 72px;
+}
+
+/* Phone: the plank gallery was 86px-wide slivers; lay it as two even rows */
+@media (max-width: 560px) {
+  body.sb .gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 170px;
+    gap: 8px;
+  }
+  body.sb .gallery__grid figure {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: auto;
+    height: 100%;
+    margin: 0;
+  }
+  body.sb .gallery__grid figure:nth-child(1),
+  body.sb .gallery__grid figure:nth-child(4) {
+    grid-column: 1 / -1 !important;
+    grid-row: span 1 !important;
+  }
+  body.sb .gallery__grid figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

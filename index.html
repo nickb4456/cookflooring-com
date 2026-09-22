@@ -15,7 +15,7 @@
     <!-- Local / geo signals -->
     <meta name="geo.region" content="US-RI" />
     <meta name="geo.placename" content="Cranston, Rhode Island" />
-    <meta name="theme-color" content="#f6f1ea" />
+    <meta name="theme-color" content="#e6d2ae" />
 
     <!-- Open Graph / social -->
     <meta property="og:type" content="business.business" />
@@ -275,11 +275,12 @@
         ]
       }
     </script>
-    <link rel="preload" href="assets/fonts/hepta-slab-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/styles.min.css?v=20260922cities" />
+    <link rel="stylesheet" href="css/stain-board.css?v=20260922sb" />
     <script src="js/business-config.js" defer></script>
   </head>
-  <body class="home-page">
+  <body class="home-page sb">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="sitehdr" id="siteHeader">
       <a class="brand" href="#top" aria-label="Cook Flooring & Tile home">
@@ -294,129 +295,85 @@
     </header>
 
     <main id="main-content" tabindex="-1">
-    <section class="masthead" id="top" aria-labelledby="mastheadTitle">
-      <div class="masthead__inner">
-        <div class="masthead__copy">
-          <p class="masthead__eyebrow">Owner-operated · Cranston, RI</p>
-          <h1 id="mastheadTitle">
-            Rhode Island<br /> flooring.
-          </h1>
-          <p class="masthead__lead">
-            Hardwood installation and refinishing by a Cranston crew serving Rhode Island.
-          </p>
-          <div class="masthead__actions">
-            <a class="btn-action btn-action--large" href="#quote">Request a free estimate</a>
-            <a class="masthead__call" href="tel:+14016020958">
-              <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.7 3.8.7.6 0 1 .4 1 1v3.6c0 .6-.4 1-1 1C10.5 21.3 2.7 13.5 2.7 3.7c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.6.7 3.8.1.4 0 .8-.2 1.1l-2.2 2.2Z"/></svg>
-              Call <span data-business-phone>(401) 602-0958</span>
-            </a>
+    <section class="sb-hero" id="top" aria-labelledby="mastheadTitle">
+      <div class="sb-hero__inner">
+        <p class="sb-hero__where">Owner-operated in Cranston, Rhode Island</p>
+        <h1 class="sb-hero__title" id="mastheadTitle">Rhode Island<br /> flooring.</h1>
+        <div class="sb-hero__grid">
+          <div class="sb-hero__copy">
+            <p class="sb-hero__lead">
+              Hardwood installation and refinishing by a Cranston crew serving Rhode Island.
+              A clear scope, careful prep, and a clean finish.
+            </p>
+            <div class="sb-hero__actions">
+              <a class="btn-action btn-action--large" href="#quote">Request a free estimate</a>
+              <a class="sb-hero__call" href="tel:+14016020958">
+                <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.7 3.8.7.6 0 1 .4 1 1v3.6c0 .6-.4 1-1 1C10.5 21.3 2.7 13.5 2.7 3.7c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.6.7 3.8.1.4 0 .8-.2 1.1l-2.2 2.2Z"/></svg>
+                Call <span data-business-phone>(401) 602-0958</span>
+              </a>
+            </div>
+            <div class="project-choice sb-choice" aria-label="Choose a project to start your estimate">
+              <span>What are you planning?</span>
+              <a href="#quote" data-project-choice="Refinish existing floors">Refinish my floors</a>
+              <a href="#quote" data-project-choice="Hardwood install">Install hardwood</a>
+              <a href="#quote" data-project-choice="Bathroom / tile">Bathroom or tile</a>
+              <a href="#quote" data-project-choice="Deck">Deck</a>
+            </div>
+            <ul class="sb-hero__trust" aria-label="Cook Flooring trust points">
+              <li>Registered and insured</li>
+              <li>Written, itemized scope</li>
+              <li>Owner-operated crew</li>
+            </ul>
           </div>
-          <div class="masthead__price-card masthead__desktop-hide" aria-label="What to expect from Cook Flooring">
-            <span class="masthead__price-kicker">What to expect</span>
-            <strong>A clear scope, careful prep, and a clean finish.</strong>
-            <span>On-site walkthrough · Written itemized estimate · Direct crew contact</span>
+          <div class="sb-hero__boards" aria-label="Recent Cook Flooring projects">
+            <figure class="sb-board sb-board--1">
+              <img
+                src="assets/responsive/home-hero-white-oak-800.webp"
+                srcset="assets/responsive/home-hero-white-oak-480.webp 480w, assets/responsive/home-hero-white-oak-800.webp 800w"
+                sizes="(max-width: 700px) 100vw, 28vw"
+                width="960"
+                height="1280"
+                alt="White oak hardwood installed across a bright Rhode Island room"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <figcaption>White oak, full-room layout</figcaption>
+            </figure>
+            <figure class="sb-board sb-board--2">
+              <img
+                src="assets/featured/white-oak-detail-800.webp"
+                srcset="assets/featured/white-oak-detail-480.webp 480w, assets/featured/white-oak-detail-800.webp 800w, assets/featured/white-oak-detail-960.webp 960w"
+                sizes="(max-width: 700px) 50vw, 16vw"
+                width="960"
+                height="1280"
+                alt="Close view of clean white oak flooring fitted at a doorway transition"
+                decoding="async"
+              />
+              <figcaption>Clean transitions</figcaption>
+            </figure>
+            <figure class="sb-board sb-board--3">
+              <img
+                src="assets/featured/white-oak-finished-800.webp"
+                srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
+                sizes="(max-width: 700px) 50vw, 16vw"
+                width="960"
+                height="1280"
+                alt="Finished white oak floor in a Rhode Island living space"
+                decoding="async"
+              />
+              <figcaption>Finished, ready to live on</figcaption>
+            </figure>
           </div>
-          <div class="project-choice" aria-label="Choose a project to start your estimate">
-            <span>What are you planning?</span>
-            <a href="#quote" data-project-choice="Refinish existing floors">Refinish my floors</a>
-            <a href="#quote" data-project-choice="Hardwood install">Install hardwood</a>
-            <a href="#quote" data-project-choice="Bathroom / tile">Bathroom or tile</a>
-            <a href="#quote" data-project-choice="Deck">Deck</a>
-          </div>
-          <ul class="masthead__trust masthead__trust--desktop" aria-label="Cook Flooring trust points">
-            <li>Registered and insured</li>
-            <li>Written, itemized scope</li>
-            <li>Owner-operated crew</li>
-          </ul>
-          <ul class="masthead__trust masthead__trust--mobile" aria-label="Cook Flooring trust points">
-            <li>Real Rhode Island projects</li>
-            <li>Registered and insured</li>
-            <li>Owner-operated crew</li>
-          </ul>
-        </div>
-        <div class="masthead__media" aria-label="Recent Cook Flooring projects">
-          <figure class="masthead__floor">
-            <img
-              src="assets/responsive/home-hero-white-oak-800.webp"
-              srcset="assets/responsive/home-hero-white-oak-480.webp 480w, assets/responsive/home-hero-white-oak-800.webp 800w"
-              sizes="(max-width: 560px) 100vw, (max-width: 920px) 54vw, 48vw"
-              width="960"
-              height="1280"
-              alt="White oak hardwood installed across a bright Rhode Island room"
-              fetchpriority="high"
-              decoding="async"
-            />
-            <figcaption>White oak · Full-room layout</figcaption>
-          </figure>
-          <figure class="masthead__detail">
-            <img
-              src="assets/featured/white-oak-detail-960.webp"
-              srcset="assets/featured/white-oak-detail-480.webp 480w, assets/featured/white-oak-detail-800.webp 800w, assets/featured/white-oak-detail-960.webp 960w"
-              sizes="(max-width: 860px) 46vw, 22vw"
-              width="960"
-              height="1280"
-              alt="Close view of clean white oak flooring fitted at a doorway transition"
-              loading="lazy"
-              fetchpriority="low"
-              decoding="async"
-            />
-            <figcaption>Clean transitions · Natural grain</figcaption>
-          </figure>
-          <figure class="masthead__finish">
-            <img
-              src="assets/featured/white-oak-finished-960.webp"
-              srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
-              sizes="(min-width: 921px) 18vw, 1px"
-              width="960"
-              height="1280"
-              alt="Finished white oak floor in a Rhode Island living space"
-              loading="lazy"
-              fetchpriority="low"
-              decoding="async"
-            />
-            <figcaption>Finished · Ready to live on</figcaption>
-          </figure>
         </div>
       </div>
-      <ul class="masthead__proofpoints" aria-label="Why homeowners choose Cook Flooring">
-        <li><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Registered and insured</li>
-        <li><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Written, itemized scope</li>
-        <li><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Owner-operated crew</li>
-      </ul>
-      <div class="masthead__preview-grid" aria-label="White oak project details">
-        <figure>
-          <img
-            src="assets/featured/white-oak-detail-960.webp"
-            srcset="assets/featured/white-oak-detail-480.webp 480w, assets/featured/white-oak-detail-800.webp 800w, assets/featured/white-oak-detail-960.webp 960w"
-            sizes="(max-width: 767px) 100vw, 50vw"
-            width="960"
-            height="1280"
-            alt="Clean white oak transition fitted at a mirrored closet"
-            loading="lazy"
-            fetchpriority="low"
-            decoding="async"
-          />
-          <figcaption>Clean transitions · Natural grain</figcaption>
-        </figure>
-        <figure>
-          <img
-            src="assets/featured/white-oak-finished-960.webp"
-            srcset="assets/featured/white-oak-finished-480.webp 480w, assets/featured/white-oak-finished-800.webp 800w, assets/featured/white-oak-finished-960.webp 960w"
-            sizes="(max-width: 767px) 100vw, 50vw"
-            width="960"
-            height="1280"
-            alt="Finished white oak floor ready to live on"
-            loading="lazy"
-            fetchpriority="low"
-            decoding="async"
-          />
-          <figcaption>Finished · Ready to live on</figcaption>
-        </figure>
-      </div>
-      <a class="masthead__scene-link" href="#floor">
-        <span>Watch a hardwood floor come together</span>
-        <i aria-hidden="true"></i>
-      </a>
+      <nav class="sb-rail" aria-label="Jump to a section">
+        <a class="sb-swatch sb-swatch--natural" href="#work"><small>Natural</small><span>Recent work</span></a>
+        <a class="sb-swatch sb-swatch--golden" href="#decks"><small>Golden oak</small><span>Decks</span></a>
+        <a class="sb-swatch sb-swatch--tile" href="#bathrooms"><small>Tile blue</small><span>Bathrooms</span></a>
+        <a class="sb-swatch sb-swatch--walnut" href="#about"><small>Special walnut</small><span>Who we are</span></a>
+        <a class="sb-swatch sb-swatch--jacobean" href="#quote"><small>Jacobean</small><span>Free estimate</span></a>
+      </nav>
+      <a class="sb-hero__scene" href="#floor">Watch a hardwood floor come together</a>
     </section>
 
     <section class="floor" id="floor" aria-labelledby="floorSceneTitle">
