@@ -23,6 +23,11 @@
   gone site-wide.
 - New images: `assets/v3/amber-hardwood-crew-{900,1600}.webp` (web-sized from
   `wide-hardwood-progress.jpg`).
+- Effects (`js/home-vfx.js`, all off under reduced motion): dust drifting in
+  the hero window light (canvas, paused off screen), a light sweep across the
+  finish, cursor light, "plank wipe" photo reveals (six strips slide off in a
+  running bond), magnetic gold buttons, gallery skew with scroll speed, and a
+  faint film grain.
 
 ## 2026-09-22 — Stain-board redesign (whole site)
 
