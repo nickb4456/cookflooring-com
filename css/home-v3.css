@@ -1867,3 +1867,265 @@ body.v3::after {
     animation: none;
   }
 }
+
+/* ==================================================================
+   Glows (2026-09-22). Gold light only; everything calm, nothing flashes.
+   js/home-glow.js feeds pointer positions (--gx/--gy, --fx/--fy).
+   ================================================================== */
+@property --ang {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Gold buttons: warm halo, bloom on hover, a light sweep across */
+.pill--gold,
+.quote-submit {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 10px 34px -10px rgba(226, 179, 60, 0.6);
+}
+.pill--gold:hover,
+.quote-submit:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 236, 180, 0.6),
+    0 12px 54px -6px rgba(240, 197, 82, 0.85);
+}
+.pill--gold::after,
+.quote-submit::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% -60%;
+  z-index: -1;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.pill--gold:hover::after,
+.quote-submit:hover::after {
+  left: 130%;
+}
+.bar__cta {
+  box-shadow: 0 6px 24px -8px rgba(226, 179, 60, 0.7);
+}
+
+/* Section label rule: a glint runs along it */
+.label::before {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 35%, #fff4cf 50%, var(--gold) 65%, var(--gold) 100%);
+  background-size: 300% 100%;
+  animation: glint 4.5s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(226, 179, 60, 0.45);
+}
+@keyframes glint {
+  0%, 60% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Hero: gold kicker glows softly; the rule under the headline carries light */
+.hero3__kicker {
+  text-shadow: 0 0 28px rgba(226, 179, 60, 0.45);
+}
+.hero3__foot {
+  position: relative;
+  border-top-color: transparent;
+}
+.hero3__foot::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(240, 197, 82, 0.9) 30%, rgba(255, 255, 255, 0.14) 60%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 14px rgba(240, 197, 82, 0.5);
+  animation: rule-light 7s ease-in-out infinite alternate;
+}
+@keyframes rule-light {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+
+/* Ticker: edges fade out */
+.ticker {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  background: linear-gradient(90deg, #d9a92f, var(--gold) 30%, #f3cf6a 50%, var(--gold) 70%, #d9a92f);
+}
+
+/* Services: hovered name fills with moving gold light */
+.index a:hover .index__name,
+.index a:focus-visible .index__name {
+  background: linear-gradient(100deg, var(--ink) 0%, var(--ink) 28%, #a87b10 40%, var(--gold) 48%, #fff0bf 52%, var(--gold) 56%, var(--ink) 72%, var(--ink) 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: name-shine 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes name-shine {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+.index__float {
+  box-shadow:
+    0 0 0 1px rgba(226, 179, 60, 0.7),
+    0 30px 80px -20px rgba(226, 179, 60, 0.55);
+}
+
+/* Dark rooms: a soft gold light follows the pointer */
+.diff,
+.craft,
+.funnel3 {
+  position: relative;
+  isolation: isolate;
+}
+.diff::before,
+.craft::before,
+.funnel3::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(640px circle at var(--gx, 20%) var(--gy, 30%), rgba(226, 179, 60, 0.13), transparent 60%),
+    radial-gradient(900px circle at 85% 110%, rgba(226, 179, 60, 0.07), transparent 60%);
+  transition: background-position 0.2s;
+}
+
+/* Before/after handle: a halo breathes around the knob */
+.compare__handle {
+  box-shadow: 0 0 16px rgba(240, 197, 82, 0.8);
+}
+.compare__handle i::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(240, 197, 82, 0.7);
+  animation: halo 2.2s ease-out infinite;
+}
+@keyframes halo {
+  from { transform: scale(0.85); opacity: 0.9; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+/* Photos: a thin gold edge and warm glow on hover */
+.work3__rail figure,
+.decks3__grid figure {
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+.work3__rail figure:hover,
+.decks3__grid figure:hover {
+  box-shadow:
+    0 0 0 1px rgba(226, 179, 60, 0.8),
+    0 24px 60px -24px rgba(226, 179, 60, 0.7);
+}
+.work3__rail figure:hover img,
+.decks3__grid figure:hover img {
+  filter: brightness(1.06) saturate(1.06);
+}
+
+/* Craft: the video gets a warm backlight; the facts glow */
+.craft__video {
+  box-shadow: 0 40px 120px -40px rgba(226, 179, 60, 0.45);
+}
+.craft__facts dt {
+  text-shadow: 0 0 34px rgba(226, 179, 60, 0.45);
+}
+
+/* Process: outlined numbers light up gold as each step arrives */
+.steps__n {
+  transition:
+    -webkit-text-stroke-color 0.9s ease,
+    text-shadow 0.9s ease;
+}
+.steps li.in .steps__n {
+  -webkit-text-stroke-color: var(--gold);
+  text-shadow: 0 0 30px rgba(226, 179, 60, 0.35);
+}
+.steps li:nth-child(2) .steps__n { transition-delay: 0.15s; }
+.steps li:nth-child(3) .steps__n { transition-delay: 0.3s; }
+.steps li:nth-child(4) .steps__n { transition-delay: 0.45s; }
+.steps li::before {
+  box-shadow: 0 0 12px rgba(226, 179, 60, 0.6);
+}
+
+/* Towns: hover gets a gold glow under the line */
+.towns3 a:hover {
+  text-shadow: 0 0 24px rgba(226, 179, 60, 0.35);
+}
+
+/* FAQ: the open marker glows */
+.faq3__item[open] summary::after {
+  box-shadow: 0 0 20px rgba(226, 179, 60, 0.6);
+}
+
+/* Estimate card: light travels around its edge */
+.quote-card {
+  isolation: isolate;
+  background: transparent;
+  box-shadow: 0 0 90px -20px rgba(226, 179, 60, 0.35);
+}
+.quote-card::before,
+.quote-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.quote-card::before {
+  inset: -2px;
+  z-index: -2;
+  background: conic-gradient(
+    from var(--ang),
+    rgba(226, 179, 60, 0.15) 0deg,
+    rgba(226, 179, 60, 0.15) 250deg,
+    var(--gold) 300deg,
+    #fff3c4 320deg,
+    var(--gold) 340deg,
+    rgba(226, 179, 60, 0.15) 360deg
+  );
+  animation: edge-run 6s linear infinite;
+}
+.quote-card::after {
+  inset: 0;
+  z-index: -1;
+  background: #fff;
+}
+@keyframes edge-run {
+  to { --ang: 360deg; }
+}
+
+/* Footer wordmark: lit by a moving gold spotlight */
+.foot3__word {
+  background: radial-gradient(
+    520px circle at var(--fx, 30%) var(--fy, 60%),
+    #fff4cf 0%,
+    var(--gold) 22%,
+    #ffffff 52%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.foot3__word b {
+  color: var(--gold);
+  -webkit-text-fill-color: var(--gold);
+  text-shadow: 0 0 60px rgba(226, 179, 60, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label::before,
+  .hero3__foot::before,
+  .compare__handle i::before,
+  .quote-card::before,
+  .index a:hover .index__name {
+    animation: none;
+  }
+}

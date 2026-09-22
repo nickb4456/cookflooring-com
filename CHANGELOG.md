@@ -28,6 +28,12 @@
   finish, cursor light, "plank wipe" photo reveals (six strips slide off in a
   running bond), magnetic gold buttons, gallery skew with scroll speed, and a
   faint film grain.
+- Glows (`css/home-v3.css` glow block + `js/home-glow.js`): gold button halo,
+  bloom and light sweep; glinting section rules; gold shimmer on hovered
+  service names; pointer-following gold light in the dark sections; pulsing
+  halo on the before/after handle; process numbers light up gold; light
+  running around the estimate card edge; footer "Cook." lit by a drifting
+  gold spotlight.
 
 ## 2026-09-22 — Stain-board redesign (whole site)
 
