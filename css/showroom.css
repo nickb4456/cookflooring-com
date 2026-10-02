@@ -846,6 +846,193 @@ body.sb .city-next li::marker {
   color: var(--gold-deep);
 }
 
+/* Homeowner guides: readable articles within the existing showroom palette. */
+body.sb .guide-article h1,
+body.sb .guide-hub h1 {
+  font-size: clamp(38px, 4.7vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  margin-top: 28px;
+  max-width: 19ch;
+}
+body.sb.guide-page .breadcrumbs {
+  padding-top: 32px;
+}
+body.sb.guide-page .estimate-guide {
+  max-width: 960px;
+}
+body.sb.guide-page .eyebrow2,
+body.sb.guide-page .block__lead,
+body.sb.guide-page .guide-byline,
+body.sb.guide-page figcaption {
+  color: var(--muted);
+}
+body.sb .guide-byline {
+  margin: 24px 0;
+  font-size: 14px;
+}
+body.sb .guide-photo {
+  margin: 32px 0;
+}
+body.sb .guide-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+}
+body.sb .guide-photo figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+body.sb .guide-toc {
+  background: var(--paper-2);
+  border-left: 4px solid var(--gold);
+  padding: 24px 28px;
+}
+body.sb .guide-toc ol,
+body.sb .guide-list,
+body.sb .guide-related ul,
+body.sb .guide-service-reading ul {
+  padding-left: 22px;
+}
+body.sb .guide-toc li,
+body.sb .guide-list li,
+body.sb .guide-related li,
+body.sb .guide-service-reading li {
+  margin: 10px 0;
+  line-height: 1.65;
+}
+body.sb .guide-article h2 {
+  max-width: 28ch;
+  font-size: clamp(26px, 3vw, 36px);
+  scroll-margin-top: 100px;
+}
+body.sb .guide-article section > p {
+  margin: 18px 0;
+}
+body.sb .guide-table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+}
+body.sb .guide-table-wrap:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+body.sb .guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+}
+body.sb .guide-table caption {
+  text-align: left;
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+body.sb .guide-table th,
+body.sb .guide-table td {
+  border-bottom: 1px solid var(--hair);
+  padding: 14px 12px;
+  vertical-align: top;
+}
+body.sb .guide-table thead {
+  background: var(--paper-2);
+}
+body.sb .guide-table th:first-child {
+  width: 23%;
+}
+body.sb.guide-page .estimate-guide__contact {
+  background: var(--paper-2);
+  border-radius: 0;
+  border-top: 4px solid var(--gold);
+}
+body.sb .guide-related {
+  margin-top: 48px;
+}
+body.sb .guide-cards {
+  margin-top: 44px;
+}
+body.sb .guide-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+  padding: 30px 0;
+  border-top: 1px solid var(--hair);
+}
+body.sb .guide-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  object-fit: cover;
+}
+body.sb .guide-card h2 {
+  margin: 12px 0;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+body.sb .guide-card p:not(.eyebrow2) {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 14px 0;
+}
+body.sb .guide-card__date {
+  color: var(--muted);
+  font-size: 13px;
+}
+body.sb .guide-card__number {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 56px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  padding: 30px;
+}
+body.sb .guide-service-reading {
+  padding: 40px 0;
+}
+body.sb .guide-service-reading a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 600px) {
+  body.sb .guide-card {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  body.sb .guide-card img {
+    height: 220px;
+  }
+  body.sb .guide-table {
+    min-width: 520px;
+  }
+  body.sb .guide-toc {
+    padding: 20px;
+  }
+  body.sb .guide-card__number {
+    display: none;
+  }
+}
+@media print {
+  body.sb .guide-photo,
+  body.sb .guide-toc,
+  body.sb .guide-related {
+    display: none;
+  }
+  body.sb .guide-table-wrap {
+    overflow: visible;
+  }
+  body.sb .guide-table {
+    min-width: 0;
+  }
+}
+
 /* ==================================================================
    Small screens
    ================================================================== */

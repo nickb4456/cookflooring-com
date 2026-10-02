@@ -72,7 +72,7 @@ def render(city):
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#f8f4ee" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="{url}" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
@@ -83,17 +83,24 @@ def render(city):
   <meta property="og:image" content="{SITE}/assets/featured/white-oak-room-progress-960.webp" />
   <meta property="og:image:alt" content="Cook Flooring white oak installation in progress" />
   <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:alt" content="Cook Flooring white oak installation in progress" />
+    <meta name="twitter:image" content="{SITE}/assets/featured/white-oak-room-progress-960.webp" />
+    <meta name="twitter:description" content="{esc(description)}" />
+    <meta name="twitter:title" content="{esc(title)}" />
   <link rel="preload" href="/assets/fonts/hepta-slab-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/styles.min.css?v={VERSION}" />
-  <link rel="stylesheet" href="/css/city-pages.css?v={VERSION}" />
+  <link rel="preload" href="/assets/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/css/city-pages.css?v={VERSION}" />
+    <link rel="stylesheet" href="/css/stain-board.css?v=20260922m1" />
+    <link rel="stylesheet" href="/css/showroom.css?v=20261002" />
   <script src="/js/business-config.js" defer></script>
-  <script src="/js/tracking-loader.js?v=20260905a" defer></script>
+  <script src="/js/tracking-loader.js?v=20261002" defer></script>
   <script src="/js/lead-tracking.js?v=20260905a" defer></script>
-  <script src="/js/quote-form.js?v={VERSION}" defer></script>
+  <script src="/js/quote-form.js?v=20261002" defer></script>
   <script src="/js/city-page.js?v={VERSION}" defer></script>
   <script type="application/ld+json">{json.dumps(schema, indent=2, ensure_ascii=False)}</script>
 </head>
-<body class="home-page city-page">
+<body class="home-page city-page sb">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="sitehdr is-stuck">
     <a class="brand" href="/" aria-label="Cook Flooring &amp; Tile home"><img class="brand__logo" src="/assets/logo-light.svg" width="170" height="40" alt="" /></a>
@@ -134,7 +141,7 @@ def render(city):
     </div></section>
     <section class="city-section city-nearby" aria-labelledby="nearby-title"><div class="wrap"><h2 id="nearby-title">Also serving nearby communities.</h2><div class="towns">{nearby}<a class="town" href="/service-area/rhode-island/">All service areas</a></div></div></section>
   </main>
-  <footer><div class="wrap"><strong>Cook Flooring &amp; Tile</strong><p>Based in Cranston, Rhode Island. Serving {esc(name)}.<br /><a data-business-phone href="tel:+14016020958">(401) 602-0958</a> · <a href="mailto:nickbilodeau1150@gmail.com">Email our crew</a></p><nav class="seo-links" aria-label="Services and homeowner resources">{service_links}<a href="/service-area/rhode-island/">Rhode Island service area</a><a href="/guides/flooring-estimate-checklist/">Estimate checklist</a></nav></div></footer>
+  <footer><div class="wrap"><strong>Cook Flooring &amp; Tile</strong><p>Based in Cranston, Rhode Island. Serving {esc(name)}.<br /><a data-business-phone href="tel:+14016020958">(401) 602-0958</a> · <a href="mailto:nickbilodeau1150@gmail.com">Email our crew</a></p><nav class="seo-links" aria-label="Services and homeowner resources">{service_links}<a href="/service-area/rhode-island/">Rhode Island service area</a><a href="/guides/">Flooring guides</a><a href="/guides/flooring-estimate-checklist/">Estimate checklist</a></nav></div></footer>
   <div class="callbar" aria-label="Quick contact"><a class="callbar__call" data-business-call href="tel:+14016020958">Call (401) 602-0958</a><a class="callbar__quote" href="#quote">Request a callback</a></div>
 </body>
 </html>

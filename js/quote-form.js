@@ -206,7 +206,7 @@
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = submitButton;
-    if (!btn) return;
+    if (!btn || form.getAttribute("aria-busy") === "true" || card.classList.contains("is-sent")) return;
     if (status) {
       status.textContent = "";
       status.classList.remove("is-error");
