@@ -15,6 +15,11 @@
             video.removeAttribute("loop");
             video.preload = "metadata";
             video.pause();
+            // No motion still needs a picture: show the still frame, not an empty box.
+            if (video.dataset.poster) {
+              video.poster = video.dataset.poster;
+              video.removeAttribute("data-poster");
+            }
           });
           return;
         }

@@ -186,7 +186,7 @@
   /* Scroll reveals */
   if (!reduce && "IntersectionObserver" in window) {
     const targets = doc.querySelectorAll(
-      ".sec__head > *, .index li, .diff__copy > *, .compare, .craft__copy > *, .craft__video, .steps li, .decks3__copy > *, .decks3__grid figure, .towns3, .area3__scope, .faq3__side > *, .faq3__item, .funnel3__pitch > *, .quote-card, .foot3__top > *",
+      ".sec__head > *, .index li, .diff__copy > *, .compare, .craft__copy > *, .craft__video, .craft__inset, .steps li, .decks3__copy > *, .decks3__grid figure, .towns3, .area3__scope, .faq3__side > *, .faq3__item, .funnel3__pitch > *, .quote-card, .foot3__top > *",
     );
     const io = new IntersectionObserver(
       (entries) => {

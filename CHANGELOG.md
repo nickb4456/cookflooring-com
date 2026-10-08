@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-08 — Crew section: second clip (miter saw)
+
+- The crew section now shows a second silent loop: a crew member cutting a
+  white board on the miter saw (7.3 s, 480x600, about 0.5 MB each for WebM and
+  MP4). It sits as a smaller tile lapped over the lower-left corner of the
+  hammer video. The hammer video keeps its size and position.
+- New wrapper `.craft__media` holds both tiles; the new tile is `.craft__inset`.
+  It gets the same scroll reveal and plank wipe as the hammer tile.
+- Fix: with "Reduce Motion" on, both video tiles were empty grey boxes. They
+  now show their still frame.
+- `home-v3.css?v=4`, `home-v3.js?v=2`, `home-vfx.js?v=2`,
+  `video-autoplay.js?v=20261008a`.
+
 ## 2026-09-22 (night) — Estimate section alignment
 
 - The estimate section (#quote) now uses the same 1320px centered content

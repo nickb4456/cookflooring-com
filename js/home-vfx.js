@@ -105,7 +105,7 @@
 
   /* ---- Plank wipe on photos ---- */
   const wipeTargets = doc.querySelectorAll(
-    ".work3__rail figure, .decks3__grid figure, .compare, .craft__video",
+    ".work3__rail figure, .decks3__grid figure, .compare, .craft__video, .craft__inset",
   );
   const STRIPS = 6;
   const wipeIO = new IntersectionObserver(
