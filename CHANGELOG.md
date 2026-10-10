@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-10-10 — Service page depth and a basement flooring guide
+
+- Each of the five service pages gains one planning section ahead of the
+  photo proof (`section.service-content.service-depth`): a comparison table
+  and four short cards. Hardwood: red oak or white oak. Refinishing: how each
+  wood takes a finish, and what changes the price. LVP: how to read a spec
+  sheet. Tile: porcelain, ceramic, or stone. Decks: pressure-treated, cedar,
+  or composite. Pages went from about 350-410 words to 750-1,020.
+- Three new questions per service page, written to the visible FAQ list and
+  the FAQPage JSON-LD from one source so the two match.
+- No CSS or JS change. The new sections reuse `.guide-table` and
+  `.service-faq__item`. On phones the tables scroll sideways inside their
+  wrapper, the same as the guide tables.
+- New guide: `/guides/basement-flooring-rhode-island/`. Linked from the guides
+  hub (card + ItemList), the LVP service page, the LVP vs. hardwood guide,
+  `llms.txt`, and `sitemap.xml`.
+- Meta descriptions shortened on the hardwood (177 to 141 characters) and
+  bathroom tile (167 to 146) pages.
+- Claims rule used for this pass: first-person statements only repeat what the
+  site already said. Prices: only the existing $6 to $12 per square foot
+  hardwood figure. Outside facts are tied to the NWFA homeowner handbook,
+  Shaw's SPC installation guide, and the EPA asbestos page.
+
 ## 2026-10-08 — Crew section: second clip (miter saw)
 
 - The crew section now shows a second silent loop: a crew member cutting a
