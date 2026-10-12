@@ -1001,6 +1001,12 @@ body.sb .guide-service-reading a {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+/* Text links on service pages read as ink with the gold underline, not browser blue. */
+body.sb .guide-service-reading a,
+body.sb .service-list a,
+body.sb .service-faq__item a {
+  color: var(--ink);
+}
 @media (max-width: 600px) {
   body.sb .guide-card {
     grid-template-columns: 1fr;

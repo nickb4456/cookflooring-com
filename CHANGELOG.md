@@ -1,5 +1,42 @@
 # Changelog
 
+## 2026-10-12 — Hardwood floor cost calculator
+
+- New page: `/guides/hardwood-floor-cost-calculator/`. Built for four search
+  terms from the Google Ads report: "how much to refinish hardwood floors",
+  "how much is hardwood flooring installed", "how much is hardwood flooring
+  per square foot installed", and "glue down wood flooring installation".
+- The calculator takes the job (refinish or new hardwood), room sizes or a
+  square-foot total, the finish color, stairs, and the subfloor. It shows a
+  price range, the lines that make it up, and the same floor priced both ways.
+  The rooms are drawn to scale in planks in the picked color.
+- Every number on the page (calculator, tables, FAQ, FAQPage JSON-LD) is
+  written from one price list by a generator kept outside the repo:
+  `~/Downloads/00-reports/cook-flooring-cost-calculator-2026-10-12/tools/build_page.py`.
+  Do not hand-edit prices in the HTML. Change the list and run the script.
+- Prices and where they came from. Installed hardwood, $6 to $12 per square
+  foot: already on the site. Stain color (+$0.75 to $1.25 per square foot),
+  stairs ($50 to $80 per step), and glue-down (+$1 to $2 per square foot):
+  confirmed by Nick on 2026-10-12. Refinishing, $4 to $6 per square foot with
+  a clear finish: a typical Rhode Island range from published cost sites, at
+  Nick's request. It is not the crew's own price list, and the page words it
+  as "typically runs about". Nick also confirmed the crew does glue-down
+  installs, so the hardwood service page now lists glue-down over concrete
+  beside nail-down.
+- New files, loaded by this page only: `css/cost-calculator.css` and
+  `js/cost-calculator.js`. No shared CSS or JS changed, so no cache keys moved.
+- The estimate form is on the page (same Formspree endpoint and
+  `js/quote-form.js`, unchanged). "Get my exact price" sets the project type
+  and writes the ballpark into the details box. It never overwrites text the
+  visitor typed.
+- Ad links can open a tab: `?job=refinish`, `?job=install`, `?job=glue-down`,
+  and `?sqft=450`.
+- Two analytics events, not conversions: `cost_calculator_use` and
+  `cost_calculator_cta`.
+- Linked from the guides hub (first card and ItemList), the hardwood and
+  refinishing service pages (cost FAQ and "Plan your project"), the homepage
+  cost FAQ, `llms.txt`, and `sitemap.xml`.
+
 ## 2026-10-10 — Service page depth and a basement flooring guide
 
 - Each of the five service pages gains one planning section ahead of the
