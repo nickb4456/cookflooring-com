@@ -147,6 +147,13 @@ body.sb.sb .sitenav a:not(.btn-action):hover::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
+body.sb.sb .sitehdr .sitehdr__phone.sitehdr__phone {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-weight: 600 !important;
+}
 body.sb.sb .sitehdr .btn-action.btn-action {
   min-height: 42px;
   padding: 0 20px;
@@ -358,6 +365,9 @@ body.sb.sb.city-page .city-hero h1 {
   text-wrap: balance;
 }
 body.sb.sb.city-page .city-hero h1 span {
+  color: inherit;
+}
+body.sb.sb.city-page .city-hero h1 > span:not(.vw) {
   color: var(--gold);
 }
 body.sb.sb .service-hero .eyebrow2,
@@ -368,6 +378,7 @@ body.sb.sb .city-hero .eyebrow2 {
 }
 body.sb.sb .service-hero p:not(.eyebrow2),
 body.sb.sb .city-hero p:not(.eyebrow2) {
+  margin-top: 0;
   max-width: 46ch;
   color: rgba(255, 255, 255, 0.82);
   font-size: clamp(17px, 1.4vw, 21px);
@@ -382,6 +393,10 @@ body.sb.sb .city-hero .city-actions {
   gap: 12px 14px;
   margin-top: clamp(24px, 3vw, 36px);
   padding-top: 26px;
+}
+body.sb.sb .service-hero h1 + p,
+body.sb.sb .city-hero h1 + p {
+  margin-top: clamp(18px, 2vw, 28px);
 }
 /* the rule above the actions carries light, as under the homepage headline */
 body.sb.sb .service-hero .service-links::before,
@@ -547,6 +562,17 @@ body.sb.sb.guide-page .breadcrumbs {
 }
 body.sb.sb.guide-page .estimate-guide {
   padding-top: 0;
+  border-top: 0;
+}
+body.sb.sb .guide-article > .eyebrow2,
+body.sb.sb .guide-article > h1,
+body.sb.sb .guide-article > .guide-byline,
+body.sb.sb .guide-article > .block__lead,
+body.sb.sb .guide-hub > .eyebrow2,
+body.sb.sb .guide-hub > h1,
+body.sb.sb .guide-hub > .block__lead {
+  margin-top: -1px;
+  border: 0;
 }
 body.sb.sb .guide-article > .eyebrow2,
 body.sb.sb .guide-hub > .eyebrow2 {
@@ -609,7 +635,7 @@ body.sb.sb .guide-photo figcaption {
 }
 
 /* Calculator: the intro block becomes a dark card above the form */
-body.sb.sb .calc-hero {
+body.sb.sb.calc-page .calc-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -618,7 +644,9 @@ body.sb.sb .calc-hero {
   background: var(--ink);
   color: #fff;
 }
-body.sb.sb .calc-hero h1 {
+body.sb.sb.calc-page .calc-hero h1 {
+  max-width: 14ch;
+  margin: 18px 0 0;
   font-family: var(--font);
   font-size: clamp(40px, 4.6vw, 72px);
   font-weight: 800;
@@ -626,14 +654,14 @@ body.sb.sb .calc-hero h1 {
   letter-spacing: -0.055em;
   color: #fff;
 }
-body.sb.sb .calc-hero .eyebrow2 {
+body.sb.sb.calc-page .calc-hero .eyebrow2 {
   color: var(--gold);
 }
-body.sb.sb .calc-hero .block__lead {
+body.sb.sb.calc-page .calc-hero .block__lead {
   margin-top: 18px;
   color: rgba(255, 255, 255, 0.8);
 }
-body.sb.sb .calc-hero::before {
+body.sb.sb.calc-page .calc-hero::before {
   content: "";
   position: absolute;
   inset: 0;
