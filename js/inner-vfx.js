@@ -76,6 +76,24 @@
     map.forEach((_, t) => spy.observe(t));
   }
 
+  /* ---- The homepage's town ticker along the foot of the hero ---- */
+  const tickHost = doc.querySelector(".service-hero, .city-hero");
+  if (tickHost && !tickHost.querySelector(".v3i-ticker")) {
+    const towns = ["Providence", "Cranston", "Warwick", "East Greenwich", "North Kingstown", "Johnston", "Coventry", "West Warwick"];
+    const tick = doc.createElement("div");
+    tick.className = "v3i-ticker";
+    tick.setAttribute("aria-hidden", "true");
+    const track = doc.createElement("div");
+    track.className = "v3i-ticker__track";
+    towns.concat(towns).forEach((t) => {
+      const s = doc.createElement("span");
+      s.textContent = t;
+      track.appendChild(s);
+    });
+    tick.appendChild(track);
+    tickHost.appendChild(tick);
+  }
+
   if (reduce) return;
 
   /* ---- Headline words rise out of a mask ---- */

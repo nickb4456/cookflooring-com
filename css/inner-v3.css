@@ -427,6 +427,53 @@ body.sb.sb .city-hero .city-note {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* The homepage's gold town ticker runs along the foot of the hero.
+   Its room is reserved here so nothing moves when the script fills it. */
+body.sb.sb .service-hero,
+body.sb.sb .city-hero {
+  padding-bottom: calc(clamp(40px, 5vw, 72px) + var(--tick-h, 68px));
+}
+body.sb.sb .v3i-ticker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  overflow: hidden;
+  color: var(--ink);
+  border-block: 1px solid var(--ink);
+  background: linear-gradient(90deg, #d9a92f, var(--gold) 30%, #f3cf6a 50%, var(--gold) 70%, #d9a92f);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+body.sb.sb .v3i-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: v3i-ticker 60s linear infinite;
+}
+body.sb.sb .v3i-ticker span {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 0;
+  font-family: var(--font);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+body.sb.sb .v3i-ticker span::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin: 0 clamp(22px, 2.6vw, 40px);
+  background: var(--ink);
+  transform: rotate(45deg);
+}
+@keyframes v3i-ticker {
+  to { transform: translateX(-50%); }
+}
+
 /* Hero effects layers (added by inner-vfx.js) */
 body.sb.sb .v3i-sheen,
 body.sb.sb .v3i-dust,
@@ -959,7 +1006,8 @@ body.sb.sb .estimate-guide,
 body.sb.sb .city-section {
   --wipe: #ffffff;
 }
-body.sb.sb .guide-photo {
+body.sb.sb .guide-photo,
+body.sb.sb .service-proof {
   --wipe: var(--ink);
 }
 body.sb.sb .v3i-planks {
@@ -1161,7 +1209,8 @@ body.sb.sb .callbar a.callbar__quote {
   body.sb.sb .service-hero .service-links::before,
   body.sb.sb .city-hero .city-actions::before,
   body.sb.sb .service-card::before,
-  body.sb.sb .v3i-sheen {
+  body.sb.sb .v3i-sheen,
+  body.sb.sb .v3i-ticker__track {
     animation: none;
   }
   body.sb.sb .service-photo img,
