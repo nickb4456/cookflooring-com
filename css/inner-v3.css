@@ -1,0 +1,1191 @@
+/* ==================================================================
+   Inner pages, homepage language (2026-10-15)
+   Loaded last on every inner page (services, guides, service area).
+   Brings the homepage v3 look to them: a dark hero room with the floor
+   photo under it, dust in the window light, a light sweep across the
+   finish, plank-wipe photo reveals, glowing gold buttons, scroll
+   reveals, a lit footer wordmark, and film grain.
+   js/inner-vfx.js drives the motion. Without JS everything is visible;
+   under prefers-reduced-motion nothing moves.
+   Selectors start with body.sb.sb so they outrank showroom.css.
+   Rollback = remove the link and the script tag.
+   ================================================================== */
+
+body.sb.sb {
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --stone: #eeede8;
+  --hair-dark: rgba(255, 255, 255, 0.14);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --hdr: 76px;
+  --font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html:has(body.sb.sb) {
+  background: var(--ink, #0a0a0a);
+  scroll-padding-top: 96px;
+}
+
+/* ---- Film grain over everything, very faint (as on the homepage) ---- */
+body.sb.sb::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: v3i-grain 0.9s steps(4) infinite;
+}
+@keyframes v3i-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-2%, -1%); }
+  100% { transform: translate(1%, 3%); }
+}
+
+/* ==================================================================
+   Header: the homepage bar. Ink glass, white words, gold call to action,
+   and a thin gold line that fills as you read down the page.
+   ================================================================== */
+body.sb.sb .sitehdr,
+body.sb.sb .sitehdr.is-stuck,
+body.sb.sb.service-page .sitehdr,
+body.sb.sb.city-page .sitehdr {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--hdr);
+  padding: 0 clamp(20px, 5vw, 72px);
+  background: rgba(10, 10, 10, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background-color 0.3s ease, height 0.3s ease;
+}
+body.sb.sb .sitehdr.is-scrolled {
+  height: 64px;
+  background: rgba(10, 10, 10, 0.94);
+}
+body.sb.sb .sitehdr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #fff1c2 70%, var(--gold));
+  box-shadow: 0 0 12px rgba(226, 179, 60, 0.7);
+  transform: scaleX(var(--read, 0));
+  transform-origin: left center;
+  pointer-events: none;
+}
+body.sb.sb .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+body.sb.sb .brand__emblem {
+  display: block;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.5s var(--ease), filter 0.5s ease;
+}
+body.sb.sb .brand:hover .brand__emblem {
+  transform: rotate(-6deg) scale(1.06);
+  filter: drop-shadow(0 0 14px rgba(226, 179, 60, 0.65));
+}
+body.sb.sb .brand__word {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #fff;
+}
+body.sb.sb .brand__word small {
+  margin-top: 4px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+body.sb.sb .sitenav {
+  gap: clamp(16px, 2vw, 28px);
+}
+body.sb.sb .sitenav a:not(.btn-action) {
+  position: relative;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+body.sb.sb .sitenav a:not(.btn-action)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(226, 179, 60, 0.6);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s var(--ease);
+}
+body.sb.sb .sitenav a:not(.btn-action):hover {
+  color: #fff;
+  text-decoration: none;
+}
+body.sb.sb .sitenav a:not(.btn-action):hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+body.sb.sb .sitehdr .btn-action.btn-action {
+  min-height: 42px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+
+/* ==================================================================
+   Buttons: gold pills with a warm halo, a light sweep, and a highlight
+   that follows the pointer (inner-vfx.js adds .is-magnetic).
+   ================================================================== */
+body.sb.sb .btn-action,
+body.sb.sb .quote-submit {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background-color: var(--gold);
+  color: #0a0a0a;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: 0 10px 34px -10px rgba(226, 179, 60, 0.6);
+  transition:
+    transform 0.25s var(--ease),
+    background-color 0.2s ease,
+    box-shadow 0.25s ease;
+}
+body.sb.sb .btn-action:hover,
+body.sb.sb .quote-submit:hover {
+  background-color: var(--gold-hi);
+  box-shadow:
+    0 0 0 1px rgba(255, 236, 180, 0.6),
+    0 12px 54px -6px rgba(240, 197, 82, 0.85);
+}
+body.sb.sb .btn-action::after,
+body.sb.sb .quote-submit::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% -60%;
+  z-index: -1;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s var(--ease);
+}
+body.sb.sb .btn-action:hover::after,
+body.sb.sb .quote-submit:hover::after {
+  left: 130%;
+}
+body.sb.sb .is-magnetic {
+  background-image: radial-gradient(circle at var(--gx, 50%) 50%, rgba(255, 255, 255, 0.38), transparent 55%);
+}
+body.sb.sb .btn-action--dark {
+  background-color: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+body.sb.sb .btn-action--dark::after {
+  content: none;
+}
+body.sb.sb .btn-action--dark:hover {
+  background-color: var(--ink);
+  color: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--ink), 0 14px 40px -16px rgba(10, 10, 10, 0.6);
+}
+
+/* Section labels: the gold rule carries a glint */
+body.sb.sb .eyebrow2::before {
+  width: 32px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 35%, #fff4cf 50%, var(--gold) 65%, var(--gold) 100%);
+  background-size: 300% 100%;
+  box-shadow: 0 0 10px rgba(226, 179, 60, 0.45);
+  animation: v3i-glint 4.5s ease-in-out infinite;
+}
+@keyframes v3i-glint {
+  0%, 60% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ==================================================================
+   The dark hero room
+   Service pages and town pages: the floor photo fills the room, the
+   words sit low on it, as on the homepage.
+   ================================================================== */
+body.sb.sb.service-page:not(.guide-page) .service-main,
+body.sb.sb.city-page main {
+  position: relative;
+}
+body.sb.sb.service-page:not(.guide-page) .breadcrumbs,
+body.sb.sb.city-page .breadcrumbs {
+  position: absolute;
+  top: calc(var(--hdr) + 18px);
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin-inline: auto;
+  padding: 0;
+}
+body.sb.sb .breadcrumbs {
+  gap: 0 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+body.sb.sb .breadcrumbs a {
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 2px no-repeat;
+  transition: background-size 0.3s var(--ease);
+}
+body.sb.sb .breadcrumbs a:hover {
+  background-size: 100% 2px;
+}
+body.sb.sb .breadcrumbs [aria-current] {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+body.sb.sb .service-hero,
+body.sb.sb .city-hero {
+  --band: var(--ink);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(100vh, 940px);
+  min-height: min(100svh, 940px);
+  padding: calc(var(--hdr) + 92px) 0 clamp(40px, 5vw, 72px);
+  background: var(--ink);
+  color: #fff;
+  border: 0;
+}
+body.sb.sb .service-hero > .wrap,
+body.sb.sb .city-hero > .wrap {
+  display: block;
+  width: min(1320px, calc(100% - 2 * clamp(20px, 5vw, 72px)));
+}
+body.sb.sb .service-photo,
+body.sb.sb .city-hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--ink);
+  overflow: hidden;
+}
+body.sb.sb .service-photo img,
+body.sb.sb .city-hero__photo img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: 55% 55%;
+  transform: scale(1.08);
+  transition: transform 2.6s var(--ease);
+}
+body.sb.sb.is-ready .service-photo img,
+body.sb.sb.is-ready .city-hero__photo img {
+  transform: scale(1);
+}
+body.sb.sb .service-photo::after,
+body.sb.sb .city-hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0) 26%),
+    linear-gradient(0deg, rgba(10, 10, 10, 0.94) 0%, rgba(10, 10, 10, 0.6) 40%, rgba(10, 10, 10, 0.08) 74%),
+    linear-gradient(90deg, rgba(10, 10, 10, 0.62) 0%, rgba(10, 10, 10, 0) 64%);
+}
+/* the town photo caption becomes the homepage's vertical side caption */
+body.sb.sb .city-hero__photo figcaption {
+  position: absolute;
+  top: 50%;
+  right: clamp(14px, 5vw, 66px);
+  left: auto;
+  bottom: auto;
+  z-index: 2;
+  padding: 0;
+  background: none;
+  transform: rotate(180deg) translateY(50%);
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.sb.sb .service-hero h1,
+body.sb.sb.city-page .city-hero h1 {
+  max-width: 13ch;
+  margin: 18px 0 0;
+  font-family: var(--font);
+  font-size: clamp(52px, 7.6vw, 128px);
+  font-weight: 800;
+  font-stretch: 100%;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  color: #fff;
+  text-wrap: balance;
+}
+body.sb.sb.city-page .city-hero h1 span {
+  color: var(--gold);
+}
+body.sb.sb .service-hero .eyebrow2,
+body.sb.sb .city-hero .eyebrow2 {
+  color: var(--gold);
+  font-size: clamp(13px, 1.1vw, 15px);
+  text-shadow: 0 0 24px rgba(226, 179, 60, 0.45);
+}
+body.sb.sb .service-hero p:not(.eyebrow2),
+body.sb.sb .city-hero p:not(.eyebrow2) {
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.5;
+}
+body.sb.sb .service-hero .service-links,
+body.sb.sb .city-hero .city-actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: 26px;
+}
+/* the rule above the actions carries light, as under the homepage headline */
+body.sb.sb .service-hero .service-links::before,
+body.sb.sb .city-hero .city-actions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 640px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(240, 197, 82, 0.9) 30%, rgba(255, 255, 255, 0.14) 60%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 14px rgba(240, 197, 82, 0.5);
+  animation: v3i-rule 7s ease-in-out infinite alternate;
+}
+@keyframes v3i-rule {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+body.sb.sb .service-hero .btn-action--dark,
+body.sb.sb .city-hero .city-call {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s var(--ease);
+}
+body.sb.sb .service-hero .btn-action--dark:hover,
+body.sb.sb .city-hero .city-call:hover {
+  background: #fff;
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+body.sb.sb .city-hero .city-note {
+  margin-top: 18px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hero effects layers (added by inner-vfx.js) */
+body.sb.sb .v3i-sheen,
+body.sb.sb .v3i-dust,
+body.sb.sb .v3i-light {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+body.sb.sb .v3i-sheen {
+  background: linear-gradient(108deg, transparent 38%, rgba(255, 214, 150, 0.1) 46%, rgba(255, 236, 200, 0.26) 50%, rgba(255, 214, 150, 0.1) 54%, transparent 62%) no-repeat;
+  background-size: 260% 100%;
+  background-position: 160% 0;
+  animation: v3i-sheen 8s cubic-bezier(0.45, 0, 0.2, 1) 1.4s infinite;
+}
+@keyframes v3i-sheen {
+  0% { background-position: 160% 0; }
+  55%, 100% { background-position: -60% 0; }
+}
+body.sb.sb .v3i-light {
+  opacity: 0;
+  background: radial-gradient(460px circle at var(--lx, 50%) var(--ly, 50%), rgba(255, 214, 150, 0.2), transparent 62%);
+  transition: opacity 0.5s ease;
+}
+body.sb.sb .v3i-light.is-on {
+  opacity: 1;
+}
+
+/* Headline words rise out of a mask (inner-vfx.js wraps them) */
+body.sb.sb .vw {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0 0.08em 0.08em 0;
+  margin: 0 -0.08em -0.08em 0;
+  vertical-align: top;
+}
+body.sb.sb .vw > i {
+  display: inline-block;
+  font-style: normal;
+  transform: translateY(108%);
+  transition: transform 1.05s var(--ease);
+  transition-delay: calc(0.12s + var(--wi, 0) * 55ms);
+}
+body.sb.sb.is-ready .vw > i {
+  transform: none;
+}
+
+/* ==================================================================
+   Guides, the guide library, and the calculator: the top of the article
+   sits in the same dark room; the photo lands half in it, half out.
+   ================================================================== */
+body.sb.sb.guide-page .breadcrumbs,
+body.sb.sb .guide-article > .eyebrow2,
+body.sb.sb .guide-article > h1,
+body.sb.sb .guide-article > .guide-byline,
+body.sb.sb .guide-article > .block__lead,
+body.sb.sb .guide-hub > .eyebrow2,
+body.sb.sb .guide-hub > h1,
+body.sb.sb .guide-hub > .block__lead {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: var(--ink);
+  box-shadow: 0 0 0 100vmax var(--ink);
+  clip-path: inset(0 -100vmax);
+}
+body.sb.sb.guide-page .breadcrumbs {
+  padding: calc(var(--hdr) + 26px) 0 clamp(36px, 5vw, 64px);
+}
+body.sb.sb.guide-page .estimate-guide {
+  padding-top: 0;
+}
+body.sb.sb .guide-article > .eyebrow2,
+body.sb.sb .guide-hub > .eyebrow2 {
+  display: flex;
+  padding-bottom: 22px;
+  color: var(--gold);
+  text-shadow: 0 0 24px rgba(226, 179, 60, 0.45);
+}
+body.sb.sb .guide-article > h1,
+body.sb.sb .guide-hub > h1 {
+  max-width: none;
+  padding-bottom: 0.18em;
+  font-family: var(--font);
+  font-size: clamp(44px, 6.2vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: #fff;
+  text-wrap: balance;
+}
+body.sb.sb .guide-article > .guide-byline {
+  padding: 18px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+body.sb.sb .guide-article > .guide-byline a {
+  color: #fff;
+}
+body.sb.sb .guide-article > .block__lead,
+body.sb.sb .guide-hub > .block__lead {
+  max-width: none;
+  padding: 22px 0 clamp(120px, 12vw, 170px);
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+body.sb.sb .guide-hub > .block__lead {
+  padding-bottom: clamp(56px, 6vw, 88px);
+}
+body.sb.sb .guide-article > .block__lead {
+  /* keep the reading line short inside the full-bleed band */
+  padding-right: max(0px, calc(100% - 62ch));
+}
+body.sb.sb .guide-photo {
+  position: relative;
+  z-index: 2;
+  margin: calc(-1 * clamp(96px, 10vw, 140px)) 0 40px;
+  overflow: hidden;
+  box-shadow: 0 50px 120px -50px rgba(10, 10, 10, 0.55);
+}
+body.sb.sb .guide-photo img {
+  max-height: 560px;
+  transition: transform 1.2s var(--ease);
+}
+body.sb.sb .guide-photo:hover img {
+  transform: scale(1.025);
+}
+body.sb.sb .guide-photo figcaption {
+  padding: 12px 0 0;
+}
+
+/* Calculator: the intro block becomes a dark card above the form */
+body.sb.sb .calc-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 28px;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--ink);
+  color: #fff;
+}
+body.sb.sb .calc-hero h1 {
+  font-family: var(--font);
+  font-size: clamp(40px, 4.6vw, 72px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: #fff;
+}
+body.sb.sb .calc-hero .eyebrow2 {
+  color: var(--gold);
+}
+body.sb.sb .calc-hero .block__lead {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.8);
+}
+body.sb.sb .calc-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(520px circle at var(--gx, 85%) var(--gy, 0%), rgba(226, 179, 60, 0.18), transparent 60%),
+    radial-gradient(700px circle at 0% 120%, rgba(226, 179, 60, 0.08), transparent 60%);
+}
+
+/* A dust-and-glow layer laid over the dark band of guide pages */
+body.sb.sb .v3i-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  overflow: hidden;
+}
+body.sb.sb .v3i-band canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+body.sb.sb .v3i-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(640px circle at var(--gx, 78%) var(--gy, 30%), rgba(226, 179, 60, 0.16), transparent 60%),
+    radial-gradient(900px circle at 10% 110%, rgba(226, 179, 60, 0.07), transparent 60%);
+}
+body.sb.sb.guide-page .service-main {
+  position: relative;
+}
+
+/* ==================================================================
+   Rooms below the hero
+   ================================================================== */
+body.sb.sb .block__h,
+body.sb.sb .service-content h2,
+body.sb.sb .service-proof h2,
+body.sb.sb .service-faq h2,
+body.sb.sb .service-related h2.block__h,
+body.sb.sb .city-section h2 {
+  font-family: var(--font);
+  font-size: clamp(40px, 5.6vw, 92px);
+  font-weight: 750;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+body.sb.sb .service-content,
+body.sb.sb .service-faq,
+body.sb.sb .service-related,
+body.sb.sb .city-section {
+  padding-block: clamp(80px, 10vw, 150px);
+}
+body.sb.sb .service-related.guide-service-reading {
+  padding-block: clamp(48px, 6vw, 80px);
+}
+body.sb.sb .service-content + .service-content {
+  border-top: 0;
+}
+
+/* Planning and price rooms: warm stone, as the homepage decks room */
+body.sb.sb .service-depth,
+body.sb.sb .city-section--tint {
+  --band: var(--stone);
+  background: var(--stone);
+}
+
+/* Checklist rows: the homepage gold tick */
+body.sb.sb .service-list,
+body.sb.sb .city-next {
+  list-style: none;
+  padding-left: 0;
+}
+body.sb.sb .service-list li,
+body.sb.sb .city-next li {
+  position: relative;
+  padding-left: 34px;
+  margin: 12px 0;
+}
+body.sb.sb .service-list li::before,
+body.sb.sb .city-next li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.9' fill='none' stroke='%230a0a0a' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11px no-repeat;
+  box-shadow: 0 0 14px rgba(226, 179, 60, 0.45);
+}
+
+/* Side card: a dark card with light running round its edge
+   (the homepage estimate card). No coloured side stripes anywhere. */
+body.sb.sb .service-card,
+body.sb.sb .city-checklist,
+body.sb.sb .section-quote,
+body.sb.sb .quote-card__value,
+body.sb.sb .guide-toc {
+  border-left: 0;
+}
+body.sb.sb .service-card {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(26px, 3vw, 40px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  box-shadow: 0 30px 90px -30px rgba(226, 179, 60, 0.45);
+}
+body.sb.sb .service-card::before,
+body.sb.sb .service-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+body.sb.sb .service-card::before {
+  inset: -2px;
+  z-index: -2;
+  background: conic-gradient(from var(--v3i-ang, 0deg), rgba(226, 179, 60, 0.15) 0deg, rgba(226, 179, 60, 0.15) 250deg, var(--gold) 300deg, #fff3c4 320deg, var(--gold) 340deg, rgba(226, 179, 60, 0.15) 360deg);
+  animation: v3i-edge 6s linear infinite;
+}
+body.sb.sb .service-card::after {
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+}
+body.sb.sb .service-card p {
+  color: rgba(255, 255, 255, 0.82);
+}
+@property --v3i-ang {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes v3i-edge {
+  to { --v3i-ang: 360deg; }
+}
+
+/* Cards lift and pick up a gold edge */
+body.sb.sb .service-faq__item,
+body.sb.sb .city-service,
+body.sb.sb .city-checklist,
+body.sb.sb .towns a,
+body.sb.sb .service-related__links a {
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background-color 0.3s ease;
+}
+body.sb.sb .service-faq__item:hover,
+body.sb.sb .city-service:hover {
+  transform: translateY(-4px);
+  border-color: rgba(226, 179, 60, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(226, 179, 60, 0.8),
+    0 26px 60px -30px rgba(226, 179, 60, 0.7);
+}
+body.sb.sb .service-related__links a:hover,
+body.sb.sb .towns a:hover {
+  transform: translateY(-2px);
+  background-color: var(--ink);
+  color: #fff;
+  box-shadow: 0 14px 34px -16px rgba(226, 179, 60, 0.8);
+}
+
+/* Price and comparison tables: an ink head, rows that light up */
+body.sb.sb .guide-table thead,
+body.sb.sb .guide-table thead tr {
+  background: var(--ink);
+}
+body.sb.sb .guide-table thead th {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 0;
+}
+body.sb.sb .guide-table tbody tr {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.sb.sb .guide-table tbody tr:hover {
+  background: rgba(226, 179, 60, 0.1);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+body.sb.sb .guide-table tbody th {
+  color: var(--ink);
+  font-weight: 700;
+}
+body.sb.sb .guide-table caption {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+/* The proof room goes dark, with a gold light that follows the pointer */
+body.sb.sb .service-proof,
+body.sb.sb .city-proof-strip {
+  --band: var(--ink);
+  position: relative;
+  isolation: isolate;
+  background: var(--ink);
+  color: #fff;
+  border-top: 0;
+}
+body.sb.sb .service-proof {
+  padding-block: clamp(80px, 10vw, 150px);
+}
+body.sb.sb .service-proof::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(640px circle at var(--gx, 20%) var(--gy, 30%), rgba(226, 179, 60, 0.13), transparent 60%),
+    radial-gradient(900px circle at 85% 110%, rgba(226, 179, 60, 0.07), transparent 60%);
+}
+body.sb.sb .service-proof h2,
+body.sb.sb .service-proof .eyebrow2 {
+  color: #fff;
+}
+body.sb.sb .service-proof__head p,
+body.sb.sb .service-proof p {
+  color: rgba(255, 255, 255, 0.72);
+}
+body.sb.sb .service-proof__item {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--ink-2);
+  transition: box-shadow 0.4s ease, transform 0.4s var(--ease);
+}
+body.sb.sb .service-proof__item img {
+  transition: transform 1.2s var(--ease), filter 0.4s ease;
+}
+body.sb.sb .service-proof__item:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(226, 179, 60, 0.8),
+    0 24px 60px -24px rgba(226, 179, 60, 0.7);
+}
+body.sb.sb .service-proof__item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.06) saturate(1.06);
+}
+body.sb.sb .service-proof__item figcaption {
+  background: var(--ink-2);
+  color: rgba(255, 255, 255, 0.72);
+}
+body.sb.sb .city-proof-strip .wrap span::before {
+  box-shadow: 0 0 10px rgba(226, 179, 60, 0.6);
+}
+
+/* Guide reading: contents box in stone with a live gold marker */
+body.sb.sb .guide-toc {
+  border: 0;
+  background: var(--stone);
+}
+body.sb.sb .guide-toc a {
+  position: relative;
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 2px no-repeat;
+  transition: background-size 0.3s var(--ease), color 0.3s ease;
+}
+body.sb.sb .guide-toc a:hover,
+body.sb.sb .guide-toc a.is-current {
+  background-size: 100% 2px;
+  color: var(--ink);
+  font-weight: 650;
+}
+body.sb.sb .guide-toc li::marker {
+  color: var(--gold-deep, #b98a14);
+  font-weight: 700;
+}
+body.sb.sb .guide-article h2 {
+  font-family: var(--font);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+/* Guide library cards */
+body.sb.sb .guide-card > a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+body.sb.sb .guide-card img {
+  transition: transform 1.2s var(--ease), filter 0.4s ease;
+}
+body.sb.sb .guide-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05) saturate(1.06);
+}
+body.sb.sb .guide-card h2 a {
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 3px no-repeat;
+  transition: background-size 0.45s var(--ease);
+}
+body.sb.sb .guide-card:hover h2 a {
+  background-size: 100% 3px;
+}
+body.sb.sb .guide-card__number {
+  box-shadow: 0 20px 60px -24px rgba(226, 179, 60, 0.8);
+}
+
+/* Contact block at the end of guides: a dark room, no top stripe */
+body.sb.sb.guide-page .estimate-guide__contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+}
+body.sb.sb.guide-page .estimate-guide__contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(520px circle at var(--gx, 85%) var(--gy, 0%), rgba(226, 179, 60, 0.18), transparent 60%);
+}
+body.sb.sb.guide-page .estimate-guide__contact h2 {
+  color: #fff;
+}
+body.sb.sb.guide-page .estimate-guide__contact p {
+  color: rgba(255, 255, 255, 0.78);
+}
+body.sb.sb.guide-page .estimate-guide__contact .btn-action--dark {
+  color: #fff;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+}
+body.sb.sb.guide-page .estimate-guide__contact .btn-action--dark:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* Town pages: the estimate card gets the running gold edge too */
+body.sb.sb .quote-card {
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 0 90px -20px rgba(226, 179, 60, 0.35);
+}
+body.sb.sb .city-checklist {
+  border: 1px solid var(--hair);
+  border-radius: 0;
+  background: #fff;
+}
+
+/* ==================================================================
+   Plank wipe: photos are uncovered by strips sliding off in a running
+   bond, like boards being laid (inner-vfx.js adds the strips).
+   ================================================================== */
+body.sb.sb .service-content,
+body.sb.sb .service-faq,
+body.sb.sb .service-related,
+body.sb.sb .estimate-guide,
+body.sb.sb .city-section {
+  --wipe: #ffffff;
+}
+body.sb.sb .guide-photo {
+  --wipe: var(--ink);
+}
+body.sb.sb .v3i-planks {
+  position: absolute;
+  inset: -1px;
+  z-index: 4;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  pointer-events: none;
+}
+body.sb.sb .v3i-planks i {
+  display: block;
+  margin-bottom: -1px;
+  background: var(--wipe, #fff);
+  transform-origin: right center;
+  transition: transform 0.75s cubic-bezier(0.7, 0, 0.2, 1);
+  transition-delay: calc(var(--i) * 75ms);
+}
+body.sb.sb .v3i-planks i:nth-child(even) {
+  transform-origin: left center;
+}
+body.sb.sb .v3i-planks i::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 2px;
+  margin-left: auto;
+  background: var(--gold);
+}
+body.sb.sb .v3i-planks i:nth-child(even)::after {
+  margin-left: 0;
+}
+body.sb.sb .is-laid > .v3i-planks i {
+  transform: scaleX(0);
+}
+
+/* ==================================================================
+   Reveal on scroll (JS adds .rv; no JS = everything visible)
+   ================================================================== */
+body.sb.sb .rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+}
+body.sb.sb .rv.in {
+  opacity: 1;
+  transform: none;
+}
+body.sb.sb tr.rv {
+  transform: translateX(-18px);
+}
+body.sb.sb tr.rv.in {
+  transform: none;
+}
+
+/* ==================================================================
+   Footer: the homepage's lit wordmark closes every page
+   ================================================================== */
+body.sb.sb .service-footer,
+body.sb.sb.city-page footer {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 8vw, 110px) 0 0;
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.62);
+  border-top: 1px solid var(--hair-dark);
+  font-size: 15px;
+}
+body.sb.sb .service-footer .wrap,
+body.sb.sb.city-page footer .wrap {
+  width: min(1320px, calc(100% - 2 * clamp(20px, 5vw, 72px)));
+}
+body.sb.sb .service-footer strong,
+body.sb.sb.city-page footer strong {
+  color: #fff;
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+body.sb.sb .service-footer .seo-links,
+body.sb.sb.city-page footer .seo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 28px;
+}
+body.sb.sb .service-footer .seo-links a,
+body.sb.sb.city-page footer .seo-links a {
+  color: #fff !important;
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 2px no-repeat;
+  transition: background-size 0.3s var(--ease), color 0.3s ease;
+}
+body.sb.sb .service-footer .seo-links a:hover,
+body.sb.sb.city-page footer .seo-links a:hover {
+  color: var(--gold) !important;
+  background-size: 100% 2px;
+}
+body.sb.sb .v3i-word {
+  margin: clamp(48px, 6vw, 90px) auto 0;
+  font-family: var(--font);
+  font-size: clamp(110px, 27vw, 420px);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.72;
+  transform: translateY(0.08em);
+  background: radial-gradient(520px circle at var(--fx, 30%) var(--fy, 60%), #fff4cf 0%, var(--gold) 22%, #ffffff 52%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+body.sb.sb .v3i-word b {
+  color: var(--gold);
+  -webkit-text-fill-color: var(--gold);
+  text-shadow: 0 0 60px rgba(226, 179, 60, 0.6);
+}
+
+/* Phones: the homepage call bar */
+body.sb.sb .callbar,
+body.sb.sb .callbar.callbar.callbar {
+  background: rgba(10, 10, 10, 0.94);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+body.sb.sb .callbar a.callbar__quote {
+  box-shadow: 0 8px 26px -10px rgba(226, 179, 60, 0.8);
+}
+
+/* ==================================================================
+   Small screens
+   ================================================================== */
+@media (max-width: 860px) {
+  body.sb.sb {
+    --hdr: 64px;
+  }
+  body.sb.sb .sitehdr,
+  body.sb.sb .sitehdr.is-stuck,
+  body.sb.sb.service-page .sitehdr,
+  body.sb.sb.city-page .sitehdr {
+    padding: 0 16px;
+  }
+  body.sb.sb .brand__emblem {
+    width: 36px;
+    height: 36px;
+  }
+  body.sb.sb .brand__word {
+    font-size: 20px;
+  }
+  body.sb.sb .service-hero,
+  body.sb.sb .city-hero {
+    min-height: 88svh;
+    padding-top: calc(var(--hdr) + 72px);
+  }
+  body.sb.sb .city-hero__photo figcaption {
+    display: none;
+  }
+  body.sb.sb .service-hero .service-links .btn-action,
+  body.sb.sb .service-hero .service-links .btn-action--dark,
+  body.sb.sb .city-hero .city-actions a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 560px) {
+  body.sb.sb .sitehdr .btn-action.btn-action {
+    min-height: 38px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+  body.sb.sb .brand__word small {
+    display: none;
+  }
+  body.sb.sb .service-hero h1,
+  body.sb.sb.city-page .city-hero h1 {
+    font-size: clamp(46px, 13.5vw, 66px);
+  }
+  body.sb.sb .guide-article > h1,
+  body.sb.sb .guide-hub > h1 {
+    font-size: clamp(40px, 11.5vw, 56px);
+  }
+  body.sb.sb .guide-photo {
+    margin-top: -84px;
+  }
+  body.sb.sb .guide-article > .block__lead {
+    padding-bottom: 116px;
+  }
+}
+
+/* ==================================================================
+   Still screens and print
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  body.sb.sb::after,
+  body.sb.sb .eyebrow2::before,
+  body.sb.sb .service-hero .service-links::before,
+  body.sb.sb .city-hero .city-actions::before,
+  body.sb.sb .service-card::before,
+  body.sb.sb .v3i-sheen {
+    animation: none;
+  }
+  body.sb.sb .service-photo img,
+  body.sb.sb .city-hero__photo img,
+  body.sb.sb .vw > i,
+  body.sb.sb .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+@media print {
+  body.sb.sb::after,
+  body.sb.sb .v3i-band,
+  body.sb.sb .v3i-dust,
+  body.sb.sb .v3i-sheen,
+  body.sb.sb .v3i-light,
+  body.sb.sb .v3i-planks,
+  body.sb.sb .v3i-word {
+    display: none;
+  }
+  body.sb.sb .rv,
+  body.sb.sb .vw > i {
+    opacity: 1;
+    transform: none;
+  }
+}
