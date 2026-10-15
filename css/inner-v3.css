@@ -394,8 +394,8 @@ body.sb.sb .city-hero .city-actions {
   margin-top: clamp(24px, 3vw, 36px);
   padding-top: 26px;
 }
-body.sb.sb .service-hero h1 + p,
-body.sb.sb .city-hero h1 + p {
+body.sb.sb .service-hero h1 + p:not(.eyebrow2),
+body.sb.sb .city-hero h1 + p:not(.eyebrow2) {
   margin-top: clamp(18px, 2vw, 28px);
 }
 /* the rule above the actions carries light, as under the homepage headline */
@@ -905,6 +905,10 @@ body.sb.sb .service-proof__item {
   transition: box-shadow 0.4s ease, transform 0.4s var(--ease);
 }
 body.sb.sb .service-proof__item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
   transition: transform 1.2s var(--ease), filter 0.4s ease;
 }
 body.sb.sb .service-proof__item:hover {
@@ -1200,7 +1204,13 @@ body.sb.sb .callbar a.callbar__quote {
   body.sb.sb .service-hero .service-links .btn-action--dark,
   body.sb.sb .city-hero .city-actions a {
     flex: 1 1 100%;
+    width: 100%;
     justify-content: center;
+  }
+  body.sb.sb .city-hero .city-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 @media (max-width: 560px) {
