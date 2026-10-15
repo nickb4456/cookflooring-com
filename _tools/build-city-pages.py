@@ -96,7 +96,7 @@ def render(city):
   <script src="/js/business-config.js" defer></script>
   <script src="/js/tracking-loader.js?v=20261002" defer></script>
   <script src="/js/lead-tracking.js?v=20260905a" defer></script>
-  <script src="/js/quote-form.js?v=20261002" defer></script>
+  <script src="/js/quote-form.js?v=20261014" defer></script>
   <script src="/js/city-page.js?v={VERSION}" defer></script>
   <script type="application/ld+json">{json.dumps(schema, indent=2, ensure_ascii=False)}</script>
 </head>
@@ -136,6 +136,7 @@ def render(city):
         <div class="field"><label for="qEmail">Email <span>(optional)</span></label><input id="qEmail" name="email" type="email" autocomplete="email" maxlength="254" /></div>
         <div class="field"><label for="qDetails">What would you like done? <span>(optional)</span></label><textarea id="qDetails" name="details" maxlength="1200" placeholder="Rooms, rough size, current flooring, and your timing."></textarea></div>
         <input type="hidden" name="request_type" value="Callback and free estimate" /><input type="hidden" name="_subject" value="{esc(name)}, RI: callback and flooring estimate" />{hidden}
+        <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button class="quote-submit" type="submit">Request my callback</button><p class="quote-status" role="status" aria-live="polite" aria-atomic="true"></p><p class="quote-fineprint">We use your details to contact you about this project. Your request is sent through our website form provider, Formspree.</p><noscript><p>The form still works without JavaScript. Formspree will open to confirm your submission.</p></noscript>
       </form><div class="quote-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"><h3>Callback request received.</h3><p>We will contact you to discuss your {esc(name)} project and confirm the next step. Your preferred call time is not a booked appointment.</p><a class="city-call" href="tel:+14016020958">Call (401) 602-0958</a></div></div>
     </div></section>

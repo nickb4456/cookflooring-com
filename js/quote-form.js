@@ -12,9 +12,11 @@
   // AGENT_TARGET: lead-endpoint — accept any HTTPS POST endpoint, not just Formspree
   const action = form.getAttribute("action") || "";
   let configured = false;
+  let isFormspree = false;
   try {
     const u = new URL(action);
     configured = u.protocol === "https:";
+    isFormspree = u.hostname === "formspree.io";
   } catch (_) {
     configured = false;
   }
@@ -203,10 +205,30 @@
 
   // Phone-tap conversion moved to js/lead-tracking.js (shared with service pages).
 
+  function validationError(message) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.add("is-error");
+    status.setAttribute("aria-live", "assertive");
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = submitButton;
     if (!btn || form.getAttribute("aria-busy") === "true" || card.classList.contains("is-sent")) return;
+    // Native clicks validate first; script-dispatched submit events do not.
+    // Trim required text so whitespace cannot pass as contact information.
+    form.querySelectorAll("input[required], textarea[required]").forEach((field) => {
+      field.value = field.value.trim();
+    });
+    if (val("_gotcha")) {
+      validationError("We couldn’t send this request. Please call (401) 602-0958.");
+      return;
+    }
+    if (!form.reportValidity()) {
+      validationError("Please complete the required fields and check your contact details.");
+      return;
+    }
     if (status) {
       status.textContent = "";
       status.classList.remove("is-error");
@@ -227,10 +249,18 @@
             headers: { Accept: "application/json" },
             signal: controller.signal,
           });
+          if (!res.ok) throw new Error("send failed");
+          // A redirect, HTML challenge, or application error is not a receipt.
+          // Other HTTPS providers retain their existing HTTP-success contract.
+          if (isFormspree) {
+            const receipt = await res.json();
+            if (receipt?.ok !== true || receipt.error || receipt.errors?.length) {
+              throw new Error("submission not confirmed");
+            }
+          }
         } finally {
           window.clearTimeout(timeout);
         }
-        if (!res.ok) throw new Error("send failed");
         trackQuoteConversion("Quote form");
       } else {
         sendTrackingEvent("quote_email_draft_open", {
@@ -260,7 +290,7 @@
         status.classList.add("is-error");
         status.setAttribute("aria-live", "assertive");
         status.textContent =
-          "That did not send. Try again or call (401) 602-0958.";
+          "We couldn’t confirm your request. Try again or call (401) 602-0958.";
       }
       return;
     }
